@@ -1,7 +1,6 @@
 import { FC } from "react";
 import "./customlabel.css";
 
-export type HexColorValue = `#${string}`;
 export interface ICustomLabel {
   /**
    * This is the principal message to show inside the label.
@@ -22,7 +21,11 @@ export interface ICustomLabel {
   /**
    * This option sets a custom hexa color to the label.
    */
-  fontColor?: HexColorValue;
+  fontColor?: string;
+  /**
+   * This option sets the background color to the label.
+   */
+  backgroundColor?: string;
 }
 
 export const CustomLabel: FC<ICustomLabel> = ({
@@ -31,11 +34,12 @@ export const CustomLabel: FC<ICustomLabel> = ({
   allCaps = false,
   color = "primary",
   fontColor,
+  backgroundColor = "transparent",
 }) => {
   return (
     <span
       className={`label ${size} text-${color}`}
-      style={{ color: fontColor }}
+      style={{ backgroundColor, color: fontColor }}
     >
       {allCaps ? label.toUpperCase() : label}
     </span>
