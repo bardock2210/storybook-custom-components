@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "main": "dist/index.js",
   "repository": {
-    "url": "https://github.com/bardock2210/storybook-custom-components",
+    "url": "https://github.com/bardock2210/storybook-custom-components.git",
     "type": "git"
   },
   "peerDependencies": {
