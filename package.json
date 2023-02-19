@@ -1,6 +1,7 @@
 {
   "name": "aamf-components-storybook",
-  "version": "1.0.4",
+  "version": "1.0.6",
+  "private": false,
   "license": "MIT",
   "typings": "dist/index.d.ts",
   "main": "dist/index.js",
