@@ -45,3 +45,5 @@ export const CustomLabel: FC<ICustomLabel> = ({
     </span>
   );
 };
+
+export default CustomLabel;
