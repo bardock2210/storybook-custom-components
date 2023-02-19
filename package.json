@@ -89,6 +89,7 @@
     "@semantic-release/npm",
     "@semantic-release/git"
   ],
+  
   "readme": "ERROR: No README data found!",
   "_id": "my-storybook@0.1.0"
 }
