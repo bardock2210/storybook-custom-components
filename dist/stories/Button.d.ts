@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import './button.css';
+import "./button.css";
 export interface ButtonProps {
     /**
      * Is this the principal call to action on the page?
@@ -12,7 +12,7 @@ export interface ButtonProps {
     /**
      * How large should the button be?
      */
-    size?: 'small' | 'medium' | 'large';
+    size?: "small" | "medium" | "large";
     /**
      * Button contents
      */
@@ -26,3 +26,4 @@ export interface ButtonProps {
  * Primary UI component for user interaction
  */
 export declare const Button: ({ primary, size, backgroundColor, label, ...props }: ButtonProps) => JSX.Element;
+export default Button;

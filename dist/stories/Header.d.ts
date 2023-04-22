@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import './header.css';
+import "./header.css";
 type User = {
     name: string;
 };
@@ -9,5 +9,5 @@ export interface HeaderProps {
     onLogout: () => void;
     onCreateAccount: () => void;
 }
-export declare const Header: ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => JSX.Element;
-export {};
+export declare const Header: ({ user, onLogin, onLogout, onCreateAccount, }: HeaderProps) => JSX.Element;
+export default Header;
