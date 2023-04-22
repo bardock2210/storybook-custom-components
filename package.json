@@ -9,9 +9,6 @@
     "url": "https://github.com/bardock2210/storybook-custom-components.git",
     "type": "git"
   },
-  "peerDependencies": {
-    "react": ">=16"
-  },
   "release": {
     "branches": [
       "main"
@@ -22,6 +19,10 @@
     "src"
   ],
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@hookform/resolvers": "^3.1.0",
+    "@mui/material": "^5.12.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -31,14 +32,17 @@
     "@types/react-dom": "^18.0.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
+    "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.1.1"
   },
   "scripts": {
-    "start": "start-storybook -p 6006",
+    "start": "storybook dev -p 6006",
     "build": "yarn clean && tsc && yarn copy-files",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=507599b22b94",
     "clean": "rimraf dist/",
     "copy-files": "copyfiles -u 1 src/**/*.css dist/"
@@ -47,6 +51,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -63,22 +77,30 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.4",
+    "@storybook/addon-actions": "^7.0.4",
+    "@storybook/addon-essentials": "^7.0.4",
+    "@storybook/addon-interactions": "^7.0.4",
+    "@storybook/addon-links": "^7.0.4",
+    "@storybook/addon-mdx-gfm": "^7.0.4",
     "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/manager-webpack4": "^6.5.16",
-    "@storybook/react": "^6.5.16",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/react": "^7.0.4",
+    "@storybook/react-webpack5": "^7.0.4",
+    "@storybook/testing-library": "^0.1.0",
     "babel-loader": "^8.3.0",
     "chromatic": "^6.17.0",
     "copyfiles": "^2.4.1",
     "css-loader": "^6.7.3",
     "postcss": "^8.4.21",
     "rimraf": "^4.1.2",
-    "semantic-release": "^20.1.0"
+    "semantic-release": "^20.1.0",
+    "storybook": "^7.0.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.18.0",
+    "react-dom": ">=16.18.0"
   },
   "plugins": [
     "@semantic-release/commit-analyzer",
