@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { TextInput, TextInputProps } from "./TextInput";
+import { Button } from "@mui/material";
+import { TextInput } from "./TextInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { TextInputProps } from "@/types";
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
@@ -18,7 +20,7 @@ const FormSchema = Yup.object().shape({
     .required("El correo electronico es requerido."),
 });
 
-const FormTemplate: Story = {
+const TextInputFormTemplate: Story = {
   render: (args: TextInputProps) => {
     const {
       control,
@@ -36,6 +38,9 @@ const FormTemplate: Story = {
     return (
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <TextInput {...args} control={control} errors={errors} />
+        <Button fullWidth sx={{ mt: "10px" }} type="submit" variant="contained">
+          Submit form
+        </Button>
       </form>
     );
   },
@@ -53,8 +58,9 @@ export const Default: Story = {
 };
 
 export const FormField: Story = {
-  ...FormTemplate,
+  ...TextInputFormTemplate,
   args: {
+    fullWidth: true,
     isForm: true,
     label: "Email",
     name: "email",

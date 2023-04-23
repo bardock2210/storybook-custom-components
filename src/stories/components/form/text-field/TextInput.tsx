@@ -1,17 +1,9 @@
-import React, { ReactNode } from "react";
-import { TextField, TextFieldProps } from "@mui/material";
-import { Control, Controller, FieldErrors } from "react-hook-form";
+import React, { FC } from "react";
+import { TextField } from "@mui/material";
+import { Controller } from "react-hook-form";
+import { TextInputProps } from "@/types";
 
-export type TextInputProps = TextFieldProps & {
-  control?: Control<any, any>;
-  endAdornment?: ReactNode;
-  errors?: FieldErrors;
-  isForm?: boolean;
-  shrink?: boolean;
-  startAdornment?: ReactNode;
-};
-
-export const TextInput = ({
+export const TextInput: FC<TextInputProps> = ({
   control,
   endAdornment,
   errors,
@@ -21,7 +13,7 @@ export const TextInput = ({
   startAdornment,
   size = "small",
   ...props
-}: TextInputProps) => {
+}) => {
   const inputLabelProps = shrink && { shrink };
   const textInputStyles = [...(Array.isArray(props.sx) ? props.sx : [props.sx])];
   const commonTextFieldProps = {
