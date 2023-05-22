@@ -8,7 +8,7 @@ import { TextInputProps } from "@/types";
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
-  title: "ZipCode Service/TextInput",
+  title: "ZipCodeService/Form/Elements/TextInput",
 };
 
 export default meta;

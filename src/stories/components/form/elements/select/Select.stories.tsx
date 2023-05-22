@@ -8,7 +8,7 @@ import { OptionProps, SelectProps } from "@/types";
 
 const meta: Meta<typeof Select> = {
   component: Select,
-  title: "ZipCode Service/Select",
+  title: "ZipCodeService/Form/Elements/Select",
 };
 
 export default meta;
