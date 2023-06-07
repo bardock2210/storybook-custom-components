@@ -42,24 +42,24 @@ export const MobileMenu: FC<MobileMenuProps> = ({
       open={open}
       onClose={onClose}
     >
-      <MenuItem>
-        <IconButton color="inherit" onClick={cartMenuHandler} size="large">
+      <MenuItem onClick={cartMenuHandler}>
+        <IconButton color="inherit" size="large">
           <Badge badgeContent={cartTotalElements} color="error">
             <ShoppingCartOutlined />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit" onClick={notificationMenuHandler} size="large">
+      <MenuItem onClick={notificationMenuHandler}>
+        <IconButton color="inherit" size="large">
           <Badge badgeContent={notificationTotal} color="error">
             <NotificationsNoneOutlined />
           </Badge>
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit" onClick={profileMenuHandler} size="large">
+      <MenuItem onClick={profileMenuHandler}>
+        <IconButton color="inherit" size="large">
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
