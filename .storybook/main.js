@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -14,7 +16,7 @@ module.exports = {
     },
     "@storybook/addon-mdx-gfm",
   ],
-  webpackFinal: async () => {
+  webpackFinal: async (config, { configType }) => {
     config.resolve.modules = [path.resolve(__dirname, ".."), "node_modules"];
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -22,6 +24,8 @@ module.exports = {
       "@/components": path.resolve(__dirname, "../src/stories/components"),
       "@/types": path.resolve(__dirname, "../src/stories/types"),
     };
+
+    return config;
   },
   framework: {
     name: "@storybook/react-webpack5",
