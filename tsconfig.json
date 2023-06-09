@@ -24,5 +24,6 @@
       "@/types": ["src/stories/types"]
     }
   },
+  "exclude": ["./node_modules", "./dist"],
   "include": ["src"]
 }
