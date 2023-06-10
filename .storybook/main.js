@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  staticDirs: ["../src/stories/assets"],
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
@@ -30,6 +31,9 @@ module.exports = {
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
+  },
+  core: {
+    builder: "@storybook/builder-webpack5",
   },
   docs: {
     autodocs: true,
