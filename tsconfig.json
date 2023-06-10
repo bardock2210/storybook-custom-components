@@ -17,11 +17,11 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    // "baseUrl": ".",
+    "baseUrl": ".",
     "paths": {
-      "@/assets/*": ["./src/stories/assets/*"],
-      "@/components/*": ["./src/stories/components/*"],
-      "@/types": ["./src/stories/types"]
+      "@/assets/*": ["src/stories/assets/*"],
+      "@/components/*": ["src/stories/components/*"],
+      "@/types": ["src/stories/types"]
     }
   },
   "exclude": ["./node_modules", "./dist"],

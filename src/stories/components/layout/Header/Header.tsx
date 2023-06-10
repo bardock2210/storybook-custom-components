@@ -6,7 +6,7 @@ import {
   NotificationsNoneOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import { MobileMenu } from "../../display/MobileMenu/MobileMenu";
+import { MobileMenu } from "@/components/display/MobileMenu/MobileMenu";
 import { headerContainer, headerStyles, iconContainer, logoStyles } from "./headerStyles";
 
 export interface HeaderProps {

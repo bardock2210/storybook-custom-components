@@ -1,3 +1,5 @@
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+
 const path = require("path");
 
 module.exports = {
@@ -25,15 +27,19 @@ module.exports = {
       "@/components": path.resolve(__dirname, "../src/stories/components"),
       "@/types": path.resolve(__dirname, "../src/stories/types"),
     };
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "../tsconfig.json"),
+        extensions: config.resolve.extensions,
+      }),
+    ];
 
     return config;
   },
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
-  },
-  core: {
-    builder: "@storybook/builder-webpack5",
   },
   docs: {
     autodocs: true,
