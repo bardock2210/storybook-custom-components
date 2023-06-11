@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    // "outDir": "dist",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
@@ -24,6 +24,5 @@
       "@/types": ["src/stories/types"]
     }
   },
-  "exclude": ["./node_modules", "./dist"],
   "include": ["src"]
 }
