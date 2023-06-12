@@ -4,7 +4,7 @@ import { Select } from "./Select";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { OptionProps, SelectProps } from "@/types";
+import { OptionProps, SelectProps } from "@/types/form";
 
 const meta: Meta<typeof Select> = {
   component: Select,

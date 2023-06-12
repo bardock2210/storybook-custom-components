@@ -4,7 +4,7 @@ import { TextInput } from "./TextInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { TextInputProps } from "@/types";
+import { TextInputProps } from "@/types/form";
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,

@@ -33,7 +33,7 @@ const config: StorybookConfig = {
         ...(config.resolve.plugins || []),
         new TsconfigPathsPlugin({
           configFile: path.resolve(__dirname, "../tsconfig.json"),
-          extensions: config.resolve.extensions,
+          extensions: [".ts", ".js"],
         }),
       ];
     }

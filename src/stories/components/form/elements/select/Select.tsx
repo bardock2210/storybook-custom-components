@@ -7,7 +7,7 @@ import {
   Select as MuiSelect,
 } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { OptionProps, SelectProps, TSize } from "@/types";
+import { OptionProps, SelectProps, TSize } from "@/types/form";
 
 interface FormControWrapperProps {
   children: JSX.Element;

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // "outDir": "dist",
+    "outDir": "dist",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
@@ -21,8 +21,9 @@
     "paths": {
       "@/assets/*": ["src/stories/assets/*"],
       "@/components/*": ["src/stories/components/*"],
-      "@/types": ["src/stories/types"]
+      "@/types/*": ["src/stories/types/*"]
     }
   },
+  "exclude": ["node_modules"],
   "include": ["src"]
 }

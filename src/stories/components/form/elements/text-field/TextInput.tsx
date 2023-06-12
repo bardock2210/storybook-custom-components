@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { TextInputProps } from "@/types";
+import { TextInputProps } from "@/types/form";
 
 export const TextInput: FC<TextInputProps> = ({
   control,
