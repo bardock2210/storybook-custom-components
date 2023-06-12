@@ -1,4 +1,4 @@
-export { Header } from "@/components/layout/Header/Header";
-export { MobileMenu } from "@/components/display/MobileMenu/MobileMenu";
-export { Select } from "@/components/form/elements/select/Select";
-export { TextInput } from "@/components/form/elements/text-field/TextInput";
+export { default as Header } from "@/components/layout/Header";
+export { default as MobileMenu } from "@/components/display/MobileMenu";
+export { default as Select } from "@/components/form/elements/Select";
+export { default as TextInput } from "@/components/form/elements/TextField";

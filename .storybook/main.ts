@@ -22,18 +22,19 @@ const config: StorybookConfig = {
   ],
   webpackFinal: async (config, { configType }) => {
     if (config.resolve) {
-      config.resolve.modules = [path.resolve(__dirname, ".."), "node_modules"];
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        "@/assets": path.resolve(__dirname, "../src/stories/assets"),
-        "@/components": path.resolve(__dirname, "../src/stories/components"),
-        "@/types": path.resolve(__dirname, "../src/stories/types"),
-      };
+      // config.resolve.modules = [path.resolve(__dirname, ".."), "node_modules"];
+      // config.resolve.alias = {
+      //   ...config.resolve.alias,
+      //   "@/assets": path.resolve(__dirname, "../src/stories/assets"),
+      //   "@/components": path.resolve(__dirname, "../src/stories/components"),
+      //   "@/types": path.resolve(__dirname, "../src/stories/types"),
+      // };
+      // config.resolve.extensions?.push(".ts", ".tsx");
       config.resolve.plugins = [
         ...(config.resolve.plugins || []),
         new TsconfigPathsPlugin({
           configFile: path.resolve(__dirname, "../tsconfig.json"),
-          extensions: [".ts", ".js"],
+          // extensions: config.resolve.extensions,
         }),
       ];
     }
