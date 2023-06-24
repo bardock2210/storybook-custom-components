@@ -30,13 +30,7 @@ const config: StorybookConfig = {
       //   "@/types": path.resolve(__dirname, "../src/stories/types"),
       // };
       // config.resolve.extensions?.push(".ts", ".tsx");
-      config.resolve.plugins = [
-        ...(config.resolve.plugins || []),
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../tsconfig.json"),
-          // extensions: config.resolve.extensions,
-        }),
-      ];
+      config.resolve.plugins = [new TsconfigPathsPlugin()];
     }
 
     return config;
