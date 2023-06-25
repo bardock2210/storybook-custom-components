@@ -4,6 +4,7 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export interface MenuOptionsProps {
   badgeContent?: number;
+  hasSubMenu: boolean;
   Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
     muiName: string;
   };

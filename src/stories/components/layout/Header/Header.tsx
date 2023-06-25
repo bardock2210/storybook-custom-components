@@ -9,10 +9,19 @@ export interface HeaderProps {
 }
 
 export const Header: FC<HeaderProps> = ({ menuOptions }) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleMenuOpen = (event: MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleMobileMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   const handleMobileMenuClose = () => {
@@ -29,12 +38,12 @@ export const Header: FC<HeaderProps> = ({ menuOptions }) => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={iconContainer}>
             {menuOptions.map(
-              ({ badgeContent, Icon, isIconButton, onClickHandler }, index) =>
+              ({ badgeContent, Icon, hasSubMenu, isIconButton, onClickHandler }, index) =>
                 isIconButton && (
                   <IconButton
                     color="inherit"
                     key={`icon-button-${index}`}
-                    onClick={onClickHandler}
+                    onClick={hasSubMenu ? handleMenuOpen : onClickHandler}
                     size="large"
                   >
                     <Badge badgeContent={badgeContent} color="error">
@@ -59,9 +68,17 @@ export const Header: FC<HeaderProps> = ({ menuOptions }) => {
       {
         <MobileMenu
           anchorEl={mobileMoreAnchorEl}
-          menuOptions={menuOptions}
+          menuOptions={menuOptions.filter((option) => !option.hasSubMenu)}
           onClose={handleMobileMenuClose}
           open={Boolean(mobileMoreAnchorEl)}
+        />
+      }
+      {
+        <MobileMenu
+          anchorEl={anchorEl}
+          menuOptions={menuOptions.filter((option) => !option.isIconButton)}
+          onClose={handleMenuClose}
+          open={Boolean(anchorEl)}
         />
       }
     </Box>

@@ -1,7 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import {
   AccountCircle,
+  LogoutOutlined,
   NotificationsNoneOutlined,
+  SettingsOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import { Header, HeaderProps } from "./Header";
@@ -23,6 +25,7 @@ const HeaderTemplate: Story = {
 const menuOptions = [
   {
     badgeContent: 5,
+    hasSubMenu: false,
     Icon: ShoppingCartOutlined,
     isIconButton: true,
     message: "Carrito de compras",
@@ -30,16 +33,32 @@ const menuOptions = [
   },
   {
     badgeContent: 3,
+    hasSubMenu: false,
     Icon: NotificationsNoneOutlined,
     isIconButton: true,
     message: "Notificaciones",
     onClickHandler: () => console.log("Notificaciones"),
   },
   {
-    Icon: AccountCircle,
+    hasSubMenu: true,
+    Icon: SettingsOutlined,
     isIconButton: true,
+    message: "Settings",
+    onClickHandler: () => console.log("Settings"),
+  },
+  {
+    hasSubMenu: false,
+    Icon: AccountCircle,
+    isIconButton: false,
     message: "Perfil",
     onClickHandler: () => console.log("Perfil"),
+  },
+  {
+    hasSubMenu: false,
+    Icon: LogoutOutlined,
+    isIconButton: false,
+    message: "Cerrar Sesión",
+    onClickHandler: () => console.log("Cerrar Sesión"),
   },
 ];
 
