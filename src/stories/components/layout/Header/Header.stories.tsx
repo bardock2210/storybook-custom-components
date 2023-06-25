@@ -1,4 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
+import {
+  AccountCircle,
+  NotificationsNoneOutlined,
+  ShoppingCartOutlined,
+} from "@mui/icons-material";
 import { Header, HeaderProps } from "./Header";
 
 const meta: Meta<typeof Header> = {
@@ -15,13 +20,32 @@ const HeaderTemplate: Story = {
   },
 };
 
+const menuOptions = [
+  {
+    badgeContent: 5,
+    Icon: ShoppingCartOutlined,
+    isIconButton: true,
+    message: "Carrito de compras",
+    onClickHandler: () => console.log("Carrito de compras"),
+  },
+  {
+    badgeContent: 3,
+    Icon: NotificationsNoneOutlined,
+    isIconButton: true,
+    message: "Notificaciones",
+    onClickHandler: () => console.log("Notificaciones"),
+  },
+  {
+    Icon: AccountCircle,
+    isIconButton: true,
+    message: "Perfil",
+    onClickHandler: () => console.log("Perfil"),
+  },
+];
+
 export const Default: Story = {
   ...HeaderTemplate,
   args: {
-    cartMenuHandler: () => console.log("Redirect to the cart page"),
-    cartTotalElements: 5,
-    notificationMenuHandler: () => console.log("Redirect to the notifications page"),
-    notificationTotal: 3,
-    profileMenuHandler: () => console.log("Redirect to the profile page"),
+    menuOptions: menuOptions,
   },
 };

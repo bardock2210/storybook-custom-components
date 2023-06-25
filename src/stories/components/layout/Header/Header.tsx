@@ -1,29 +1,14 @@
 import { FC, MouseEvent, useState } from "react";
 import { AppBar, Badge, Box, IconButton, Toolbar, Typography } from "@mui/material";
-import {
-  AccountCircle,
-  MoreVert,
-  NotificationsNoneOutlined,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
-import { MobileMenu } from "@/components/display/MobileMenu/MobileMenu";
+import { MoreVert } from "@mui/icons-material";
+import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/MobileMenu";
 import { headerContainer, headerStyles, iconContainer, logoStyles } from "./headerStyles";
 
 export interface HeaderProps {
-  cartMenuHandler: () => void;
-  cartTotalElements: number;
-  notificationMenuHandler: () => void;
-  notificationTotal: number;
-  profileMenuHandler: () => void;
+  menuOptions: MenuOptionsProps[];
 }
 
-export const Header: FC<HeaderProps> = ({
-  cartMenuHandler,
-  cartTotalElements,
-  notificationMenuHandler,
-  notificationTotal,
-  profileMenuHandler,
-}) => {
+export const Header: FC<HeaderProps> = ({ menuOptions }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMobileMenuOpen = (event: MouseEvent<HTMLElement>) => {
@@ -43,19 +28,21 @@ export const Header: FC<HeaderProps> = ({
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={iconContainer}>
-            <IconButton color="inherit" onClick={cartMenuHandler} size="large">
-              <Badge badgeContent={cartTotalElements} color="error">
-                <ShoppingCartOutlined />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit" onClick={notificationMenuHandler} size="large">
-              <Badge badgeContent={notificationTotal} color="error">
-                <NotificationsNoneOutlined />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit" edge="end" onClick={profileMenuHandler} size="large">
-              <AccountCircle />
-            </IconButton>
+            {menuOptions.map(
+              ({ badgeContent, Icon, isIconButton, onClickHandler }, index) =>
+                isIconButton && (
+                  <IconButton
+                    color="inherit"
+                    key={`icon-button-${index}`}
+                    onClick={onClickHandler}
+                    size="large"
+                  >
+                    <Badge badgeContent={badgeContent} color="error">
+                      <Icon />
+                    </Badge>
+                  </IconButton>
+                )
+            )}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -72,13 +59,9 @@ export const Header: FC<HeaderProps> = ({
       {
         <MobileMenu
           anchorEl={mobileMoreAnchorEl}
-          cartMenuHandler={cartMenuHandler}
-          cartTotalElements={cartTotalElements}
-          notificationMenuHandler={notificationMenuHandler}
-          notificationTotal={notificationTotal}
+          menuOptions={menuOptions}
           onClose={handleMobileMenuClose}
           open={Boolean(mobileMoreAnchorEl)}
-          profileMenuHandler={profileMenuHandler}
         />
       }
     </Box>

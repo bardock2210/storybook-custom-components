@@ -1,32 +1,50 @@
 import { FC } from "react";
-import { Badge, IconButton, Menu, MenuItem } from "@mui/material";
-import {
-  AccountCircle,
-  NotificationsNoneOutlined,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
+import { Badge, IconButton, Menu, MenuItem, SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
-export interface MobileMenuProps {
-  anchorEl?: Element | ((element: Element) => Element) | null;
-  cartMenuHandler: () => void;
-  cartTotalElements: number;
-  notificationMenuHandler: () => void;
-  notificationTotal: number;
-  onClose?: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void;
-  open: boolean;
-  profileMenuHandler: () => void;
+export interface MenuOptionsProps {
+  badgeContent?: number;
+  Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    muiName: string;
+  };
+  isIconButton: boolean;
+  message: string;
+  onClickHandler: () => void;
 }
 
-export const MobileMenu: FC<MobileMenuProps> = ({
-  anchorEl,
-  cartMenuHandler,
-  cartTotalElements,
-  notificationMenuHandler,
-  notificationTotal,
-  onClose,
-  open,
-  profileMenuHandler,
-}) => {
+export interface MobileMenuProps {
+  anchorEl: Element | ((element: Element) => Element) | null;
+  menuOptions: MenuOptionsProps[];
+  onClose: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void;
+  open: boolean;
+}
+
+interface RenderMenuItemsProps {
+  menuOptions: MenuOptionsProps[];
+}
+
+const RenderMenuItems = ({ menuOptions }: RenderMenuItemsProps) => {
+  return (
+    <>
+      {menuOptions.map(({ badgeContent, Icon, message, onClickHandler }, index) => (
+        <MenuItem key={`menu-item-${index}`} onClick={onClickHandler}>
+          <IconButton color="inherit" size="large">
+            {badgeContent ? (
+              <Badge badgeContent={badgeContent} color="error">
+                <Icon />
+              </Badge>
+            ) : (
+              <Icon />
+            )}
+          </IconButton>
+          <p>{message}</p>
+        </MenuItem>
+      ))}
+    </>
+  );
+};
+
+export const MobileMenu: FC<MobileMenuProps> = ({ anchorEl, menuOptions, onClose, open }) => {
   return (
     <Menu
       anchorEl={anchorEl}
@@ -42,28 +60,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
       open={open}
       onClose={onClose}
     >
-      <MenuItem onClick={cartMenuHandler}>
-        <IconButton color="inherit" size="large">
-          <Badge badgeContent={cartTotalElements} color="error">
-            <ShoppingCartOutlined />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem onClick={notificationMenuHandler}>
-        <IconButton color="inherit" size="large">
-          <Badge badgeContent={notificationTotal} color="error">
-            <NotificationsNoneOutlined />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={profileMenuHandler}>
-        <IconButton color="inherit" size="large">
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      <RenderMenuItems menuOptions={menuOptions} />
     </Menu>
   );
 };
