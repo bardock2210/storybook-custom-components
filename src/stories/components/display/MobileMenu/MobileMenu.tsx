@@ -5,9 +5,7 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 export interface MenuOptionsProps {
   badgeContent?: number;
   hasSubMenu: boolean;
-  Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
-    muiName: string;
-  };
+  icon: JSX.Element;
   isIconButton: boolean;
   message: string;
   onClickHandler: () => void;
@@ -27,15 +25,15 @@ interface RenderMenuItemsProps {
 const RenderMenuItems = ({ menuOptions }: RenderMenuItemsProps) => {
   return (
     <>
-      {menuOptions.map(({ badgeContent, Icon, message, onClickHandler }, index) => (
+      {menuOptions.map(({ badgeContent, icon, message, onClickHandler }, index) => (
         <MenuItem key={`menu-item-${index}`} onClick={onClickHandler}>
           <IconButton color="inherit" size="large">
             {badgeContent ? (
               <Badge badgeContent={badgeContent} color="error">
-                <Icon />
+                {icon}
               </Badge>
             ) : (
-              <Icon />
+              <>{icon}</>
             )}
           </IconButton>
           <p>{message}</p>

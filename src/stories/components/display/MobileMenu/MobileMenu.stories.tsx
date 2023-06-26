@@ -27,7 +27,7 @@ const MobileMenuTemplate: Story = {
       {
         badgeContent: 5,
         hasSubMenu: false,
-        Icon: ShoppingCartOutlined,
+        icon: <ShoppingCartOutlined />,
         isIconButton: true,
         message: "Carrito de compras",
         onClickHandler: () => console.log("Carrito de compras"),
@@ -35,14 +35,14 @@ const MobileMenuTemplate: Story = {
       {
         badgeContent: 3,
         hasSubMenu: false,
-        Icon: NotificationsNoneOutlined,
+        icon: <NotificationsNoneOutlined />,
         isIconButton: true,
         message: "Notificaciones",
         onClickHandler: () => console.log("Notificaciones"),
       },
       {
         hasSubMenu: false,
-        Icon: AccountCircle,
+        icon: <AccountCircle />,
         isIconButton: true,
         message: "Perfil",
         onClickHandler: () => console.log("Perfil"),

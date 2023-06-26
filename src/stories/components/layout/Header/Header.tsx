@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
-import { AppBar, Badge, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Badge, Box, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/MobileMenu";
 import { headerContainer, headerStyles, iconContainer, logoStyles } from "./headerStyles";
@@ -38,18 +38,20 @@ export const Header: FC<HeaderProps> = ({ menuOptions }) => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={iconContainer}>
             {menuOptions.map(
-              ({ badgeContent, Icon, hasSubMenu, isIconButton, onClickHandler }, index) =>
+              ({ badgeContent, icon, hasSubMenu, isIconButton, message, onClickHandler }, index) =>
                 isIconButton && (
-                  <IconButton
-                    color="inherit"
-                    key={`icon-button-${index}`}
-                    onClick={hasSubMenu ? handleMenuOpen : onClickHandler}
-                    size="large"
-                  >
-                    <Badge badgeContent={badgeContent} color="error">
-                      <Icon />
-                    </Badge>
-                  </IconButton>
+                  <Tooltip title={message}>
+                    <IconButton
+                      color="inherit"
+                      key={`icon-button-${index}`}
+                      onClick={hasSubMenu ? handleMenuOpen : onClickHandler}
+                      size="large"
+                    >
+                      <Badge badgeContent={badgeContent} color="error">
+                        {icon}
+                      </Badge>
+                    </IconButton>
+                  </Tooltip>
                 )
             )}
           </Box>
