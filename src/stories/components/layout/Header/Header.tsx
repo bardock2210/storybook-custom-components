@@ -40,10 +40,9 @@ export const Header: FC<HeaderProps> = ({ menuOptions }) => {
             {menuOptions.map(
               ({ badgeContent, icon, hasSubMenu, isIconButton, message, onClickHandler }, index) =>
                 isIconButton && (
-                  <Tooltip title={message}>
+                  <Tooltip key={`icon-button-${index}`} title={message}>
                     <IconButton
                       color="inherit"
-                      key={`icon-button-${index}`}
                       onClick={hasSubMenu ? handleMenuOpen : onClickHandler}
                       size="large"
                     >
