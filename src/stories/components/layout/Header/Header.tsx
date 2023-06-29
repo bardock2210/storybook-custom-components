@@ -43,7 +43,7 @@ export const Header: FC<HeaderProps> = ({ menuOptions }) => {
                   <Tooltip key={`icon-button-${index}`} title={message}>
                     <IconButton
                       color="inherit"
-                      onClick={hasSubMenu ? handleMenuOpen : onClickHandler}
+                      onClick={(e) => (hasSubMenu ? handleMenuOpen(e) : onClickHandler(e))}
                       size="large"
                     >
                       <Badge badgeContent={badgeContent} color="error">

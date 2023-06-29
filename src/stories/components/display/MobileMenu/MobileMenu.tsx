@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { Badge, IconButton, Menu, MenuItem, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
@@ -8,7 +8,7 @@ export interface MenuOptionsProps {
   icon: JSX.Element;
   isIconButton: boolean;
   message: string;
-  onClickHandler: () => void;
+  onClickHandler: (e: MouseEvent<HTMLElement>) => void;
 }
 
 export interface MobileMenuProps {

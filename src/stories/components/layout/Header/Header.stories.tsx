@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import {
   AccountCircle,
@@ -58,7 +59,10 @@ const menuOptions = [
     icon: <LogoutOutlined />,
     isIconButton: false,
     message: "Cerrar Sesión",
-    onClickHandler: () => console.log("Cerrar Sesión"),
+    onClickHandler: (e: MouseEvent<HTMLElement>) => {
+      e.preventDefault();
+      console.log("Cerrar Sesión");
+    },
   },
 ];
 
