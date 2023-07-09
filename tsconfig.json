@@ -21,6 +21,7 @@
     "paths": {
       "@/assets/*": ["src/stories/assets/*"],
       "@/components/*": ["src/stories/components/*"],
+      "@/hooks/*": ["src/stories/hooks/*"],
       "@/types/*": ["src/stories/types/*"]
     }
   },

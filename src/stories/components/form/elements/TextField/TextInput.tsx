@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { TextInputProps } from "@/types/form";
+import { styles } from "./TextInput.styles";
 
 export const TextInput: FC<TextInputProps> = ({
   control,
@@ -14,8 +15,7 @@ export const TextInput: FC<TextInputProps> = ({
   size = "small",
   ...props
 }) => {
-  const inputLabelProps = shrink && { shrink };
-  const textInputStyles = [...(Array.isArray(props.sx) ? props.sx : [props.sx])];
+  const textInputStyles = [...(Array.isArray(props.sx) ? props.sx : [props.sx]), { ...styles }];
   const commonTextFieldProps = {
     InputProps: {
       endAdornment,
