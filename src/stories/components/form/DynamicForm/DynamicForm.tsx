@@ -1,26 +1,9 @@
 import { FC } from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Select,
-  Stack,
-  type SxProps,
-  type Theme,
-} from "@mui/material";
+import { Box, Button, FormControl, FormLabel, Select, Stack } from "@mui/material";
 import TextInput from "@/components/form/elements/TextField";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IFormFieldProps, TField } from "@/types/form";
-
-interface ButtonProps {
-  fullWidth?: boolean;
-  label: string;
-  sx?: SxProps<Theme>;
-  type: "button" | "reset" | "submit";
-  variant: "contained" | "outlined" | "text";
-}
+import { ButtonProps, IFormFieldProps, TField } from "@/types/form";
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[];

@@ -1,3 +1,4 @@
+import type { SxProps, Theme } from "@mui/material";
 import { ReactNode } from "react";
 
 export type TField =
@@ -29,4 +30,12 @@ export interface IFormFieldProps {
   required?: boolean;
   size?: TFieldSize;
   value?: any;
+}
+
+export interface ButtonProps {
+  fullWidth?: boolean;
+  label: string;
+  sx?: SxProps<Theme>;
+  type: "button" | "reset" | "submit";
+  variant: "contained" | "outlined" | "text";
 }
