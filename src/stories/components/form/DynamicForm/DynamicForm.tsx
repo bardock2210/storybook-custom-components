@@ -12,7 +12,6 @@ import {
 import TextInput from "@/components/form/elements/TextField";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import type { AnyObject, ObjectSchema } from "yup";
 import { IFormFieldProps, TField } from "@/types/form";
 
 interface ButtonProps {
@@ -25,7 +24,7 @@ interface ButtonProps {
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[];
-  formSchema: ObjectSchema<AnyObject, AnyObject, AnyObject, any>;
+  formSchema: any;
   initialState: FieldValues;
   onSubmit: (params: FieldValues) => void;
   primaryBtnProps: ButtonProps;
