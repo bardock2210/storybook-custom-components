@@ -25,7 +25,7 @@ interface ButtonProps {
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[];
-  formSchema: ObjectSchema<AnyObject>;
+  formSchema: ObjectSchema<any, AnyObject, any, "">;
   initialState: FieldValues;
   onSubmit: (params: FieldValues) => void;
   primaryBtnProps: ButtonProps;
