@@ -38,7 +38,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
 
   return (
     <Box sx={headerContainer}>
-      <AppBar position="static" sx={headerStyles}>
+      <AppBar color="primary" position="static" sx={headerStyles}>
         <Toolbar>
           <Box component="div" onClick={onClickLogoHandler} sx={logoContainerSx}>
             {logo}
