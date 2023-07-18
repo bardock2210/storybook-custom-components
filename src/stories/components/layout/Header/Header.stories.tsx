@@ -4,24 +4,11 @@ import {
   AccountCircle,
   LogoutOutlined,
   NotificationsNoneOutlined,
+  PlaceOutlined,
   SettingsOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import { Header, HeaderProps } from "./Header";
-
-const meta: Meta<typeof Header> = {
-  component: Header,
-  title: "ZipCodeService/Layout/Header",
-};
-
-export default meta;
-type Story = StoryObj<typeof Header>;
-
-const HeaderTemplate: Story = {
-  render: (args: HeaderProps) => {
-    return <Header {...args} />;
-  },
-};
 
 const menuOptions = [
   {
@@ -66,9 +53,25 @@ const menuOptions = [
   },
 ];
 
+const meta: Meta<typeof Header> = {
+  component: Header,
+  title: "ZipCodeService/Layout/Header",
+};
+
+export default meta;
+type Story = StoryObj<typeof Header>;
+
+const HeaderTemplate: Story = {
+  render: (args: HeaderProps) => {
+    return <Header {...args} />;
+  },
+};
+
 export const Default: Story = {
   ...HeaderTemplate,
   args: {
+    logo: <PlaceOutlined />,
     menuOptions: menuOptions,
+    onClickLogoHandler: () => console.log("On click logo..."),
   },
 };

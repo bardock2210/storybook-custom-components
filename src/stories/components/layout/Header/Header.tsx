@@ -2,13 +2,21 @@ import { FC, MouseEvent, useState } from "react";
 import { AppBar, Badge, Box, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/MobileMenu";
-import { headerContainer, headerStyles, iconContainer, logoStyles } from "./headerStyles";
+import {
+  headerContainer,
+  headerStyles,
+  iconContainer,
+  logoContainerSx,
+  logoStyles,
+} from "./headerStyles";
 
 export interface HeaderProps {
+  logo: JSX.Element;
   menuOptions: MenuOptionsProps[];
+  onClickLogoHandler: () => void;
 }
 
-export const Header: FC<HeaderProps> = ({ menuOptions }) => {
+export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -32,9 +40,12 @@ export const Header: FC<HeaderProps> = ({ menuOptions }) => {
     <Box sx={headerContainer}>
       <AppBar position="static" sx={headerStyles}>
         <Toolbar>
-          <Typography component="div" noWrap sx={logoStyles} variant="h6">
-            ZipCode Services
-          </Typography>
+          <Box component="div" onClick={onClickLogoHandler} sx={logoContainerSx}>
+            {logo}
+            <Typography component="div" noWrap sx={logoStyles} variant="h6">
+              ZipCode Services
+            </Typography>
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={iconContainer}>
             {menuOptions.map(
