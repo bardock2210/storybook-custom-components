@@ -83,6 +83,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
           menuOptions={menuOptions.filter((option) => !option.hasSubMenu)}
           onClose={handleMobileMenuClose}
           open={Boolean(mobileMoreAnchorEl)}
+          setAnchorEl={setMobileMoreAnchorEl}
         />
       }
       {
@@ -91,6 +92,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
           menuOptions={menuOptions.filter((option) => !option.isIconButton)}
           onClose={handleMenuClose}
           open={Boolean(anchorEl)}
+          setAnchorEl={setAnchorEl}
         />
       }
     </Box>
