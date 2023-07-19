@@ -28,3 +28,6 @@ export type {
   TField,
   TextInputProps,
 };
+
+// Styles
+export { theme } from "@/styles/index";
