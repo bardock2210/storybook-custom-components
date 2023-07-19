@@ -19,6 +19,10 @@ const config: StorybookConfig = {
       },
     },
     "@storybook/addon-mdx-gfm",
+    {
+      name: "@storybook/addon-styling",
+      options: {},
+    },
   ],
   webpackFinal: async (config, { configType }) => {
     if (config.resolve) {
@@ -28,6 +32,7 @@ const config: StorybookConfig = {
         "@/assets": path.resolve(__dirname, "../src/stories/assets"),
         "@/components": path.resolve(__dirname, "../src/stories/components"),
         "@/hooks": path.resolve(__dirname, "../src/stories/hooks"),
+        "@/styles": path.resolve(__dirname, "../src/stories/styles"),
         "@/types": path.resolve(__dirname, "../src/stories/types"),
       };
       config.resolve.extensions?.push(".ts", ".tsx");
