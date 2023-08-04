@@ -2,7 +2,7 @@ export const palette = {
   primary: {
     contrastText: "#FFFFFF",
     dark: "#002C3D",
-    light: "##0074A3",
+    light: "#0074A3",
     main: "#005070",
   },
   secondary: {

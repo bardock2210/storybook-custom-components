@@ -1,6 +1,6 @@
 {
   "name": "aamf-components-storybook",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "private": false,
   "license": "MIT",
   "typings": "dist/index.d.ts",
@@ -38,6 +38,7 @@
     "react-hook-form": "^7.43.9",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
+    "url-loader": "^4.1.1",
     "web-vitals": "^2.1.4",
     "yup": "^1.1.1"
   },
