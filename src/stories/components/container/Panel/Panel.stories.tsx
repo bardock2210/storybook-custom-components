@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Grid } from "@mui/material";
+import { Card, CardContent, CardHeader, Grid } from "@mui/material";
 import { Panel } from "./Panel";
 import DynamicForm from "@/components/form/DynamicForm";
 import { ProfileCard, type UserInfoProps } from "@/components/display/ProfileCard/ProfileCard";
@@ -125,18 +125,23 @@ export const Perfil: Story = {
           <ProfileCard imageUrl={""} name={"Arturo Mellado"} userInfo={userInfo} />
         </Grid>
         <Grid item xs={12} md={8}>
-          <DynamicForm
-            formFields={REGISTRATION_FORM_DATA}
-            formSchema={RegistrationSchema}
-            initialState={REGISTRATION_INITIAL_STATE}
-            onSubmit={() => console.log("Function not implemented.")}
-            primaryBtnProps={{
-              fullWidth: true,
-              label: "Guardar",
-              type: "submit",
-              variant: "contained",
-            }}
-          />
+          <Card>
+            <CardHeader title="Información del Usuario" />
+            <CardContent>
+              <DynamicForm
+                formFields={REGISTRATION_FORM_DATA}
+                formSchema={RegistrationSchema}
+                initialState={REGISTRATION_INITIAL_STATE}
+                onSubmit={() => console.log("Function not implemented.")}
+                primaryBtnProps={{
+                  fullWidth: true,
+                  label: "Guardar",
+                  type: "submit",
+                  variant: "contained",
+                }}
+              />
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     ),

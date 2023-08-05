@@ -32,4 +32,4 @@ export type {
 };
 
 // Styles
-export { theme } from "@/styles/index";
+export { createTheme } from "@/styles/index";

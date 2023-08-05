@@ -1,6 +1,8 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { withThemeFromJSXProvider } from "@storybook/addon-styling";
-import { theme } from "../src/stories/styles";
+import { createTheme } from "../src/stories/styles";
+
+const theme = createTheme();
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

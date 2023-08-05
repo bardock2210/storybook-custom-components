@@ -3,7 +3,7 @@ import { Box, Button, FormControl, FormLabel, Select, Stack } from "@mui/materia
 import TextInput from "@/components/form/elements/TextField";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ButtonProps, IFormFieldProps, TField } from "@/types/form";
+import { ButtonProps, IFormFieldProps } from "@/types/form";
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[];
@@ -32,8 +32,8 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     resolver: yupResolver(formSchema),
   });
 
-  const getFieldByType = (type: TField, props: IFormFieldProps) => {
-    switch (type) {
+  const getFieldByType = (props: IFormFieldProps) => {
+    switch (props.type) {
       case "email":
       case "number":
       case "password":
@@ -46,26 +46,20 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     }
   };
 
-  const renderField = (type: TField, props: IFormFieldProps) => {
+  const renderField = (props: IFormFieldProps, index: number) => {
     const { label, required } = props;
 
     return (
-      <FormControl fullWidth key={props.name} margin="dense">
+      <FormControl fullWidth key={props.name} margin={index === 0 ? "none" : "dense"}>
         <FormLabel required={required}>{label}</FormLabel>
-        {getFieldByType(type, props)}
+        {getFieldByType(props)}
       </FormControl>
     );
   };
 
   return (
-    <Box
-      autoComplete="off"
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-      sx={{ mt: 1 }}
-    >
-      {formFields.map((field) => renderField(field.type, field))}
+    <Box autoComplete="off" component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+      {formFields.map((field, index) => renderField(field, index))}
       <Stack direction="row" marginTop={3} spacing={isSecondaryBtn ? 2 : undefined}>
         {isSecondaryBtn && (
           <Button
