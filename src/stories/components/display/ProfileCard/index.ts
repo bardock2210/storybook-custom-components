@@ -1,3 +1,3 @@
-import { ProfileCard } from "./ProfileCard";
+import { ProfileCard as NoThemeProfileCard } from "./ProfileCard";
 
-export default ProfileCard;
+export default NoThemeProfileCard;

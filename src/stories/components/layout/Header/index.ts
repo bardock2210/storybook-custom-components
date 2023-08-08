@@ -1,3 +1,3 @@
-import { Header } from "./Header";
+import { Header as NoThemeHeader } from "./Header";
 
-export default Header;
+export default NoThemeHeader;

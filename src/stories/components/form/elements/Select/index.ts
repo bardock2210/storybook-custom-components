@@ -1,3 +1,3 @@
-import { Select } from "./Select";
+import { Select as NoThemeSelect } from "./Select";
 
-export default Select;
+export default NoThemeSelect;

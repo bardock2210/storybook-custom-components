@@ -7,15 +7,24 @@ import {
   TField,
   TextInputProps,
 } from "@/types/index";
+import withThemeProvider from "./withThemeProvider";
 
 // Components
-export { default as DynamicForm } from "@/components/form/DynamicForm";
-export { default as Header } from "@/components/layout/Header";
-export { default as MobileMenu } from "@/components/display/MobileMenu";
-export { default as Select } from "@/components/form/elements/Select";
-export { default as TextInput } from "@/components/form/elements/TextField";
-export { default as ProfileCard } from "@/components/display/ProfileCard";
-export { default as Panel } from "@/components/container/Panel";
+import NoThemeDynamicForm from "@/components/form/DynamicForm";
+import NoThemeHeader from "@/components/layout/Header";
+import NoThemeMobileMenu from "@/components/display/MobileMenu";
+import NoThemeSelect from "@/components/form/elements/Select";
+import NoThemeTextInput from "@/components/form/elements/TextField";
+import NoThemeProfileCard from "@/components/display/ProfileCard";
+import NoThemePanel from "@/components/container/Panel";
+
+export const DynamicForm = withThemeProvider(NoThemeDynamicForm);
+export const Header = withThemeProvider(NoThemeHeader);
+export const MobileMenu = withThemeProvider(NoThemeMobileMenu);
+export const Select = withThemeProvider(NoThemeSelect);
+export const TextInput = withThemeProvider(NoThemeTextInput);
+export const ProfileCard = withThemeProvider(NoThemeProfileCard);
+export const Panel = withThemeProvider(NoThemePanel);
 
 // Hooks
 export { useDynamicForm } from "@/hooks/index";
