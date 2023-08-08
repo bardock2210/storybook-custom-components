@@ -6,7 +6,7 @@ import {
   SelectProps,
   TField,
   TextInputProps,
-} from "./stories/types";
+} from "@/types/index";
 
 // Components
 export { default as DynamicForm } from "@/components/form/DynamicForm";
@@ -32,4 +32,4 @@ export type {
 };
 
 // Styles
-export { createTheme } from "@/styles/index";
+export { createComponents, createTheme, palette } from "@/styles/index";
