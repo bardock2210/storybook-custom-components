@@ -1,6 +1,7 @@
 import { paperClasses } from "@mui/material";
+import { ComponentOverrides, CreateComponentsConfig } from "@/types/theme";
 
-export const createComponents = () => {
+export const createComponents = (config: CreateComponentsConfig): ComponentOverrides => {
   return {
     MuiCard: {
       styleOverrides: {

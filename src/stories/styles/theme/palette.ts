@@ -1,4 +1,6 @@
-export const palette = {
+import { CreateComponentsConfig, CustomPalette } from "@/types/theme";
+
+export const palette: CreateComponentsConfig["palette"] = {
   primary: {
     contrastText: "#FFFFFF",
     dark: "#002C3D",
@@ -23,4 +25,4 @@ export const palette = {
     light: "#FFCA8E",
     main: "#FFA036",
   },
-};
+} as CustomPalette;
