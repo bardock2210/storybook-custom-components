@@ -38,5 +38,15 @@ export const createComponents = (config: CreateComponentsConfig): ComponentOverr
         },
       },
     },
+    MuiPaper: {
+      defaultProps: {
+        elevation: 0,
+      },
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+        },
+      },
+    },
   };
 };

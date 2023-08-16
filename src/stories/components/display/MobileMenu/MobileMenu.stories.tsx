@@ -64,5 +64,9 @@ export const Default: Story = {
   ...MobileMenuTemplate,
   args: {
     open: true,
+    user: {
+      email: "joe.moe@company.com",
+      name: "Joe Moe",
+    },
   },
 };

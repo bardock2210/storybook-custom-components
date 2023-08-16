@@ -84,6 +84,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
           onClose={handleMobileMenuClose}
           open={Boolean(mobileMoreAnchorEl)}
           setAnchorEl={setMobileMoreAnchorEl}
+          user={{ email: "joe.moe@company.com", name: "Joe Moe" }}
         />
       }
       {
@@ -93,6 +94,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
           onClose={handleMenuClose}
           open={Boolean(anchorEl)}
           setAnchorEl={setAnchorEl}
+          user={{ email: "joe.moe@company.com", name: "Joe Moe" }}
         />
       }
     </Box>
