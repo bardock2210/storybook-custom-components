@@ -73,5 +73,9 @@ export const Default: Story = {
     logo: <PlaceOutlined />,
     menuOptions: menuOptions,
     onClickLogoHandler: () => console.log("On click logo..."),
+    user: {
+      email: "john.smith@company.com",
+      name: "John Smith",
+    },
   },
 };

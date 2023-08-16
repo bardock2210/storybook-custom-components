@@ -14,9 +14,13 @@ export interface HeaderProps {
   logo: JSX.Element;
   menuOptions: MenuOptionsProps[];
   onClickLogoHandler: () => void;
+  user: {
+    name: string;
+    email: string;
+  };
 }
 
-export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler }) => {
+export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler, user }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -84,7 +88,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
           onClose={handleMobileMenuClose}
           open={Boolean(mobileMoreAnchorEl)}
           setAnchorEl={setMobileMoreAnchorEl}
-          user={{ email: "joe.moe@company.com", name: "Joe Moe" }}
+          user={{ email: user.email, name: user.name }}
         />
       }
       {
@@ -94,7 +98,7 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler 
           onClose={handleMenuClose}
           open={Boolean(anchorEl)}
           setAnchorEl={setAnchorEl}
-          user={{ email: "joe.moe@company.com", name: "Joe Moe" }}
+          user={{ email: user.email, name: user.name }}
         />
       }
     </Box>
