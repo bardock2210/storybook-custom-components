@@ -3,6 +3,7 @@ import { SxProps } from "@mui/material";
 export const menuSx: SxProps = {
   "& .MuiPaper-root": {
     borderRadius: 0.75,
+    maxWidth: "230px",
   },
   "& .MuiList-root": {
     p: 0,
@@ -21,5 +22,8 @@ export const menuItemSx: SxProps = {
     minWidth: "13px",
     padding: "5px 0 6px",
     width: "13px",
+  },
+  "& .MuiIcon-root, .MuiBadge-root": {
+    margin: "5px",
   },
 };

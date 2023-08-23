@@ -74,7 +74,7 @@ export const Default: Story = {
     menuOptions: menuOptions,
     onClickLogoHandler: () => console.log("On click logo..."),
     user: {
-      email: "john.smith@company.com",
+      email: "joe.hola.esto.es.un.correo.muy.largo.moe@company.com",
       name: "John Smith",
     },
   },

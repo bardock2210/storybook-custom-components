@@ -1,5 +1,5 @@
 import { Dispatch, FC, MouseEvent } from "react";
-import { Badge, Box, Divider, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import { Badge, Box, Divider, Icon, Menu, MenuItem, Typography } from "@mui/material";
 import { menuSx, menuItemSx } from "./mobileMenuStyles";
 
 export interface MenuOptionsProps {
@@ -41,7 +41,7 @@ const RenderMenuItems = ({ menuOptions, setAnchorEl }: RenderMenuItemsProps) => 
     <>
       {menuOptions.map(({ badgeContent, icon, message, onClickHandler }, index) => {
         return (
-          <>
+          <div key={`menu-item-${index}`}>
             {(menuOptions.length - 1 === index || index === 0) && (
               <Divider
                 key={`divider-item-${index}`}
@@ -53,18 +53,16 @@ const RenderMenuItems = ({ menuOptions, setAnchorEl }: RenderMenuItemsProps) => 
               onClick={(e) => onClickMenuItem(e, onClickHandler)}
               sx={menuItemSx}
             >
-              <IconButton color="inherit" size="small">
-                {badgeContent ? (
-                  <Badge badgeContent={badgeContent} color="error">
-                    {icon}
-                  </Badge>
-                ) : (
-                  <>{icon}</>
-                )}
-              </IconButton>
+              {badgeContent ? (
+                <Badge badgeContent={badgeContent} color="error">
+                  {icon}
+                </Badge>
+              ) : (
+                <Icon>{icon}</Icon>
+              )}
               <p>{message}</p>
             </MenuItem>
-          </>
+          </div>
         );
       })}
     </>
@@ -95,11 +93,11 @@ export const MobileMenu: FC<MobileMenuProps> = ({
       onClose={onClose}
       sx={menuSx}
     >
-      <Box sx={{ my: 1.5, px: 2.5 }}>
-        <Typography variant="subtitle2" noWrap>
+      <Box sx={{ my: 1, px: 1 }}>
+        <Typography noWrap variant="subtitle2">
           {user.name}
         </Typography>
-        <Typography variant="body2" color="" noWrap>
+        <Typography noWrap variant="body2">
           {user.email}
         </Typography>
       </Box>
