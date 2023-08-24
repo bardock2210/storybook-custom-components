@@ -1,5 +1,5 @@
 import { createTheme as createMuiTheme } from "@mui/material";
-import { palette } from "@/styles/theme";
+import { CustomThemeOptions, customShadows, palette, shadows, typography } from "@/styles/theme";
 import { createComponents } from "./components";
 
 export const createTheme = () => {
@@ -7,6 +7,9 @@ export const createTheme = () => {
 
   return createMuiTheme({
     components,
+    // customShadows: customShadows(),
     palette,
-  });
+    shadows: shadows(),
+    typography,
+  } as CustomThemeOptions);
 };

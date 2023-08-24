@@ -1,4 +1,4 @@
-import { Palette } from "@mui/material";
+import { Color, Palette } from "@mui/material";
 
 export interface CustomPaletteColorOptions {
   main: string;
@@ -12,6 +12,7 @@ export interface CustomPalette extends Palette {
   secondary: CustomPaletteColorOptions;
   error: CustomPaletteColorOptions;
   warning: CustomPaletteColorOptions;
+  grey: Color;
 }
 
 export interface CreateComponentsConfig {

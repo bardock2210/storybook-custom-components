@@ -1,2 +1,3 @@
 import { useDynamicForm } from "./useDynamicForm";
-export { useDynamicForm };
+import { useResponsive } from "./useResponsive";
+export { useDynamicForm, useResponsive };

@@ -1,4 +1,22 @@
 import { CreateComponentsConfig, CustomPalette } from "@/types/theme";
+import { Color } from "@mui/material";
+
+const GREY: Color = {
+  50: "#FFFFFF",
+  100: "#F9FAFB",
+  200: "#F4F6F8",
+  300: "#DFE3E8",
+  400: "#C4CDD5",
+  500: "#919EAB",
+  600: "#637381",
+  700: "#454F5B",
+  800: "#212B36",
+  900: "#161C24",
+  A100: "",
+  A200: "",
+  A400: "",
+  A700: "",
+};
 
 export const palette: CreateComponentsConfig["palette"] = {
   primary: {
@@ -25,4 +43,5 @@ export const palette: CreateComponentsConfig["palette"] = {
     light: "#FFCA8E",
     main: "#FFA036",
   },
+  grey: GREY,
 } as CustomPalette;
