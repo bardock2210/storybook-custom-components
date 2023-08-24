@@ -75,8 +75,12 @@ export const Default: Story = {
       question: "Si aún no tienes una cuenta",
     },
     sideBar: {
-      image:
-        "https://res.cloudinary.com/db4mdaght/image/upload/v1692862264/zip-code/illustration_login_ufrmhm.png",
+      image: (
+        <img
+          alt="Login section"
+          src="https://res.cloudinary.com/db4mdaght/image/upload/v1692862264/zip-code/illustration_login_ufrmhm.png"
+        />
+      ),
       title: "Bienvenido a ZipCode",
     },
   },
