@@ -22,6 +22,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   primaryBtnProps: { fullWidth, label, sx, type, variant },
   secondaryBtnProps,
 }) => {
+  console.log({ initialState });
   const isSecondaryBtn = Boolean(secondaryBtnProps);
   const {
     control,
