@@ -33,8 +33,10 @@ export interface IFormFieldProps {
 }
 
 export interface ButtonProps {
+  disabled?: boolean;
   fullWidth?: boolean;
   label: string;
+  isLoading?: boolean;
   sx?: SxProps<Theme>;
   type: "button" | "reset" | "submit";
   variant: "contained" | "outlined" | "text";

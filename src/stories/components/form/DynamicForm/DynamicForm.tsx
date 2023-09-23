@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Box, Button, FormControl, FormLabel, Select, Stack } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import TextInput from "@/components/form/elements/TextField";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,10 +20,9 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   formSchema,
   initialState,
   onSubmit,
-  primaryBtnProps: { fullWidth, label, sx, type, variant },
+  primaryBtnProps: { disabled, fullWidth, isLoading = false, label, sx, type, variant },
   secondaryBtnProps,
 }) => {
-  console.log({ initialState });
   const isSecondaryBtn = Boolean(secondaryBtnProps);
   const {
     control,
@@ -31,6 +31,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   } = useForm<FieldValues>({
     defaultValues: initialState as DeepPartial<FieldValues>,
     resolver: yupResolver(formSchema),
+    values: initialState as DeepPartial<FieldValues>,
   });
 
   const getFieldByType = (props: IFormFieldProps) => {
@@ -73,9 +74,17 @@ export const DynamicForm: FC<DynamicFormProps> = ({
             {secondaryBtnProps?.label}
           </Button>
         )}
-        <Button color="primary" fullWidth={fullWidth} sx={sx} type={type} variant={variant}>
+        <LoadingButton
+          color="primary"
+          disabled={disabled}
+          fullWidth={fullWidth}
+          loading={isLoading}
+          sx={sx}
+          type={type}
+          variant={variant}
+        >
           {label}
-        </Button>
+        </LoadingButton>
       </Stack>
     </Box>
   );
