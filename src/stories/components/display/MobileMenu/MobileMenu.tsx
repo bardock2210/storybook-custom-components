@@ -1,5 +1,14 @@
 import { Dispatch, FC, MouseEvent } from "react";
-import { Badge, Box, Divider, Icon, Menu, MenuItem, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Divider,
+  Icon,
+  Menu,
+  MenuItem,
+  type PopoverVirtualElement,
+  Typography,
+} from "@mui/material";
 import { menuSx, menuItemSx } from "./mobileMenuStyles";
 
 export interface MenuOptionsProps {
@@ -12,7 +21,13 @@ export interface MenuOptionsProps {
 }
 
 export interface MobileMenuProps {
-  anchorEl: Element | ((element: Element) => Element) | null;
+  anchorEl:
+    | Element
+    | (() => Element)
+    | PopoverVirtualElement
+    | (() => PopoverVirtualElement)
+    | null
+    | undefined;
   menuOptions: MenuOptionsProps[];
   onClose: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void;
   open: boolean;

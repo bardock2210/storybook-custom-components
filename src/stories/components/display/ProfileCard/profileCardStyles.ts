@@ -1,4 +1,4 @@
-import { Avatar, Typography, styled } from "@mui/material";
+import { Avatar, styled, Typography } from "@mui/material";
 
 export const ProfileAvatar = styled(Avatar)(({ theme }) => ({
   width: theme.spacing(10),
