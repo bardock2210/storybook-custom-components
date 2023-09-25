@@ -36,7 +36,7 @@ export interface ButtonProps {
   disabled?: boolean;
   fullWidth?: boolean;
   label: string;
-  isLoading?: boolean;
+  loading?: boolean;
   sx?: SxProps<Theme>;
   type: "button" | "reset" | "submit";
   variant: "contained" | "outlined" | "text";

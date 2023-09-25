@@ -20,7 +20,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   formSchema,
   initialState,
   onSubmit,
-  primaryBtnProps: { disabled, fullWidth, isLoading = false, label, sx, type, variant },
+  primaryBtnProps: { disabled, fullWidth, loading = false, label, sx, type, variant },
   secondaryBtnProps,
 }) => {
   const isSecondaryBtn = Boolean(secondaryBtnProps);
@@ -78,7 +78,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
           color="primary"
           disabled={disabled}
           fullWidth={fullWidth}
-          loading={isLoading}
+          loading={loading}
           sx={sx}
           type={type}
           variant={variant}
