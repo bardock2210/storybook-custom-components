@@ -8,7 +8,18 @@ export interface IUser {
   businessName: string;
   rfc: string;
   taxZipCode: number;
-  taxRegimeKey: number;
+  taxRegimeKey: string;
+  cfdiKey: number;
+  taxEmail: string;
+  taxPhone: string;
+}
+
+export interface InitialState {
+  name: string;
+  businessName: string;
+  rfc: string;
+  taxZipCode: number;
+  taxRegimeKey: "none" | number;
   cfdiKey: number;
   taxEmail: string;
   taxPhone: string;
@@ -23,12 +34,12 @@ export const useGetUser = () => {
     revalidateOnMount: true,
   }) as GetUserResponse;
 
-  const initialState = {
+  const initialState: InitialState = {
     name: "Bardock Ozaru",
     businessName: "Bardock Ozaru",
     rfc: "OZBA452589G456",
     taxZipCode: 54000,
-    taxRegimeKey: 14,
+    taxRegimeKey: "none",
     cfdiKey: 13,
     taxEmail: "bardock_ozaru@gmail.com",
     taxPhone: "5578963300",

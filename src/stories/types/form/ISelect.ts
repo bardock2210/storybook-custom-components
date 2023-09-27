@@ -1,7 +1,7 @@
 import { Control, FieldErrors } from "react-hook-form";
 
 export interface OptionProps {
-  value: any;
+  value: string | number | readonly string[];
   description: string;
 }
 

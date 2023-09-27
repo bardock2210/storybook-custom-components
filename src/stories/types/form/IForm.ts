@@ -15,7 +15,7 @@ export type TField =
 export type TFieldSize = "small" | "medium";
 
 export interface IOption {
-  id: any;
+  value: any;
   description: string;
 }
 
@@ -27,6 +27,7 @@ export interface IFormFieldProps {
   endAdorment?: ReactNode;
   id?: string;
   options?: IOption[];
+  placeholder?: string;
   required?: boolean;
   size?: TFieldSize;
   value?: any;

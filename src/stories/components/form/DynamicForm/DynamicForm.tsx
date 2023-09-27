@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Box, Button, FormControl, FormLabel, Select, Stack } from "@mui/material";
+import { Box, Button, FormControl, FormLabel, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import TextInput from "@/components/form/elements/TextField";
+import { Select } from "@/components/form/elements/Select/Select";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ButtonProps, IFormFieldProps } from "@/types/form";
@@ -40,18 +41,28 @@ export const DynamicForm: FC<DynamicFormProps> = ({
       case "number":
       case "password":
       case "text":
-        return <TextInput {...props} control={control} errors={errors} isForm />;
+        return <TextInput {...props} errors={errors} control={control} isForm />;
       case "select":
-        return <Select {...props} />;
+        return (
+          <Select
+            {...props}
+            errors={errors}
+            control={control}
+            isForm
+            options={props.options ?? []}
+          />
+        );
       default:
         return null;
     }
   };
 
   const renderField = (props: IFormFieldProps, index: number) => {
-    const { label, required } = props;
+    const { label, required, type } = props;
 
-    return (
+    return type === "select" ? (
+      getFieldByType(props)
+    ) : (
       <FormControl fullWidth key={props.name} margin={index === 0 ? "none" : "dense"}>
         <FormLabel required={required}>{label}</FormLabel>
         {getFieldByType(props)}

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import * as Yup from "yup";
 import { DynamicForm } from "./DynamicForm";
-import { IFormFieldProps } from "@/types/form";
-import { useGetUser } from "./useGetUser";
+import { IFormFieldProps, OptionProps } from "@/types/form";
+import { InitialState, useGetUser } from "./useGetUser";
 
 export interface ILoginValues {
   email: string;
@@ -93,6 +93,44 @@ const RegistrationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Los passwords deben de coincidir"),
 });
 
+const taxRegimenKeyOptions: OptionProps[] = [
+  {
+    value: 605,
+    description: "605 - Sueldos y Salarios e Ingresos Asimilados a Salarios",
+  },
+  { value: 606, description: "606 - Arrendamiento" },
+  {
+    value: 607,
+    description: "607 - Régimen de Enajenación o Adquisición de Bienes",
+  },
+  { value: 608, description: "608 - Demás ingresos" },
+  {
+    value: 610,
+    description: "610 - Residentes en el Extranjero sin Establecimiento Permanente en México",
+  },
+  {
+    value: 611,
+    description: "611 - Ingresos por Dividendos (socios y accionistas)",
+  },
+  {
+    value: 612,
+    description: "612 - Personas Físicas con Actividades Empresariales y Profesionales",
+  },
+  { value: 614, description: "614 - Ingresos por intereses" },
+  {
+    value: 615,
+    description: "615 - Régimen de los ingresos por obtención de premios",
+  },
+  { value: 616, description: "616 - Sin obligaciones fiscales" },
+  { value: 621, description: "621 - Incorporación Fiscal" },
+  {
+    value: 625,
+    description:
+      "625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+  },
+  { value: "626", description: "626 - Régimen Simplificado de Confianza" },
+];
+
 const profileFormFields: IFormFieldProps[] = [
   {
     label: "Nombre",
@@ -123,11 +161,15 @@ const profileFormFields: IFormFieldProps[] = [
     required: true,
   },
   {
+    defaultValue: 0,
     label: "Clave Regimen Fiscal",
     name: "taxRegimeKey",
-    type: "text",
+    type: "select",
     id: "taxRegimeKey",
+    placeholder: "Selecciona una opción",
     required: true,
+    size: "small",
+    options: taxRegimenKeyOptions,
   },
   {
     label: "CFDI",
@@ -157,18 +199,18 @@ const profileFormSchema = Yup.object().shape({
   businessName: Yup.string().required("Razón Social es requerida"),
   rfc: Yup.string().required("RFC es requerido"),
   taxZipCode: Yup.string().required("CP es requerido"),
-  taxRegimeKey: Yup.string().required("Régimen Fiscal es requerido"),
+  taxRegimeKey: Yup.number().required("Régimen Fiscal es requerido"),
   cfdiKey: Yup.string().required("CFDI es requerido"),
   taxEmail: Yup.string().email("Email invalido").required("Email es requerido"),
   taxPhone: Yup.string().required("Teléfono es requerido"),
 });
 
-const profileInitialState = {
+const profileInitialState: InitialState = {
   name: "",
   businessName: "",
   rfc: "",
   taxZipCode: 0,
-  taxRegimeKey: 0,
+  taxRegimeKey: "none",
   cfdiKey: 0,
   taxEmail: "",
   taxPhone: "",

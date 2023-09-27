@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import {
   FormControl,
   FormHelperText,
@@ -45,7 +45,7 @@ const renderPlaceHolder = (placeholder: string) => (
 
 const getOptions = (defaultValue: any, options: OptionProps[]) => {
   return options.map(({ description, value }) => (
-    <MenuItem key={value} selected={Boolean(defaultValue === value)} value={value}>
+    <MenuItem key={`menu-item-${value}`} selected={Boolean(defaultValue === value)} value={value}>
       {description}
     </MenuItem>
   ));

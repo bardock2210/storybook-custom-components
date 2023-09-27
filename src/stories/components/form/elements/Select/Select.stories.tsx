@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Select>;
 
 const FormSchema = Yup.object().shape({
   option: Yup.string()
-    .oneOf(["1", "2", "3"], "Debes seleccionar una opcion.")
+    // .oneOf(["1", "2", "3"], "Debes seleccionar una opcion.")
     .required("Debes seleccionar una opcion."),
 });
 
