@@ -15,7 +15,7 @@ export type TField =
 export type TFieldSize = "small" | "medium";
 
 export interface IOption {
-  value: any;
+  value: string | number | readonly string[];
   description: string;
 }
 
