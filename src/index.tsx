@@ -18,6 +18,7 @@ import NoThemePanel from "@/components/container/Panel";
 import NoThemeProfileCard from "@/components/display/ProfileCard";
 import NoThemeSelect from "@/components/form/elements/Select";
 import NoThemeTextInput from "@/components/form/elements/TextField";
+import NoThemeDatePicker from "@/components/form/elements/DatePicker";
 
 export const DynamicForm = withThemeProvider(NoThemeDynamicForm);
 export const Header = withThemeProvider(NoThemeHeader);
@@ -27,6 +28,7 @@ export const Panel = withThemeProvider(NoThemePanel);
 export const ProfileCard = withThemeProvider(NoThemeProfileCard);
 export const Select = withThemeProvider(NoThemeSelect);
 export const TextInput = withThemeProvider(NoThemeTextInput);
+export const DatePicker = withThemeProvider(NoThemeDatePicker);
 
 // Hooks
 export { useDynamicForm, useResponsive } from "@/hooks/index";

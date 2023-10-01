@@ -2,15 +2,16 @@ import type { SxProps, Theme } from "@mui/material";
 import { ReactNode } from "react";
 
 export type TField =
-  | "text"
-  | "email"
-  | "select"
-  | "radio"
-  | "number"
-  | "switch"
   | "date"
+  | "email"
   | "file"
-  | "password";
+  | "number"
+  | "password"
+  | "phone"
+  | "radio"
+  | "select"
+  | "switch"
+  | "text";
 
 export type TFieldSize = "small" | "medium";
 

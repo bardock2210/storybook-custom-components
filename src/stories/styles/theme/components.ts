@@ -44,7 +44,16 @@ export const createComponents = (config: CreateComponentsConfig): ComponentOverr
       },
       styleOverrides: {
         root: {
-          backgroundImage: 'none',
+          backgroundImage: "none",
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiFormHelperText-root": {
+            marginLeft: 0,
+          },
         },
       },
     },

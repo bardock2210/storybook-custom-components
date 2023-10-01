@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { Box, Button, FormControl, FormLabel, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import DatePicker from "@/components/form/elements/DatePicker";
+import Select from "@/components/form/elements/Select";
 import TextInput from "@/components/form/elements/TextField";
-import { Select } from "@/components/form/elements/Select/Select";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ButtonProps, IFormFieldProps } from "@/types/form";
@@ -37,11 +38,15 @@ export const DynamicForm: FC<DynamicFormProps> = ({
 
   const getFieldByType = (props: IFormFieldProps) => {
     switch (props.type) {
+      case "date":
+        return <DatePicker {...props} errors={errors} control={control} />;
       case "email":
       case "number":
       case "password":
       case "text":
         return <TextInput {...props} errors={errors} control={control} isForm />;
+      case "phone":
+        return <div></div>;
       case "select":
         return (
           <Select
