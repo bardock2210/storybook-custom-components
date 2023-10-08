@@ -5,3 +5,11 @@ export const gridSx: SxProps = {
     paddingTop: "8px",
   },
 };
+
+export const sectionContainerSx: SxProps = {
+  ".MuiPaper-root": {
+    ".MuiCardHeader-root": {
+      paddingBottom: 0,
+    },
+  },
+};

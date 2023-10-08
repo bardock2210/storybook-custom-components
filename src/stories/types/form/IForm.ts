@@ -30,9 +30,14 @@ export interface IFormFieldProps {
   placeholder?: string;
   required?: boolean;
   size?: TFieldSize;
-  section?: string;
   type: TField;
   value?: any;
+}
+
+export interface IFormSectionProps {
+  description: string;
+  name: string;
+  fields: IFormFieldProps[];
 }
 
 export interface ButtonProps {

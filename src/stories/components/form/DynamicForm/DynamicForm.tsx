@@ -17,11 +17,11 @@ import Select from "@/components/form/Elements/Select";
 import TextInput from "@/components/form/Elements/TextField";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ButtonProps, IFormFieldProps } from "@/types/form";
-import { gridSx } from "./dynamicFormStyles";
+import { ButtonProps, IFormFieldProps, IFormSectionProps } from "@/types/form";
+import { gridSx, sectionContainerSx } from "./dynamicFormStyles";
 
 export interface DynamicFormProps {
-  formFields: IFormFieldProps[];
+  formFields: IFormFieldProps[] | IFormSectionProps[];
   formSchema: any;
   initialState: FieldValues;
   onSubmit: (params: FieldValues) => void;
@@ -82,7 +82,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     select: renderSelect,
   };
 
-  const renderFormFields = () => {
+  const renderFormFields = (formFields: IFormFieldProps[]) => {
     return (
       <Grid container spacing={2} sx={gridSx}>
         {formFields.map((field, index) => (
@@ -95,7 +95,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
                 key={field.name}
                 margin={index === 0 && !options?.columns ? "none" : "dense"}
               >
-                <FormLabel required={field.required}>{label}</FormLabel>
+                <FormLabel required={field.required}>{field.label}</FormLabel>
                 {fields[field.type](field)}
               </FormControl>
             )}
@@ -105,18 +105,31 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     );
   };
 
-  const renderFormSection = () => {
+  const renderFormSection = (formSections: IFormSectionProps[]) => {
     return (
-      <Card>
-        <CardHeader title="Section Title" />
-        <CardContent>{renderFormFields()}</CardContent>
-      </Card>
+      <Box component="div" sx={sectionContainerSx}>
+        {formSections.map(({ description, name, fields }: IFormSectionProps) => (
+          <Card key={`section-${name}`}>
+            <CardHeader title={description} />
+            <CardContent>{renderFormFields(fields)}</CardContent>
+          </Card>
+        ))}
+      </Box>
     );
   };
 
+  function isAFormSectionsArr(obj: any): obj is IFormSectionProps[] {
+    return (
+      Array.isArray(obj) &&
+      obj.every((item) => "description" in item && "name" in item && "fields" in item)
+    );
+  }
+
   return (
     <Box autoComplete="off" component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      {options?.sections ? renderFormSection() : renderFormFields()}
+      {isAFormSectionsArr(formFields)
+        ? renderFormSection(formFields)
+        : renderFormFields(formFields)}
       <Stack direction="row" marginTop={3} spacing={isSecondaryBtn ? 2 : undefined}>
         {isSecondaryBtn && (
           <Button
