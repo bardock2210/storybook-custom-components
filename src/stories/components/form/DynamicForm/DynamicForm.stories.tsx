@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import * as Yup from "yup";
 import { DynamicForm } from "./DynamicForm";
-import { IFormFieldProps, OptionProps } from "@/types/form";
-import { InitialState, useGetUser } from "./useGetUser";
+import { IFormFieldProps } from "@/types/form";
 
 export interface ILoginValues {
   email: string;
@@ -22,6 +20,17 @@ const REGISTRATION_INITIAL_STATE = {
   password: "",
   confirmPassword: "",
 };
+
+export interface InitialState {
+  name: string;
+  businessName: string;
+  rfc: string;
+  taxZipCode: number;
+  taxRegimeKey: "none" | number;
+  cfdiKey: number;
+  taxEmail: string;
+  taxPhone: string;
+}
 
 const LOGIN_FORM_DATA: IFormFieldProps[] = [
   {
@@ -259,7 +268,7 @@ const profileFormFields: IFormFieldProps[] = [
   {
     label: "Teléfono",
     name: "taxPhone",
-    type: "text",
+    type: "phone",
     id: "taxPhone",
     required: true,
   },
@@ -277,14 +286,14 @@ const profileFormSchema = Yup.object().shape({
 });
 
 const profileInitialState: InitialState = {
-  name: "",
-  businessName: "",
-  rfc: "",
-  taxZipCode: 0,
+  name: "Bardock Ozaru",
+  businessName: "Bardock Ozaru",
+  rfc: "OZBA452589G456",
+  taxZipCode: 54000,
   taxRegimeKey: "none",
-  cfdiKey: 0,
-  taxEmail: "",
-  taxPhone: "",
+  cfdiKey: 13,
+  taxEmail: "bardock_ozaru@gmail.com",
+  taxPhone: "525580589740",
 };
 
 const meta: Meta<typeof DynamicForm> = {
@@ -303,16 +312,7 @@ const DynamicFormTemplate: Story = {
 
 const ProfileDynamicFormTemplate: Story = {
   render: (args) => {
-    const [user, setUser] = useState(profileInitialState);
-    const { userData, error, isLoading, isValidating, initialState } = useGetUser();
-
-    useEffect(() => {
-      if (userData && !error && !isLoading && !isValidating) {
-        setUser(initialState);
-      }
-    }, [userData, error, isLoading, isValidating]);
-
-    return <DynamicForm {...args} initialState={user} />;
+    return <DynamicForm {...args} initialState={profileInitialState} />;
   },
 };
 
@@ -361,6 +361,7 @@ export const Profile: Story = {
     formSchema: profileFormSchema,
     initialState: profileInitialState,
     onSubmit: (params) => console.log("Submit form: ", { params }),
+    options: { columns: 2 },
     primaryBtnProps: {
       fullWidth: true,
       label: "Guardar",

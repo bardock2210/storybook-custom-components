@@ -13,24 +13,25 @@ export type TField =
   | "switch"
   | "text";
 
-export type TFieldSize = "small" | "medium";
+export type TFieldSize = "medium" | "small";
 
 export interface IOption {
-  value: string | number | readonly string[];
   description: string;
+  value: string | number | readonly string[];
 }
 
 export interface IFormFieldProps {
-  label: string;
-  name: string;
-  type: TField;
   defaultValue?: any;
   endAdorment?: ReactNode;
   id?: string;
+  label: string;
+  name: string;
   options?: IOption[];
   placeholder?: string;
   required?: boolean;
   size?: TFieldSize;
+  section?: string;
+  type: TField;
   value?: any;
 }
 

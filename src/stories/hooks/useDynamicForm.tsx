@@ -1,5 +1,5 @@
 import { FormControl, FormLabel, Select } from "@mui/material";
-import TextInput from "@/components/form/elements/TextField";
+import TextInput from "@/components/form/Elements/TextField";
 import { useForm } from "react-hook-form";
 import { DeepPartial, FieldValues, UseFormHandleSubmit } from "react-hook-form/dist/types";
 import { yupResolver } from "@hookform/resolvers/yup";

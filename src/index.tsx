@@ -16,9 +16,10 @@ import NoThemeLogin from "@/components/layout/Form/Login";
 import NoThemeMobileMenu from "@/components/display/MobileMenu";
 import NoThemePanel from "@/components/container/Panel";
 import NoThemeProfileCard from "@/components/display/ProfileCard";
-import NoThemeSelect from "@/components/form/elements/Select";
-import NoThemeTextInput from "@/components/form/elements/TextField";
-import NoThemeDatePicker from "@/components/form/elements/DatePicker";
+import NoThemeSelect from "@/components/form/Elements/Select";
+import NoThemeTextInput from "@/components/form/Elements/TextField";
+import NoThemeDatePicker from "@/components/form/Elements/DatePicker";
+import NoThemePhoneInput from "@/components/form/Elements/PhoneInput";
 
 export const DynamicForm = withThemeProvider(NoThemeDynamicForm);
 export const Header = withThemeProvider(NoThemeHeader);
@@ -29,6 +30,7 @@ export const ProfileCard = withThemeProvider(NoThemeProfileCard);
 export const Select = withThemeProvider(NoThemeSelect);
 export const TextInput = withThemeProvider(NoThemeTextInput);
 export const DatePicker = withThemeProvider(NoThemeDatePicker);
+export const PhoneInput = withThemeProvider(NoThemePhoneInput);
 
 // Hooks
 export { useDynamicForm, useResponsive } from "@/hooks/index";

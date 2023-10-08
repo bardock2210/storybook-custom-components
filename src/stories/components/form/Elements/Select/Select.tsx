@@ -55,7 +55,6 @@ export const Select: FC<SelectProps> = ({
   control,
   defaultValue,
   errors,
-  isForm,
   label,
   name,
   options,
@@ -71,43 +70,36 @@ export const Select: FC<SelectProps> = ({
       size={props.size}
       wrapChild={label ? true : false}
     >
-      {isForm ? (
-        <Controller
-          control={control}
-          name={name || ""}
-          render={({ field: { value, ...field } }) => {
-            const isInOptions = options.some((option) => option.value === value);
-            return (
-              <>
-                <MuiSelect
-                  value={
-                    placeholder && (value === undefined || !isInOptions)
-                      ? "none"
-                      : defaultValue && value === undefined
-                      ? defaultValue
-                      : !isInOptions
-                      ? options[0].value
-                      : value
-                  }
-                  {...field}
-                  {...props}
-                >
-                  {placeholder && renderPlaceHolder(placeholder)}
-                  {getOptions(defaultValue, options)}
-                </MuiSelect>
-                {Boolean(errors?.[name || ""]) && (
-                  <FormHelperText>{`${errors?.[name || ""]?.message}`}</FormHelperText>
-                )}
-              </>
-            );
-          }}
-        />
-      ) : (
-        <MuiSelect {...props} defaultValue={placeholder && "none"}>
-          {placeholder && renderPlaceHolder(placeholder)}
-          {getOptions(defaultValue, options)}
-        </MuiSelect>
-      )}
+      <Controller
+        control={control}
+        name={name || ""}
+        render={({ field: { value, ...field } }) => {
+          const isInOptions = options.some((option) => option.value === value);
+          return (
+            <>
+              <MuiSelect
+                value={
+                  placeholder && (value === undefined || !isInOptions)
+                    ? "none"
+                    : defaultValue && value === undefined
+                    ? defaultValue
+                    : !isInOptions
+                    ? options[0].value
+                    : value
+                }
+                {...field}
+                {...props}
+              >
+                {placeholder && renderPlaceHolder(placeholder)}
+                {getOptions(defaultValue, options)}
+              </MuiSelect>
+              {Boolean(errors?.[name || ""]) && (
+                <FormHelperText>{`${errors?.[name || ""]?.message}`}</FormHelperText>
+              )}
+            </>
+          );
+        }}
+      />
     </FormControWrapper>
   );
 };

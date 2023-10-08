@@ -8,7 +8,6 @@ export const TextInput: FC<TextInputProps> = ({
   control,
   endAdornment,
   errors,
-  isForm = false,
   label,
   shrink = true,
   startAdornment,
@@ -25,7 +24,7 @@ export const TextInput: FC<TextInputProps> = ({
     sx: textInputStyles,
   };
 
-  return isForm ? (
+  return (
     <Controller
       control={control}
       name={props.name || ""}
@@ -40,7 +39,5 @@ export const TextInput: FC<TextInputProps> = ({
         />
       )}
     />
-  ) : (
-    <TextField InputLabelProps={{ shrink }} {...props} {...commonTextFieldProps} />
   );
 };
