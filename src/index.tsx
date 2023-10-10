@@ -1,6 +1,7 @@
 import {
   ButtonProps,
   IFormFieldProps,
+  IFormSectionProps,
   IOption,
   OptionProps,
   SelectProps,
@@ -39,6 +40,7 @@ export { useDynamicForm, useResponsive } from "@/hooks/index";
 export type {
   ButtonProps,
   IFormFieldProps,
+  IFormSectionProps,
   IOption,
   OptionProps,
   SelectProps,
