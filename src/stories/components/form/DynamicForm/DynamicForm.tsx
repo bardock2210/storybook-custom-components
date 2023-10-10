@@ -108,8 +108,8 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   const renderFormSection = (formSections: IFormSectionProps[]) => {
     return (
       <Box component="div" sx={sectionContainerSx}>
-        {formSections.map(({ description, name, fields }: IFormSectionProps) => (
-          <Card key={`section-${name}`}>
+        {formSections.map(({ description, name, fields }: IFormSectionProps, index) => (
+          <Card className={index !== 0 ? "no-first-section" : undefined} key={`section-${name}`}>
             <CardHeader title={description} />
             <CardContent>{renderFormFields(fields)}</CardContent>
           </Card>
@@ -118,16 +118,16 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     );
   };
 
-  function isAFormSectionsArr(obj: any): obj is IFormSectionProps[] {
+  const isAFormSectionsType = (obj: any): obj is IFormSectionProps[] => {
     return (
       Array.isArray(obj) &&
       obj.every((item) => "description" in item && "name" in item && "fields" in item)
     );
-  }
+  };
 
   return (
     <Box autoComplete="off" component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      {isAFormSectionsArr(formFields)
+      {isAFormSectionsType(formFields)
         ? renderFormSection(formFields)
         : renderFormFields(formFields)}
       <Stack direction="row" marginTop={3} spacing={isSecondaryBtn ? 2 : undefined}>
