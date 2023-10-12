@@ -29,7 +29,7 @@ export const SideBarContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const LoginFormContainer = styled(Box)(({ theme }) => ({
+export const AuthFormContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   display: "flex",
   flexDirection: "column",

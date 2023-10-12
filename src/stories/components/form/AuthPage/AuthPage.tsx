@@ -1,17 +1,17 @@
 import { FC } from "react";
 import { Avatar, Container, Link, Stack, Typography } from "@mui/material";
 import { DynamicForm, DynamicFormProps } from "@/components/form/DynamicForm/DynamicForm";
-import { LoginFormContainer, StyledRoot, SideBarContainer } from "./loginStyles";
+import { AuthFormContainer, StyledRoot, SideBarContainer } from "./authPageStyles";
 import { useResponsive } from "@/hooks/useResponsive";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-export interface LoginProps {
+export interface AuthProps {
   forgotPassword: {
     forgotPasswordHandler: () => void;
     forgotPasswordDescription: string;
   };
   formTitle: string;
-  loginFormProps: DynamicFormProps;
+  authFormProps: DynamicFormProps;
   haveAnAccount: {
     registerDescription: string;
     registerHandler: () => void;
@@ -23,10 +23,10 @@ export interface LoginProps {
   };
 }
 
-export const Login: FC<LoginProps> = ({
+export const AuthPage: FC<AuthProps> = ({
   forgotPassword: { forgotPasswordDescription, forgotPasswordHandler },
   formTitle,
-  loginFormProps,
+  authFormProps,
   haveAnAccount: { registerDescription, registerHandler, question },
   sideBar: { image, title },
 }) => {
@@ -41,14 +41,14 @@ export const Login: FC<LoginProps> = ({
         </SideBarContainer>
       )}
       <Container maxWidth="sm">
-        <LoginFormContainer>
+        <AuthFormContainer>
           <Avatar>
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h4" gutterBottom>
             {formTitle}
           </Typography>
-          <DynamicForm {...loginFormProps} />
+          <DynamicForm {...authFormProps} />
           <Stack alignItems="center" direction="row" justifyContent="space-between">
             <Typography variant="body2">
               {`${question}, `}
@@ -60,7 +60,7 @@ export const Login: FC<LoginProps> = ({
               {forgotPasswordDescription}
             </Link>
           </Stack>
-        </LoginFormContainer>
+        </AuthFormContainer>
       </Container>
     </StyledRoot>
   );

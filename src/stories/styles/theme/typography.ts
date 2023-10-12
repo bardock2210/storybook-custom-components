@@ -25,7 +25,7 @@ export function responsiveFontSizes({ sm, md, lg }: Record<string, number>) {
 // ----------------------------------------------------------------------
 
 const FONT_PRIMARY = "Public Sans, sans-serif"; // Google Font
-const FONT_SECONDARY = "CircularStd, sans-serif"; // Local Font
+// const FONT_SECONDARY = "CircularStd, sans-serif"; // Local Font
 
 export const typography = {
   fontFamily: FONT_PRIMARY,

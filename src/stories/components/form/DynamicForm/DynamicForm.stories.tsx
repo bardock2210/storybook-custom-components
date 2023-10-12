@@ -475,7 +475,7 @@ const profileInitialState: InitialState = {
 
 const meta: Meta<typeof DynamicForm> = {
   component: DynamicForm,
-  title: "ZipCodeService/Form/DynamicForm/DynamicForm",
+  title: "ZipCodeService/Form/DynamicForm",
 };
 
 export default meta;
