@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import * as Yup from "yup";
 import { AuthPage, AuthProps } from "./AuthPage";
+import { AuthForm, AuthFormProps } from "@/components/form/AuthForm/AuthForm";
 import { IFormFieldProps } from "@/types/form";
 
 export interface ILoginValues {
@@ -15,6 +16,14 @@ export interface IRegisterValues {
   confirmPassword: string;
   phone: string;
 }
+
+const meta: Meta<typeof AuthPage> = {
+  component: AuthPage,
+  title: "ZipCodeService/Layout/AuthPage",
+};
+
+export default meta;
+type Story = StoryObj<typeof AuthPage>;
 
 const loginInitialState: ILoginValues = {
   email: "",
@@ -99,45 +108,79 @@ const registerFormSchema = Yup.object().shape({
     .required("Confirmar contraseña es requerido"),
 });
 
-const meta: Meta<typeof AuthPage> = {
-  component: AuthPage,
-  title: "ZipCodeService/Form/AuthPage",
+const LoginTemplate: Story = {
+  render: (args: AuthProps) => {
+    return (
+      <AuthPage {...args}>
+        <AuthForm
+          actions={{
+            haveAccount: {
+              description: "Si aún no tienes una cuenta",
+              link: "Registrate aquí",
+              linkHandler: () => console.log("click on register form"),
+            },
+            question: {
+              link: "¿Olvidaste tu contraseña?",
+              linkHandler: () => console.log("click on forgot password"),
+            },
+          }}
+          authFormProps={{
+            formFields: loginFormFields,
+            formSchema: loginFormSchema,
+            initialState: loginInitialState,
+            onSubmit: (params) => console.log("Submit form: ", { params }),
+            primaryBtnProps: {
+              fullWidth: true,
+              label: "Iniciar Sesión",
+              type: "submit",
+              variant: "contained",
+            },
+          }}
+          formTitle="Iniciar Sesión"
+        />
+      </AuthPage>
+    );
+  },
 };
 
-export default meta;
-type Story = StoryObj<typeof AuthPage>;
-
-const AuthTemplate: Story = {
+const RegisterTemplate: Story = {
   render: (args: AuthProps) => {
-    return <AuthPage {...args} />;
+    return (
+      <AuthPage {...args}>
+        <AuthForm
+          actions={{
+            haveAccount: {
+              description: "Si ya estás registrado",
+              link: "Inicia sesión aquí",
+              linkHandler: () => console.log("click on login form"),
+            },
+            question: {
+              link: "",
+              linkHandler: () => console.log("click on forgot password"),
+            },
+          }}
+          authFormProps={{
+            formFields: registerFormFields,
+            formSchema: registerFormSchema,
+            initialState: registerInitialState,
+            onSubmit: (params) => console.log("Submit form: ", { params }),
+            primaryBtnProps: {
+              fullWidth: true,
+              label: "Registrarse",
+              type: "submit",
+              variant: "contained",
+            },
+          }}
+          formTitle="Registro de Usuario"
+        />
+      </AuthPage>
+    );
   },
 };
 
 export const Login: Story = {
-  ...AuthTemplate,
+  ...LoginTemplate,
   args: {
-    forgotPassword: {
-      forgotPasswordDescription: "¿Olvidaste tu contraseña?",
-      forgotPasswordHandler: () => console.log("click on forgot password"),
-    },
-    formTitle: "Autenticación",
-    authFormProps: {
-      formFields: loginFormFields,
-      formSchema: loginFormSchema,
-      initialState: loginInitialState,
-      onSubmit: (params) => console.log("Submit form: ", { params }),
-      primaryBtnProps: {
-        fullWidth: true,
-        label: "Iniciar Sesión",
-        type: "submit",
-        variant: "contained",
-      },
-    },
-    haveAnAccount: {
-      registerDescription: "Registrate aquí",
-      registerHandler: () => console.log("click on register form"),
-      question: "Si aún no tienes una cuenta",
-    },
     sideBar: {
       image: (
         <img
@@ -151,30 +194,8 @@ export const Login: Story = {
 };
 
 export const Register: Story = {
-  ...AuthTemplate,
+  ...RegisterTemplate,
   args: {
-    forgotPassword: {
-      forgotPasswordDescription: "",
-      forgotPasswordHandler: () => console.log("click on forgot password"),
-    },
-    formTitle: "Registro de Usuario",
-    authFormProps: {
-      formFields: registerFormFields,
-      formSchema: registerFormSchema,
-      initialState: registerInitialState,
-      onSubmit: (params) => console.log("Submit form: ", { params }),
-      primaryBtnProps: {
-        fullWidth: true,
-        label: "Registrarse",
-        type: "submit",
-        variant: "contained",
-      },
-    },
-    haveAnAccount: {
-      registerDescription: "Inicia sesión aquí",
-      registerHandler: () => console.log("click on login form"),
-      question: "Si ya estás registrado",
-    },
     sideBar: {
       image: (
         <img
