@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const StyledRoot = styled("div")(({ theme }) => ({
@@ -20,4 +20,12 @@ export const SideBarContainer = styled(Box)(({ theme }) => ({
     marginBottom: "2.5rem",
     padding: "0 2.5rem",
   },
+}));
+
+export const ChildrenContainer = styled(Container)(({ theme }) => ({
+  alignItems: "center",
+  display: "flex",
+  justifyContent: "center",
+  [theme.breakpoints.down("md")]: { paddingLeft: 0, paddingRight: 0 },
+  minHeight: "100vh",
 }));

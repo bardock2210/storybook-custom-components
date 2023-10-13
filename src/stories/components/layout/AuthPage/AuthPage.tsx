@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
-import { Container, Typography } from "@mui/material";
-import { StyledRoot, SideBarContainer } from "./authPageStyles";
+import { Typography } from "@mui/material";
+import { StyledRoot, SideBarContainer, ChildrenContainer } from "./authPageStyles";
 import { useResponsive } from "@/hooks/useResponsive";
 
 export interface AuthProps {
@@ -21,7 +21,7 @@ export const AuthPage = ({ children, sideBar: { image, title } }: PropsWithChild
           {image}
         </SideBarContainer>
       )}
-      <Container maxWidth="sm">{children}</Container>
+      <ChildrenContainer maxWidth="sm">{children}</ChildrenContainer>
     </StyledRoot>
   );
 };
