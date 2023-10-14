@@ -5,13 +5,6 @@ export const createComponents = (config: CreateComponentsConfig): ComponentOverr
   const { palette } = config;
 
   return {
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#F0F0F0",
-        },
-      },
-    },
     MuiCard: {
       styleOverrides: {
         root: {
