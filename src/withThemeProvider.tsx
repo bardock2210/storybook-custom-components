@@ -1,6 +1,5 @@
 import { ComponentType } from "react";
 import { ThemeProvider } from "@mui/material";
-import { NotificationBarProvider } from "@/context/Components";
 import { createTheme } from "./stories/styles";
 
 const theme = createTheme();
