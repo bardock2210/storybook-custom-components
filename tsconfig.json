@@ -21,9 +21,10 @@
     "paths": {
       "@/assets/*": ["src/stories/assets/*"],
       "@/components/*": ["src/stories/components/*"],
+      "@/context/*": ["src/stories/context/*"],
       "@/hooks/*": ["src/stories/hooks/*"],
       "@/types/*": ["src/stories/types/*"],
-      "@/styles/*": ["src/stories/styles/*"],
+      "@/styles/*": ["src/stories/styles/*"]
       // "@mui/system": ["./node_modules/@mui/material/node_modules/@mui/system"]
     }
   },

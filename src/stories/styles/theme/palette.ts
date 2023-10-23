@@ -31,6 +31,12 @@ export const palette: CreateComponentsConfig["palette"] = {
     light: "#AEC4D5",
     main: "#6E95B4",
   },
+  info: {
+    contrastText: "#FFFFFF",
+    dark: "#164C63",
+    light: "#ECFDFF",
+    main: "#06AED4",
+  },
   error: {
     contrastText: "#FFFFFF",
     dark: "#911D1E",

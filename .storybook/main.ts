@@ -31,6 +31,7 @@ const config: StorybookConfig = {
         ...config.resolve.alias,
         "@/assets": path.resolve(__dirname, "../src/stories/assets"),
         "@/components": path.resolve(__dirname, "../src/stories/components"),
+        "@/context": path.resolve(__dirname, "../src/stories/context"),
         "@/hooks": path.resolve(__dirname, "../src/stories/hooks"),
         "@/styles": path.resolve(__dirname, "../src/stories/styles"),
         "@/types": path.resolve(__dirname, "../src/stories/types"),
