@@ -1,5 +1,4 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-// import { withThemeFromJSXProvider } from "@storybook/addon-styling";
+import { CssBaseline } from "@mui/material";
 import { ComponentsProvider } from "../src/stories/context/Components";
 import { createTheme } from "../src/stories/styles";
 
@@ -22,12 +21,4 @@ export const decorators = [
       <Story />
     </ComponentsProvider>
   ),
-  // withThemeFromJSXProvider({
-  //   themes: {
-  //     light: theme,
-  //   },
-  //   defaultTheme: "light",
-  //   Provider: ThemeProvider,
-  //   GlobalStyles: CssBaseline,
-  // }),
 ];

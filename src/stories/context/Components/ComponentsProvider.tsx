@@ -1,10 +1,11 @@
 import { useContext, useReducer } from "react";
-import { Theme, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { ComponentsContext, componentsReducer } from ".";
 import { NotificationBar } from "@/components/display/NotificationBar/NotificationBar";
 
 import type { FC, PropsWithChildren } from "react";
 import type { NotificationProps } from "@/types/notification";
+import { DefaultTheme } from "@material-ui/styles";
 
 type NotificationType = "success" | "info" | "warning" | "error";
 
@@ -28,7 +29,7 @@ export const initialState: ComponentsState = {
 
 export interface ComponentsProviderProps {
   children: React.ReactNode;
-  theme: Theme;
+  theme: Partial<DefaultTheme> | ((outerTheme: DefaultTheme) => DefaultTheme);
 }
 
 export const ComponentsProvider: FC<PropsWithChildren<ComponentsProviderProps>> = ({
