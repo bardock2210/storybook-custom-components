@@ -17,12 +17,10 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={theme}>
-      <ComponentsProvider>
-        <CssBaseline />
-        <Story />
-      </ComponentsProvider>
-    </ThemeProvider>
+    <ComponentsProvider theme={theme}>
+      <CssBaseline />
+      <Story />
+    </ComponentsProvider>
   ),
   // withThemeFromJSXProvider({
   //   themes: {

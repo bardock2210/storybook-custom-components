@@ -1,4 +1,5 @@
 import { useContext, useReducer } from "react";
+import { Theme, ThemeProvider } from "@mui/material";
 import { ComponentsContext, componentsReducer } from ".";
 import { NotificationBar } from "@/components/display/NotificationBar/NotificationBar";
 
@@ -25,7 +26,15 @@ export const initialState: ComponentsState = {
   },
 };
 
-export const ComponentsProvider: FC<PropsWithChildren<any>> = ({ children }) => {
+export interface ComponentsProviderProps {
+  children: React.ReactNode;
+  theme: Theme;
+}
+
+export const ComponentsProvider: FC<PropsWithChildren<ComponentsProviderProps>> = ({
+  children,
+  theme,
+}) => {
   const [state, dispatch] = useReducer(componentsReducer, initialState);
 
   const showNotification = (notification: NotificationProps) => {
@@ -37,10 +46,12 @@ export const ComponentsProvider: FC<PropsWithChildren<any>> = ({ children }) => 
   };
 
   return (
-    <ComponentsContext.Provider value={{ ...state, clearNotification, showNotification }}>
-      {children}
-      <NotificationBar />
-    </ComponentsContext.Provider>
+    <ThemeProvider theme={theme}>
+      <ComponentsContext.Provider value={{ ...state, clearNotification, showNotification }}>
+        {children}
+        <NotificationBar />
+      </ComponentsContext.Provider>
+    </ThemeProvider>
   );
 };
 
