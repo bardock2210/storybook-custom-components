@@ -1,6 +1,6 @@
 {
-  "name": "@zipcode-info/storybook",
-  "version": "1.8.14",
+  "name": "zip-code-info-sb",
+  "version": "1.8.15",
   "private": false,
   "license": "MIT",
   "typings": "dist/index.d.ts",
