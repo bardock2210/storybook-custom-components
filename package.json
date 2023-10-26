@@ -1,6 +1,6 @@
 {
-  "name": "aamf-components-storybook",
-  "version": "1.8.10",
+  "name": "info-zipcode-sb",
+  "version": "1.8.11",
   "private": false,
   "license": "MIT",
   "typings": "dist/index.d.ts",
