@@ -1,3 +1,3 @@
-import { NavigationCard as NoThemeNavigationCard } from "./NavigationCard";
+import { NavigationCard } from "./NavigationCard";
 
-export default NoThemeNavigationCard;
+export default NavigationCard;

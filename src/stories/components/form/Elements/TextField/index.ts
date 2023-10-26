@@ -1,3 +1,3 @@
-import { TextInput as NoThemeTextInput } from "./TextInput";
+import { TextInput } from "./TextInput";
 
-export default NoThemeTextInput;
+export default TextInput;

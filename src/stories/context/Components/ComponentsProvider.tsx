@@ -1,13 +1,10 @@
 import { useContext, useReducer } from "react";
 import { ThemeProvider } from "@mui/material";
 import { ComponentsContext, componentsReducer } from ".";
-import { NotificationBar } from "@/components/display/NotificationBar/NotificationBar";
 
 import type { FC, PropsWithChildren } from "react";
 import type { NotificationProps } from "@/types/notification";
 import { DefaultTheme } from "@material-ui/styles";
-
-type NotificationType = "success" | "info" | "warning" | "error";
 
 export interface ComponentsState {
   notification: NotificationProps;
@@ -50,7 +47,6 @@ export const ComponentsProvider: FC<PropsWithChildren<ComponentsProviderProps>> 
     <ThemeProvider theme={theme}>
       <ComponentsContext.Provider value={{ ...state, clearNotification, showNotification }}>
         {children}
-        <NotificationBar />
       </ComponentsContext.Provider>
     </ThemeProvider>
   );

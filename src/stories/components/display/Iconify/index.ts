@@ -1,3 +1,3 @@
-import { Iconify as NoThemeIconify } from "./Iconify";
+import { Iconify } from "./Iconify";
 
-export default NoThemeIconify;
+export default Iconify;

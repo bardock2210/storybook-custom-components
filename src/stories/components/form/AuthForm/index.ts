@@ -1,3 +1,3 @@
-import { AuthForm as NoThemeAuthForm } from "./AuthForm";
+import { AuthForm } from "./AuthForm";
 
-export default NoThemeAuthForm;
+export default AuthForm;

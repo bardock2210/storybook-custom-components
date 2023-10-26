@@ -1,3 +1,3 @@
-import { Panel as NoThemePanel } from "./Panel";
+import { Panel } from "./Panel";
 
-export default NoThemePanel;
+export default Panel;

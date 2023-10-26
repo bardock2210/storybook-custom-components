@@ -1,3 +1,3 @@
-import { DatePicker as NoThemeDatePicker } from "./DatePicker";
+import { DatePicker } from "./DatePicker";
 
-export default NoThemeDatePicker;
+export default DatePicker;

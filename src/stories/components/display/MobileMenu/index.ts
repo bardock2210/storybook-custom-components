@@ -1,3 +1,3 @@
-import { MobileMenu as NoThemeMobileMenu } from "./MobileMenu";
+import { MobileMenu } from "./MobileMenu";
 
-export default NoThemeMobileMenu;
+export default MobileMenu;

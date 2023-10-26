@@ -1,3 +1,3 @@
-import { PhoneInput as NoThemePhoneInput } from "./PhoneInput";
+import { PhoneInput } from "./PhoneInput";
 
-export default NoThemePhoneInput;
+export default PhoneInput;

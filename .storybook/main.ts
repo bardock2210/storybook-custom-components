@@ -26,6 +26,7 @@ const config: StorybookConfig = {
         "@/context": path.resolve(__dirname, "../src/stories/context"),
         "@/hooks": path.resolve(__dirname, "../src/stories/hooks"),
         "@/styles": path.resolve(__dirname, "../src/stories/styles"),
+        "@/theme": path.resolve(__dirname, "../src/stories/theme"),
         "@/types": path.resolve(__dirname, "../src/stories/types"),
       };
       config.resolve.extensions?.push(".ts", ".tsx");

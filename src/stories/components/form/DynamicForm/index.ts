@@ -1,3 +1,3 @@
-import { DynamicForm as NoThemeDynamicForm } from "./DynamicForm";
+import { DynamicForm } from "./DynamicForm";
 
-export default NoThemeDynamicForm;
+export default DynamicForm;

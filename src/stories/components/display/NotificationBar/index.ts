@@ -1,3 +1,3 @@
-import { NotificationBar as NoThemeNotificationBar } from "./NotificationBar";
+import { NotificationBar } from "./NotificationBar";
 
-export default NoThemeNotificationBar;
+export default NotificationBar;

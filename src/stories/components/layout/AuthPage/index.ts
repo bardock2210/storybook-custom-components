@@ -1,3 +1,3 @@
-import { AuthPage as NoThemeAuthPage } from "./AuthPage";
+import { AuthPage } from "./AuthPage";
 
-export default NoThemeAuthPage;
+export default AuthPage;
