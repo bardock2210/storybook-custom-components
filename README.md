@@ -1,5 +1,5 @@
-# aamf-components-storybook
+# Zip Code Info Storybook
 
 ```
-yarn add aamf-components-storybook
+yarn add zip-code-info-sb
 ```
