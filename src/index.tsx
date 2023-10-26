@@ -8,6 +8,8 @@ import type {
   TField,
   TextInputProps,
 } from "@/types/index";
+import type { NavigationCardProps } from "@/components/display/NavigationCard/NavigationCard";
+import type { NotificationBarProps } from "@/components/display/NotificationBar/NotificationBar";
 import { createTheme } from "@/theme/index";
 import type { CustomThemeOptions } from "@/theme/index";
 
@@ -41,6 +43,9 @@ export { theme };
 // Types
 export type {
   ButtonProps,
+  CustomThemeOptions,
+  NavigationCardProps,
+  NotificationBarProps,
   IFormFieldProps,
   IFormSectionProps,
   IOption,
@@ -48,5 +53,4 @@ export type {
   SelectProps,
   TField,
   TextInputProps,
-  CustomThemeOptions,
 };
