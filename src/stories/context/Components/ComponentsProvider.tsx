@@ -1,10 +1,10 @@
 import { useContext, useReducer } from "react";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider, type Theme } from "@mui/material";
 import { ComponentsContext, componentsReducer } from ".";
 
 import type { FC, PropsWithChildren } from "react";
 import type { NotificationProps } from "@/types/notification";
-import { DefaultTheme } from "@material-ui/styles";
+// import { DefaultTheme } from "@material-ui/styles";
 
 export interface ComponentsState {
   notification: NotificationProps;
@@ -26,7 +26,7 @@ export const initialState: ComponentsState = {
 
 export interface ComponentsProviderProps {
   children: React.ReactNode;
-  theme: Partial<DefaultTheme> | ((outerTheme: DefaultTheme) => DefaultTheme);
+  theme: Partial<Theme> | ((outerTheme: Theme) => Theme);
 }
 
 export const ComponentsProvider: FC<PropsWithChildren<ComponentsProviderProps>> = ({

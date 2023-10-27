@@ -35,7 +35,7 @@ export { default as PhoneInput } from "@/components/form/Elements/PhoneInput";
 export { ComponentsProvider } from "@/context/Components";
 
 // Hooks
-export { useDynamicForm, useResponsive } from "@/hooks/index";
+export { useResponsive } from "@/hooks/index";
 
 // Theme
 export { theme };

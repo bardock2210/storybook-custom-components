@@ -2,7 +2,7 @@ import { FC, SyntheticEvent, useEffect, useState } from "react";
 import { Alert, AlertTitle, Snackbar } from "@mui/material";
 import type { SxProps } from "@mui/material";
 import { useNotificationBar } from "@/context/Components";
-import { Theme } from "@material-ui/core";
+import { type Theme } from "@mui/material";
 import { snackBarSx } from "./notificationBarStyles";
 import { NotificationProps } from "@/types/notification";
 
