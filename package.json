@@ -1,6 +1,6 @@
 {
   "name": "zip-code-info-sb",
-  "version": "1.8.19",
+  "version": "1.8.20",
   "private": false,
   "license": "MIT",
   "typings": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@hookform/resolvers": "^3.1.0",
+    "@hookform/resolvers": "^3.3.2",
     "@iconify/react": "^4.1.1",
     "@mui/icons-material": "^5.14.15",
     "@mui/lab": "^5.0.0-alpha.150",
