@@ -493,7 +493,7 @@ const ProfileDynamicFormTemplate: Story = {
   },
 };
 
-export const Default: Story = {
+export const Login: Story = {
   ...DynamicFormTemplate,
   args: {
     formFields: LOGIN_FORM_DATA,
@@ -509,7 +509,7 @@ export const Default: Story = {
   },
 };
 
-export const Registration: Story = {
+export const Register: Story = {
   ...DynamicFormTemplate,
   args: {
     formFields: REGISTRATION_FORM_DATA,
@@ -520,12 +520,6 @@ export const Registration: Story = {
       fullWidth: true,
       label: "Register",
       type: "submit",
-      variant: "contained",
-    },
-    secondaryBtnProps: {
-      fullWidth: true,
-      label: "Cancel",
-      type: "button",
       variant: "contained",
     },
   },

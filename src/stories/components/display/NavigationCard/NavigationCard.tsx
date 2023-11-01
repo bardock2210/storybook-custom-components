@@ -1,53 +1,40 @@
 import { FC } from "react";
-import { alpha, Card, Typography, CardActionArea, CardContent } from "@mui/material";
+import { Card, CardActionArea, CardContent, type CardProps, Typography } from "@mui/material";
 import Iconify from "@/components/display/Iconify";
-import { StyledIcon } from "./navigationCardStyles";
+import { StyledIcon, getCardSx, getIconSx } from "./navigationCardStyles";
 import type { SxProps } from "@mui/material";
 import type { IconifyIcon } from "@iconify/react";
 
-export interface NavigationCardProps {
+export interface NavigationCardProps extends CardProps {
+  color: "primary" | "secondary" | "info" | "warning" | "error";
+  icon: string | IconifyIcon;
+  onClickHandler: () => void;
+  sx?: SxProps;
   title: string;
   total?: number;
-  icon: string | IconifyIcon;
-  color: "primary" | "secondary" | "info" | "warning" | "error";
-  sx?: SxProps;
 }
 
 export const NavigationCard: FC<NavigationCardProps> = ({
+  color = "primary",
+  icon,
+  onClickHandler,
+  sx,
   title,
   total,
-  icon,
-  color = "primary",
-  sx,
   ...other
 }) => {
+  const cardSx = [...(Array.isArray(sx) ? sx : [sx]), { ...getCardSx(color) }];
+  const iconSx = [{ ...getIconSx(color) }];
+
   return (
-    <Card
-      sx={{
-        backgroundColor: (theme: any) => theme.palette[color].light,
-        borderRadius: "8px",
-        color: (theme: any) => theme.palette[color].dark,
-        textAlign: "center",
-        ...sx,
-      }}
-      {...other}
-    >
+    <Card {...other} onClick={onClickHandler} sx={cardSx}>
       <CardActionArea>
         <CardContent>
-          <StyledIcon
-            sx={{
-              color: (theme: any) => theme.palette[color].dark,
-              backgroundImage: (theme: any) =>
-                `linear-gradient(135deg, ${alpha(theme.palette[color].dark, 0)} 0%, ${alpha(
-                  theme.palette[color].dark,
-                  0.24
-                )} 100%)`,
-            }}
-          >
+          <StyledIcon sx={iconSx}>
             <Iconify icon={icon} width={24} height={24} />
           </StyledIcon>
           <Typography variant="h3">{total}</Typography>
-          <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+          <Typography variant="h4" sx={{ opacity: 0.72 }}>
             {title}
           </Typography>
         </CardContent>
