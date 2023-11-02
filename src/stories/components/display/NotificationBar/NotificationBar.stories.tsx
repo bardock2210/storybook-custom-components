@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Button, Stack } from "@mui/material";
 import { NotificationBar } from "./NotificationBar";
-import { useNotificationBar } from "@/context/Components";
+import { useNotificationBar } from "@/hooks/index";
 
 const meta: Meta<typeof NotificationBar> = {
   component: NotificationBar,

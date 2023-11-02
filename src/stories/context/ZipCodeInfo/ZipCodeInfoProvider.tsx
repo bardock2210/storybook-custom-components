@@ -1,16 +1,15 @@
-import { useContext, useReducer } from "react";
+import { useReducer } from "react";
 import { ThemeProvider, type Theme } from "@mui/material";
-import { ComponentsContext, componentsReducer } from ".";
+import { ZipCodeInfoContext, zipCodeInfoReducer } from ".";
 
 import type { FC, PropsWithChildren } from "react";
 import type { NotificationProps } from "@/types/notification";
-// import { DefaultTheme } from "@material-ui/styles";
 
-export interface ComponentsState {
+export interface ZipCodeInfoState {
   notification: NotificationProps;
 }
 
-export const initialState: ComponentsState = {
+export const initialState: ZipCodeInfoState = {
   notification: {
     anchorOrigin: {
       vertical: "bottom",
@@ -24,16 +23,16 @@ export const initialState: ComponentsState = {
   },
 };
 
-export interface ComponentsProviderProps {
+export interface ZipCodeInfoProviderProps {
   children: React.ReactNode;
   theme: Partial<Theme> | ((outerTheme: Theme) => Theme);
 }
 
-export const ComponentsProvider: FC<PropsWithChildren<ComponentsProviderProps>> = ({
+export const ZipCodeInfoProvider: FC<PropsWithChildren<ZipCodeInfoProviderProps>> = ({
   children,
   theme,
 }) => {
-  const [state, dispatch] = useReducer(componentsReducer, initialState);
+  const [state, dispatch] = useReducer(zipCodeInfoReducer, initialState);
 
   const showNotification = (notification: NotificationProps) => {
     dispatch({ type: "ADD_NOTIFICATION", payload: notification });
@@ -45,19 +44,9 @@ export const ComponentsProvider: FC<PropsWithChildren<ComponentsProviderProps>> 
 
   return (
     <ThemeProvider theme={theme}>
-      <ComponentsContext.Provider value={{ ...state, clearNotification, showNotification }}>
+      <ZipCodeInfoContext.Provider value={{ ...state, clearNotification, showNotification }}>
         {children}
-      </ComponentsContext.Provider>
+      </ZipCodeInfoContext.Provider>
     </ThemeProvider>
   );
-};
-
-export const useNotificationBar = () => {
-  const context = useContext(ComponentsContext);
-
-  if (!context) {
-    throw new Error("useCustomContext must be used within a CustomProvider");
-  }
-
-  return context;
 };

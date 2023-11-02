@@ -1,5 +1,5 @@
 import { CssBaseline } from "@mui/material";
-import { ComponentsProvider } from "../src/stories/context/Components";
+import { ZipCodeInfoProvider } from "../src/stories/context/ZipCodeInfo";
 import { NotificationBar } from "../src/stories/components/display/NotificationBar/NotificationBar";
 import { createTheme } from "../src/stories/theme";
 
@@ -17,10 +17,10 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ComponentsProvider theme={theme}>
+    <ZipCodeInfoProvider theme={theme}>
       <CssBaseline />
       <Story />
       <NotificationBar />
-    </ComponentsProvider>
+    </ZipCodeInfoProvider>
   ),
 ];

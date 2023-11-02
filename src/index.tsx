@@ -33,10 +33,10 @@ export { default as DatePicker } from "@/components/form/Elements/DatePicker";
 export { default as PhoneInput } from "@/components/form/Elements/PhoneInput";
 
 // Context
-export { ComponentsProvider } from "@/context/Components";
+export { ZipCodeInfoProvider } from "@/context/ZipCodeInfo";
 
 // Hooks
-export { useResponsive } from "@/hooks/index";
+export { useNotificationBar, useResponsive } from "@/hooks/index";
 
 // Theme
 export { theme };

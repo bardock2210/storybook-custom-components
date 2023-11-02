@@ -1,14 +1,14 @@
-import { ComponentsState } from ".";
+import { ZipCodeInfoState } from ".";
 import type { NotificationProps } from "@/types/notification";
 
-type ComponentsActionType =
+type ZipCodeInfoActionType =
   | { type: "ADD_NOTIFICATION"; payload: NotificationProps }
   | { type: "CLEAR_NOTIFICATION"; payload: NotificationProps };
 
-export const componentsReducer = (
-  state: ComponentsState,
-  action: ComponentsActionType
-): ComponentsState => {
+export const zipCodeInfoReducer = (
+  state: ZipCodeInfoState,
+  action: ZipCodeInfoActionType
+): ZipCodeInfoState => {
   switch (action.type) {
     case "ADD_NOTIFICATION":
       return {
