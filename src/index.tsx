@@ -25,7 +25,7 @@ export { default as MobileMenu } from "@/components/display/MobileMenu";
 export { default as NavigationCard } from "@/components/display/NavigationCard";
 export { default as NotificationBar } from "@/components/display/NotificationBar";
 export { default as Panel } from "@/components/container/Panel";
-export { default as PageWrapper } from "@/components/container/PageWrapper";
+export { default as PageContainer } from "@/components/container/PageContainer";
 export { default as ProfileCard } from "@/components/display/ProfileCard";
 export { default as Select } from "@/components/form/Elements/Select";
 export { default as TextInput } from "@/components/form/Elements/TextField";

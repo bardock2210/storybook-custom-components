@@ -1,17 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { PageWrapper } from "./PageWrapper";
+import { PageContainer } from "./PageContainer";
 
-const meta: Meta<typeof PageWrapper> = {
-  component: PageWrapper,
+const meta: Meta<typeof PageContainer> = {
+  component: PageContainer,
   title: "ZipCodeService/Container/PageWrapper",
 };
 
 export default meta;
-type Story = StoryObj<typeof PageWrapper>;
+type Story = StoryObj<typeof PageContainer>;
 
 const Template: Story = {
   render: (args) => {
-    return <PageWrapper {...args} />;
+    return <PageContainer {...args}>This is an example</PageContainer>;
   },
 };
 
