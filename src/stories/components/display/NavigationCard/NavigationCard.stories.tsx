@@ -5,7 +5,7 @@ import { Grid, useMediaQuery, useTheme } from "@mui/material";
 
 // components
 import { NavigationCard, NavigationCardProps } from "./NavigationCard";
-import PageWrapper from "@/components/container/PageWrapper";
+import PageContainer from "@/components/container/PageContainer";
 
 const cards: NavigationCardProps[] = [
   {
@@ -67,13 +67,13 @@ const NavigationCardsTemplate: Story = {
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "lg"));
 
     return (
-      <PageWrapper title="Dashboard">
+      <PageContainer title="Dashboard">
         {cards.map((card, index) => (
           <Grid item key={`card-grid-item-${index}`} xs={isMobile ? 12 : isTablet ? 4 : 3}>
             <NavigationCard {...card} />
           </Grid>
         ))}
-      </PageWrapper>
+      </PageContainer>
     );
   },
 };
