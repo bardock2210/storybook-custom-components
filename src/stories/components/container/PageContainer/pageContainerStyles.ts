@@ -1,11 +1,7 @@
 import { SxProps } from "@mui/material";
 
 export const containerSx: SxProps = {
-  "& .contain": {
-    padding: {
-      xs: "16px",
-    },
-  },
+  padding: "1rem !important",
 };
 
 export const titleSx: SxProps = {
