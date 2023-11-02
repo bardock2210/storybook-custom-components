@@ -1,7 +1,11 @@
+// vendors
 import { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
+
+// components
 import { NavigationCard, NavigationCardProps } from "./NavigationCard";
+import PageContainer from "@/components/container/PageContainer";
 
 const cards: NavigationCardProps[] = [
   {
@@ -63,13 +67,13 @@ const NavigationCardsTemplate: Story = {
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "lg"));
 
     return (
-      <Grid container spacing={2}>
+      <PageContainer title="Dashboard">
         {cards.map((card, index) => (
           <Grid item key={`card-grid-item-${index}`} xs={isMobile ? 12 : isTablet ? 4 : 3}>
             <NavigationCard {...card} />
           </Grid>
         ))}
-      </Grid>
+      </PageContainer>
     );
   },
 };
@@ -83,7 +87,7 @@ export const Default: Story = {
   },
 };
 
-export const MultipleCards: Story = {
+export const WithPageContainer: Story = {
   ...NavigationCardsTemplate,
   args: {},
 };
