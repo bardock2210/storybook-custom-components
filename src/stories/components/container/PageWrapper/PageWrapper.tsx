@@ -5,14 +5,14 @@ import { Grid, Typography } from "@mui/material";
 import type { FC } from "react";
 
 // styles
-import { containerSx, titleSx } from "./pageContainer";
+import { containerSx, titleSx } from "./pageWrapper";
 
-export interface PageContainerProps {
+export interface PageWrapperProps {
   children: React.ReactNode;
   title: string;
 }
 
-export const PageContainer: FC<PageContainerProps> = ({ children, title }) => (
+export const PageWrapper: FC<PageWrapperProps> = ({ children, title }) => (
   <Grid container spacing={2} sx={containerSx}>
     <Grid className="contain" item xs={12}>
       <Typography sx={titleSx} variant="h4">
