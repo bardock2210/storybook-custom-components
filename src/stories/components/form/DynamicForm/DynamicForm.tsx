@@ -19,6 +19,7 @@ import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ButtonProps, IFormFieldProps, IFormSectionProps } from "@/types/form";
 import { gridSx, sectionContainerSx } from "./dynamicFormStyles";
+import { isEqual } from "lodash";
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[] | IFormSectionProps[];
@@ -50,11 +51,13 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     control,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm<FieldValues>({
     defaultValues: initialState as DeepPartial<FieldValues>,
     resolver: yupResolver(formSchema),
     values: initialState as DeepPartial<FieldValues>,
   });
+  const formValues = watch();
 
   const renderDatePicker = (props: IFormFieldProps) => (
     <DatePicker {...props} errors={errors} control={control} />
@@ -144,7 +147,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
         )}
         <LoadingButton
           color="primary"
-          disabled={disabled}
+          disabled={disabled && isEqual(initialState, formValues || Object.keys(errors).length > 0)}
           fullWidth={fullWidth}
           loading={loading}
           sx={sx}
