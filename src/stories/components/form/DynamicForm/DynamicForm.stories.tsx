@@ -27,8 +27,8 @@ export interface InitialState {
   businessName: string;
   rfc: string;
   taxZipCode: number;
-  taxRegimeKey: "none" | number;
-  cfdiKey: number;
+  taxRegimeKey?: number;
+  cfdiKey?: string;
   taxEmail: string;
   taxPhone: string;
 }
@@ -183,7 +183,7 @@ const profileFormFields: IFormFieldProps[] = [
         description:
           "625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
       },
-      { value: "626", description: "626 - Régimen Simplificado de Confianza" },
+      { value: 626, description: "626 - Régimen Simplificado de Confianza" },
     ],
   },
   {
@@ -468,8 +468,8 @@ const profileInitialState: InitialState = {
   businessName: "Bardock Ozaru",
   rfc: "OZBA452589G456",
   taxZipCode: 54000,
-  taxRegimeKey: "none",
-  cfdiKey: 13,
+  taxRegimeKey: 605,
+  cfdiKey: "G03",
   taxEmail: "bardock_ozaru@gmail.com",
   taxPhone: "525580589740",
 };
@@ -539,7 +539,7 @@ export const Profile: Story = {
     options: { columns: 2 },
     primaryBtnProps: {
       disableBtnWhenFieldErrorsExist: true,
-      disableBtnWhenFieldsAreEmpty: true,
+      // disableBtnWhenFieldsAreEmpty: true,
       disableBtnWhenNoChangesMade: true,
       fullWidth: true,
       label: "Guardar",

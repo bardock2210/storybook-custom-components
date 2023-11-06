@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { OptionProps, SelectProps, TSize } from "@/types/form";
+import { isNumber } from "lodash";
 
 interface FormControWrapperProps {
   children: JSX.Element;
@@ -37,9 +38,9 @@ const FormControWrapper = ({
     children
   );
 
-const renderPlaceHolder = (placeholder: string) => (
-  <MenuItem disabled value="none">
-    {placeholder}
+const renderPlaceHolder = (placeholder: string, isANumber: boolean) => (
+  <MenuItem disabled value={isANumber ? "-1" : "-"}>
+    <em>{placeholder}</em>
   </MenuItem>
 );
 
@@ -75,22 +76,24 @@ export const Select: FC<SelectProps> = ({
         name={name || ""}
         render={({ field: { value, ...field } }) => {
           const isInOptions = options.some((option) => option.value === value);
+          const isANumber = options.some((option) => isNumber(option.value));
+
           return (
             <>
               <MuiSelect
                 value={
-                  placeholder && (value === undefined || !isInOptions)
-                    ? "none"
-                    : defaultValue && value === undefined
+                  defaultValue && value === undefined
                     ? defaultValue
-                    : !isInOptions
-                    ? options[0].value
-                    : value
+                    : isInOptions
+                    ? value
+                    : isANumber
+                    ? "-1"
+                    : "-"
                 }
                 {...field}
                 {...props}
               >
-                {placeholder && renderPlaceHolder(placeholder)}
+                {placeholder && renderPlaceHolder(placeholder, isANumber)}
                 {getOptions(defaultValue, options)}
               </MuiSelect>
               {Boolean(errors?.[name || ""]) && (
