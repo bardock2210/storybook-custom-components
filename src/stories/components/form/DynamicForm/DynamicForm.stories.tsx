@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import * as Yup from "yup";
 import { DynamicForm } from "./DynamicForm";
 import { IFormFieldProps, IFormSectionProps } from "@/types/form";
@@ -499,8 +500,11 @@ export const Login: Story = {
     formFields: LOGIN_FORM_DATA,
     formSchema: LoginSchema,
     initialState: LOGIN_INITIAL_STATE,
-    onSubmit: (params) => console.log("Submit form: ", { params }),
+    onSubmit: (params) => action("Login form submitted: ")(params),
     primaryBtnProps: {
+      disableBtnWhenFieldsAreEmpty: true,
+      disableBtnWhenFieldErrorsExist: true,
+      disableBtnWhenNoChangesMade: true,
       fullWidth: true,
       label: "Log In",
       type: "submit",
@@ -515,7 +519,7 @@ export const Register: Story = {
     formFields: REGISTRATION_FORM_DATA,
     formSchema: RegistrationSchema,
     initialState: REGISTRATION_INITIAL_STATE,
-    onSubmit: (params) => console.log("Submit form: ", { params }),
+    onSubmit: (params) => action("Register form submitted: ")(params),
     primaryBtnProps: {
       fullWidth: true,
       label: "Register",
@@ -531,7 +535,7 @@ export const Profile: Story = {
     formFields: profileFormFields,
     formSchema: profileFormSchema,
     initialState: profileInitialState,
-    onSubmit: (params) => console.log("Submit form: ", { params }),
+    onSubmit: (params) => action("Profile form submitted: ")(params),
     options: { columns: 2 },
     primaryBtnProps: {
       fullWidth: true,
@@ -548,7 +552,7 @@ export const ProfileWithSections: Story = {
     formFields: profileFormFieldsWithSections,
     formSchema: profileFormSchema,
     initialState: profileInitialState,
-    onSubmit: (params) => console.log("Submit form: ", { params }),
+    onSubmit: (params) => action("Profile with secions form submitted: ")(params),
     options: { columns: 2 },
     primaryBtnProps: {
       fullWidth: true,

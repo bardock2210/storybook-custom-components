@@ -42,6 +42,9 @@ export interface IFormSectionProps {
 
 export interface ButtonProps {
   disabled?: boolean;
+  disableBtnWhenFieldsAreEmpty?: boolean;
+  disableBtnWhenFieldErrorsExist?: boolean;
+  disableBtnWhenNoChangesMade?: boolean;
   fullWidth?: boolean;
   label: string;
   loading?: boolean;

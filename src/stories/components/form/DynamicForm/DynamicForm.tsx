@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import {
   Box,
   Button,
@@ -19,7 +19,7 @@ import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ButtonProps, IFormFieldProps, IFormSectionProps } from "@/types/form";
 import { gridSx, sectionContainerSx } from "./dynamicFormStyles";
-import { isEqual } from "lodash";
+import { isEmpty, isEqual } from "lodash";
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[] | IFormSectionProps[];
@@ -43,7 +43,18 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   initialState,
   onSubmit,
   options,
-  primaryBtnProps: { disabled, fullWidth, loading = false, label, sx, type, variant },
+  primaryBtnProps: {
+    disabled,
+    disableBtnWhenFieldsAreEmpty,
+    disableBtnWhenFieldErrorsExist,
+    disableBtnWhenNoChangesMade,
+    fullWidth,
+    loading = false,
+    label,
+    sx,
+    type,
+    variant,
+  },
   secondaryBtnProps,
 }) => {
   const isSecondaryBtn = Boolean(secondaryBtnProps);
@@ -58,6 +69,9 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     values: initialState as DeepPartial<FieldValues>,
   });
   const formValues = watch();
+  const emptyFieldsCondition = Object.values(formValues).some((value) => isEmpty(value));
+  const fieldErrosCondition = Object.keys(errors).length > 0;
+  const noFormChangesCondition = isEqual(initialState, formValues);
 
   const renderDatePicker = (props: IFormFieldProps) => (
     <DatePicker {...props} errors={errors} control={control} />
@@ -147,7 +161,12 @@ export const DynamicForm: FC<DynamicFormProps> = ({
         )}
         <LoadingButton
           color="primary"
-          disabled={disabled && isEqual(initialState, formValues || Object.keys(errors).length > 0)}
+          disabled={
+            disabled ||
+            (disableBtnWhenFieldsAreEmpty && emptyFieldsCondition) ||
+            (disableBtnWhenFieldErrorsExist && fieldErrosCondition) ||
+            (disableBtnWhenNoChangesMade && noFormChangesCondition)
+          }
           fullWidth={fullWidth}
           loading={loading}
           sx={sx}
