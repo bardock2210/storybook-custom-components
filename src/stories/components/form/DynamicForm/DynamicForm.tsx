@@ -69,7 +69,10 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     values: initialState as DeepPartial<FieldValues>,
   });
   const formValues = watch();
-  const emptyFieldsCondition = Object.values(formValues).some((value) => isEmpty(value));
+  const emptyFieldsCondition = Object.values(formValues).some((value) => {
+    const valueType = typeof value === "number" ? value.toString() : value;
+    return isEmpty(valueType);
+  });
   const fieldErrosCondition = Object.keys(errors).length > 0;
   const noFormChangesCondition = isEqual(initialState, formValues);
 

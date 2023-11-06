@@ -538,6 +538,9 @@ export const Profile: Story = {
     onSubmit: (params) => action("Profile form submitted: ")(params),
     options: { columns: 2 },
     primaryBtnProps: {
+      disableBtnWhenFieldErrorsExist: true,
+      disableBtnWhenFieldsAreEmpty: true,
+      disableBtnWhenNoChangesMade: true,
       fullWidth: true,
       label: "Guardar",
       type: "submit",
