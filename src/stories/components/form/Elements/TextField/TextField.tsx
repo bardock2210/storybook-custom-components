@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { TextField } from "@mui/material";
+import { TextField as TextFieldMUI } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { TextInputProps } from "@/types/form";
-import { styles } from "./TextInput.styles";
+import { TextFieldProps } from "@/types/form";
+import { styles } from "./TextField.styles";
 
-export const TextInput: FC<TextInputProps> = ({
+export const TextField: FC<TextFieldProps> = ({
   control,
   endAdornment,
   errors,
@@ -29,7 +29,7 @@ export const TextInput: FC<TextInputProps> = ({
       control={control}
       name={props.name || ""}
       render={({ field }) => (
-        <TextField
+        <TextFieldMUI
           error={!!errors?.[props.name || ""]}
           helperText={errors?.[props.name || ""]?.message as string}
           InputLabelProps={{ shrink }}

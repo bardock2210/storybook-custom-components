@@ -7,7 +7,7 @@ import {
   Select as MuiSelect,
 } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { OptionProps, SelectProps, TSize } from "@/types/form";
+import { IOption, SelectFieldProps, TSize } from "@/types/form";
 import { isNumber } from "lodash";
 
 interface FormControWrapperProps {
@@ -44,7 +44,7 @@ const renderPlaceHolder = (placeholder: string, isANumber: boolean) => (
   </MenuItem>
 );
 
-const getOptions = (defaultValue: any, options: OptionProps[]) => {
+const getOptions = (defaultValue: any, options: IOption[]) => {
   return options.map(({ description, value }) => (
     <MenuItem key={`menu-item-${value}`} selected={Boolean(defaultValue === value)} value={value}>
       {description}
@@ -52,7 +52,7 @@ const getOptions = (defaultValue: any, options: OptionProps[]) => {
   ));
 };
 
-export const Select: FC<SelectProps> = ({
+export const SelectField: FC<SelectFieldProps> = ({
   control,
   defaultValue,
   errors,

@@ -1,4 +1,5 @@
-import { Dispatch, FC, MouseEvent } from "react";
+// vendors
+import type { Dispatch, FC, MouseEvent } from "react";
 import {
   Badge,
   Box,
@@ -6,10 +7,12 @@ import {
   Icon,
   Menu,
   MenuItem,
-  type PopoverVirtualElement,
   Typography,
+  type PopoverVirtualElement,
 } from "@mui/material";
-import { menuSx, menuItemSx } from "./mobileMenuStyles";
+
+// styles
+import { menuSx, menuItemSx } from "./MobileMenu.styles";
 
 export interface MenuOptionsProps {
   badgeContent?: number;
@@ -91,32 +94,30 @@ export const MobileMenu: FC<MobileMenuProps> = ({
   open,
   setAnchorEl,
   user,
-}) => {
-  return (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={open}
-      onClose={onClose}
-      sx={menuSx}
-    >
-      <Box sx={{ my: 1, px: 1 }}>
-        <Typography noWrap variant="subtitle2">
-          {user.name}
-        </Typography>
-        <Typography noWrap variant="body2">
-          {user.email}
-        </Typography>
-      </Box>
-      <RenderMenuItems menuOptions={menuOptions} setAnchorEl={setAnchorEl} />
-    </Menu>
-  );
-};
+}) => (
+  <Menu
+    anchorEl={anchorEl}
+    anchorOrigin={{
+      vertical: "top",
+      horizontal: "right",
+    }}
+    keepMounted
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "right",
+    }}
+    open={open}
+    onClose={onClose}
+    sx={menuSx}
+  >
+    <Box sx={{ my: 1, px: 1 }}>
+      <Typography noWrap variant="subtitle2">
+        {user.name}
+      </Typography>
+      <Typography noWrap variant="body2">
+        {user.email}
+      </Typography>
+    </Box>
+    <RenderMenuItems menuOptions={menuOptions} setAnchorEl={setAnchorEl} />
+  </Menu>
+);

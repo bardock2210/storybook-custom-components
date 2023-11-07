@@ -1,5 +1,7 @@
-import type { SxProps, Theme } from "@mui/material";
-import { ReactNode } from "react";
+// types
+import type { ReactNode } from "react";
+import type { SxProps, TextFieldProps as TextFieldMUIProps, Theme } from "@mui/material";
+import type { Control, FieldErrors } from "react-hook-form";
 
 export type TField =
   | "date"
@@ -14,6 +16,8 @@ export type TField =
   | "text";
 
 export type TFieldSize = "medium" | "small";
+
+export type TSize = "small" | "medium";
 
 export interface IOption {
   description: string;
@@ -32,6 +36,30 @@ export interface IFormFieldProps {
   size?: TFieldSize;
   type: TField;
   value?: any;
+}
+
+export type TextFieldProps = TextFieldMUIProps & {
+  control?: Control<any, any>;
+  endAdornment?: ReactNode;
+  errors?: FieldErrors;
+  isForm?: boolean;
+  shrink?: boolean;
+  startAdornment?: ReactNode;
+};
+
+export interface SelectFieldProps {
+  control?: Control<any, any>;
+  defaultValue?: any;
+  errors?: FieldErrors<any>;
+  helperText?: string;
+  id?: string;
+  isForm?: boolean;
+  label?: string;
+  name?: string;
+  options: IOption[];
+  placeholder?: string;
+  required?: boolean;
+  size?: TSize;
 }
 
 export interface IFormSectionProps {

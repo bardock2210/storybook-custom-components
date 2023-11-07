@@ -1,14 +1,19 @@
-import { FC, MouseEvent, useState } from "react";
+// vendors
+import { useState, type FC, type MouseEvent } from "react";
 import { AppBar, Badge, Box, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
+
+// components
 import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/MobileMenu";
+
+// styles
 import {
   headerContainer,
   headerStyles,
   iconContainer,
   logoContainerSx,
   logoStyles,
-} from "./headerStyles";
+} from "./Header.styles";
 
 export interface HeaderProps {
   logo: JSX.Element;

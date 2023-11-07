@@ -3,10 +3,9 @@ import type {
   IFormFieldProps,
   IFormSectionProps,
   IOption,
-  OptionProps,
-  SelectProps,
+  SelectFieldProps,
   TField,
-  TextInputProps,
+  TextFieldProps,
 } from "@/types/index";
 import type { NavigationCardProps } from "@/components/display/NavigationCard/NavigationCard";
 import type { NotificationBarProps } from "@/components/display/NotificationBar/NotificationBar";
@@ -27,10 +26,10 @@ export { default as NotificationBar } from "@/components/display/NotificationBar
 export { default as Panel } from "@/components/container/Panel";
 export { default as PageContainer } from "@/components/container/PageContainer";
 export { default as ProfileCard } from "@/components/display/ProfileCard";
-export { default as Select } from "@/components/form/Elements/Select";
-export { default as TextInput } from "@/components/form/Elements/TextField";
-export { default as DatePicker } from "@/components/form/Elements/DatePicker";
-export { default as PhoneInput } from "@/components/form/Elements/PhoneInput";
+export { default as Select } from "@/components/form/Elements/SelectField";
+export { default as TextField } from "@/components/form/Elements/TextField";
+export { default as DatePickerField } from "@/components/form/Elements/DatePickerField";
+export { default as PhoneField } from "@/components/form/Elements/PhoneField";
 
 // Context
 export { ZipCodeInfoProvider } from "@/context/ZipCodeInfo";
@@ -50,8 +49,7 @@ export type {
   IFormFieldProps,
   IFormSectionProps,
   IOption,
-  OptionProps,
-  SelectProps,
+  SelectFieldProps,
   TField,
-  TextInputProps,
+  TextFieldProps,
 };

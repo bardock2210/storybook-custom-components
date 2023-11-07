@@ -5,7 +5,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import type { FC } from "react";
 
 // styles
-import { containerSx, titleSx } from "./pageContainerStyles";
+import { containerSx, titleSx } from "./PageContainer.styles";
 
 export interface PageContainerProps {
   children: React.ReactNode;

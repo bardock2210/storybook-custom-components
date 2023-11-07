@@ -1,3 +1,3 @@
-import { TextInput } from "./TextInput";
+import { TextField } from "./TextField";
 
-export default TextInput;
+export default TextField;

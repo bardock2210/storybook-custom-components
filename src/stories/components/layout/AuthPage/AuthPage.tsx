@@ -1,7 +1,12 @@
+// vendors
 import { PropsWithChildren } from "react";
 import { Typography } from "@mui/material";
-import { StyledRoot, SideBarContainer, ChildrenContainer } from "./authPageStyles";
+
+// hooks
 import { useResponsive } from "@/hooks/useResponsive";
+
+// styles
+import { StyledRoot, SideBarContainer, ChildrenContainer } from "./AuthPage.styles";
 
 export interface AuthProps {
   sideBar: {

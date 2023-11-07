@@ -5,9 +5,9 @@ import { DatePicker as MuiDatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/es";
 import { Controller } from "react-hook-form";
-import { TextInputProps } from "@/types/form";
+import { TextFieldProps } from "@/types/form";
 
-export const DatePicker: FC<TextInputProps> = ({
+export const DatePickerField: FC<TextFieldProps> = ({
   control,
   defaultValue,
   errors,

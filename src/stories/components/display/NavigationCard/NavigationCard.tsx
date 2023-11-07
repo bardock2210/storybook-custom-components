@@ -1,9 +1,16 @@
+// vendors
 import { FC } from "react";
-import { Card, CardActionArea, CardContent, type CardProps, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent, Typography, type CardProps } from "@mui/material";
+
+// components
 import Iconify from "@/components/display/Iconify";
-import { StyledIcon, getCardSx, getIconSx } from "./navigationCardStyles";
+
+// types
 import type { SxProps } from "@mui/material";
 import type { IconifyIcon } from "@iconify/react";
+
+// styles
+import { StyledIcon, getCardSx, getIconSx } from "./NavigationCard.styles";
 
 export interface NavigationCardProps extends CardProps {
   color: "primary" | "secondary" | "info" | "warning" | "error";

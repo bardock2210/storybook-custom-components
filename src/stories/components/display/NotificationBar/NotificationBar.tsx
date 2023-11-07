@@ -1,10 +1,16 @@
-import { FC, SyntheticEvent, useEffect, useState } from "react";
+// vendors
+import { type FC, type SyntheticEvent, useEffect, useState } from "react";
 import { Alert, AlertTitle, Snackbar } from "@mui/material";
-import type { SxProps } from "@mui/material";
+
+// hooks
 import { useNotificationBar } from "@/hooks/index";
-import { type Theme } from "@mui/material";
-import { snackBarSx } from "./notificationBarStyles";
+
+// types
 import { NotificationProps } from "@/types/notification";
+import type { SxProps, Theme } from "@mui/material";
+
+// styles
+import { snackBarSx } from "./NotificationBar.styles";
 
 export interface NotificationBarProps {
   config?: NotificationProps;

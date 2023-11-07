@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Avatar, Link, Stack, Typography } from "@mui/material";
 import { DynamicForm, DynamicFormProps } from "@/components/form/DynamicForm/DynamicForm";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { AuthFormContainer } from "./authFormStyles";
+import { AuthFormContainer } from "./AuthForm.styles";
 
 export interface AuthFormProps {
   actions: {

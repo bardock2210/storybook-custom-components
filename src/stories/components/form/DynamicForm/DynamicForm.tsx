@@ -11,14 +11,14 @@ import {
   Stack,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import DatePicker from "@/components/form/Elements/DatePicker";
-import PhoneInput from "@/components/form/Elements/PhoneInput";
-import Select from "@/components/form/Elements/Select";
-import TextInput from "@/components/form/Elements/TextField";
+import DatePickerField from "@/components/form/Elements/DatePickerField";
+import PhoneField from "@/components/form/Elements/PhoneField";
+import SelectField from "@/components/form/Elements/SelectField";
+import TextField from "@/components/form/Elements/TextField";
 import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ButtonProps, IFormFieldProps, IFormSectionProps } from "@/types/form";
-import { gridSx, sectionContainerSx } from "./dynamicFormStyles";
+import { gridSx, sectionContainerSx } from "./DynamicForm.styles";
 import { isEmpty, isEqual } from "lodash";
 
 export interface DynamicFormProps {
@@ -77,19 +77,19 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   const noFormChangesCondition = isEqual(initialState, formValues);
 
   const renderDatePicker = (props: IFormFieldProps) => (
-    <DatePicker {...props} errors={errors} control={control} />
+    <DatePickerField {...props} errors={errors} control={control} />
   );
 
-  const renderPhoneInput = (props: IFormFieldProps) => (
-    <PhoneInput {...props} errors={errors} control={control} />
+  const renderPhoneField = (props: IFormFieldProps) => (
+    <PhoneField {...props} errors={errors} control={control} />
   );
 
   const renderSelect = (props: IFormFieldProps) => (
-    <Select {...props} errors={errors} control={control} options={props.options ?? []} />
+    <SelectField {...props} errors={errors} control={control} options={props.options ?? []} />
   );
 
   const renderTextInput = (props: IFormFieldProps) => (
-    <TextInput {...props} errors={errors} control={control} />
+    <TextField {...props} errors={errors} control={control} />
   );
 
   const fields: Record<string, (props: IFormFieldProps) => JSX.Element> = {
@@ -98,7 +98,7 @@ export const DynamicForm: FC<DynamicFormProps> = ({
     number: renderTextInput,
     password: renderTextInput,
     text: renderTextInput,
-    phone: renderPhoneInput,
+    phone: renderPhoneField,
     select: renderSelect,
   };
 

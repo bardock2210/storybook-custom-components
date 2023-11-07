@@ -1,10 +1,18 @@
-import { FC, useState } from "react";
+// vendors
+import { useState } from "react";
 import { Controller } from "react-hook-form";
 import MuiPhoneNumber from "material-ui-phone-number-2";
-import { TextInputProps } from "@/types/form";
 
-export const PhoneInput: FC<TextInputProps> = ({
+// types
+import type { FC } from "react";
+import type { MuiPhoneNumberProps } from "material-ui-phone-number-2";
+import { TextFieldProps } from "@/types/form";
+
+export type PhoneFieldProps = TextFieldProps & Omit<MuiPhoneNumberProps, "onChange">;
+
+export const PhoneField: FC<PhoneFieldProps> = ({
   control,
+  defaultCountry = "mx",
   endAdornment,
   errors,
   label,
@@ -24,7 +32,7 @@ export const PhoneInput: FC<TextInputProps> = ({
         <MuiPhoneNumber
           {...restField}
           {...props}
-          defaultCountry="mx"
+          defaultCountry={defaultCountry}
           error={!!errors?.[props.name || ""]}
           helperText={errors?.[props.name || ""]?.message as string}
           InputLabelProps={{ shrink }}
