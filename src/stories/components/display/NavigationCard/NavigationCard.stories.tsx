@@ -13,30 +13,48 @@ const cards: NavigationCardProps[] = [
     icon: "gg:profile",
     onClickHandler: action("onClickHandler called for Perfil"),
     title: "Perfil",
+    variant: "outlined",
   },
   {
     color: "secondary",
     icon: "ant-design:project-filled",
     onClickHandler: action("onClickHandler called for Proyectos"),
     title: "Proyectos",
+    variant: "outlined",
   },
   {
     color: "info",
     icon: "ri:shopping-bag-fill",
     onClickHandler: action("onClickHandler called for Compras"),
     title: "Compras",
+    variant: "outlined",
   },
   {
     color: "warning",
     icon: "mdi:clock",
     onClickHandler: action("onClickHandler called for Logs"),
     title: "Logs",
+    variant: "outlined",
   },
   {
     color: "error",
     icon: "fluent-mdl2:product-variant",
     onClickHandler: action("onClickHandler called for Productos"),
     title: "Productos",
+    variant: "outlined",
+  },
+  {
+    icon: "gg:profile",
+    onClickHandler: action("onClickHandler called for Perfil"),
+    title: "Account",
+    variant: "outlined",
+  },
+  {
+    color: "indigo",
+    icon: "fluent-mdl2:product-variant",
+    onClickHandler: action("onClickHandler called for Perfil"),
+    title: "Deliveries",
+    variant: "outlined",
   },
 ];
 
@@ -84,6 +102,7 @@ export const Default: Story = {
     color: "secondary",
     icon: "gg:profile",
     title: "Perfil",
+    variant: "outlined",
   },
 };
 

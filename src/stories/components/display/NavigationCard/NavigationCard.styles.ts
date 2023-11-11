@@ -1,6 +1,13 @@
 import { alpha, styled, type SxProps, type Theme } from "@mui/material";
 
-type Color = "primary" | "secondary" | "info" | "warning" | "error";
+export type CustomColor =
+  | "primary"
+  | "secondary"
+  | "info"
+  | "warning"
+  | "error"
+  | "indigo"
+  | "white";
 
 export const StyledIcon = styled("div")(({ theme }) => ({
   margin: "auto",
@@ -13,14 +20,14 @@ export const StyledIcon = styled("div")(({ theme }) => ({
   marginBottom: theme.spacing(3),
 }));
 
-export const getCardSx = (color: Color): SxProps<Theme> => ({
+export const getCardSx = (color: CustomColor): SxProps<Theme> => ({
   backgroundColor: (theme: any) => theme.palette[color].light,
   borderRadius: "8px",
   color: (theme: any) => theme.palette[color].dark,
   textAlign: "center",
 });
 
-export const getIconSx = (color: Color) => ({
+export const getIconSx = (color: CustomColor) => ({
   color: (theme: any) => theme.palette[color].dark,
   backgroundImage: (theme: any) =>
     `linear-gradient(135deg, ${alpha(theme.palette[color].dark, 0)} 0%, ${alpha(

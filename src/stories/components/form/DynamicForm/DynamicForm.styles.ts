@@ -7,13 +7,7 @@ export const gridSx: SxProps = {
 };
 
 export const sectionContainerSx: SxProps = {
-  ".MuiPaper-root": {
-    borderRadius: "8px",
-    ".MuiCardHeader-root": {
-      paddingBottom: 0,
-    },
-  },
-  ".MuiPaper-root.no-first-section": {
-    marginTop: "1rem",
-  },
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
 };

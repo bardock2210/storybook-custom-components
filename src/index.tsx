@@ -26,6 +26,7 @@ export { default as NotificationBar } from "@/components/display/NotificationBar
 export { default as Panel } from "@/components/container/Panel";
 export { default as PageContainer } from "@/components/container/PageContainer";
 export { default as ProfileCard } from "@/components/display/ProfileCard";
+export { default as Section } from "@/components/container/Section";
 export { default as Select } from "@/components/form/Elements/SelectField";
 export { default as TextField } from "@/components/form/Elements/TextField";
 export { default as DatePickerField } from "@/components/form/Elements/DatePickerField";

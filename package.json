@@ -1,6 +1,6 @@
 {
   "name": "zip-code-info-sb",
-  "version": "1.9.12",
+  "version": "1.9.13",
   "private": false,
   "license": "MIT",
   "typings": "dist/index.d.ts",

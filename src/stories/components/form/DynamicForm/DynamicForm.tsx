@@ -1,41 +1,92 @@
+// vendors
 import { type FC } from "react";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  FormControl,
-  FormLabel,
-  Grid,
-  Stack,
-} from "@mui/material";
+import { Box, Button, FormControl, FormLabel, Grid, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { isEmpty, isEqual } from "lodash";
+
+// components
 import DatePickerField from "@/components/form/Elements/DatePickerField";
 import PhoneField from "@/components/form/Elements/PhoneField";
 import SelectField from "@/components/form/Elements/SelectField";
 import TextField from "@/components/form/Elements/TextField";
-import { useForm, type FieldValues, DeepPartial } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import Section from "@/components/container/Section";
+
+// types
+import type { FieldValues, DeepPartial, FieldErrors, Control } from "react-hook-form";
 import { ButtonProps, IFormFieldProps, IFormSectionProps } from "@/types/form";
+
+// styles
 import { gridSx, sectionContainerSx } from "./DynamicForm.styles";
-import { isEmpty, isEqual } from "lodash";
+
+interface IOption {
+  columns: number;
+  sections?: {
+    name: string;
+    title: string;
+  }[];
+}
 
 export interface DynamicFormProps {
   formFields: IFormFieldProps[] | IFormSectionProps[];
   formSchema: any;
   initialState: FieldValues;
   onSubmit: (params: FieldValues) => void;
-  options?: {
-    columns: number;
-    sections?: {
-      name: string;
-      title: string;
-    }[];
-  };
+  options?: IOption;
   primaryBtnProps: ButtonProps;
   secondaryBtnProps?: ButtonProps;
 }
+
+interface FormFieldsProps {
+  control: Control<FieldValues, any>;
+  errors: FieldErrors<FieldValues>;
+  formFields: IFormFieldProps[];
+  options?: IOption;
+}
+
+const FormFields: FC<FormFieldsProps> = ({ control, errors, formFields, options }) => {
+  const fieldTypes: Record<string, Function> = {
+    date: (props: IFormFieldProps) => (
+      <DatePickerField {...props} errors={errors} control={control} />
+    ),
+    email: (props: IFormFieldProps) => <TextField {...props} errors={errors} control={control} />,
+    number: (props: IFormFieldProps) => <TextField {...props} errors={errors} control={control} />,
+    password: (props: IFormFieldProps) => (
+      <TextField {...props} errors={errors} control={control} />
+    ),
+    text: (props: IFormFieldProps) => <TextField {...props} errors={errors} control={control} />,
+    phone: (props: IFormFieldProps) => <PhoneField {...props} errors={errors} control={control} />,
+    select: (props: IFormFieldProps) => (
+      <SelectField {...props} errors={errors} control={control} options={props.options ?? []} />
+    ),
+  };
+
+  return (
+    <Grid container spacing={2} sx={gridSx}>
+      {formFields.map((field, index) => (
+        <Grid item key={index} xs={12} md={options?.columns ? 12 / options.columns : undefined}>
+          {field.type === "select" ? (
+            fieldTypes[field.type](field)
+          ) : (
+            <FormControl
+              fullWidth
+              key={field.name}
+              margin={index === 0 && !options?.columns ? "none" : "dense"}
+            >
+              <FormLabel required={field.required}>{field.label}</FormLabel>
+              {fieldTypes[field.type](field)}
+            </FormControl>
+          )}
+        </Grid>
+      ))}
+    </Grid>
+  );
+};
+
+const isFormSectionType = (obj: any): obj is IFormSectionProps[] =>
+  Array.isArray(obj) &&
+  obj.every((item) => "description" in item && "name" in item && "formFields" in item);
 
 export const DynamicForm: FC<DynamicFormProps> = ({
   formFields,
@@ -76,109 +127,57 @@ export const DynamicForm: FC<DynamicFormProps> = ({
   const fieldErrosCondition = Object.keys(errors).length > 0;
   const noFormChangesCondition = isEqual(initialState, formValues);
 
-  const renderDatePicker = (props: IFormFieldProps) => (
-    <DatePickerField {...props} errors={errors} control={control} />
-  );
-
-  const renderPhoneField = (props: IFormFieldProps) => (
-    <PhoneField {...props} errors={errors} control={control} />
-  );
-
-  const renderSelect = (props: IFormFieldProps) => (
-    <SelectField {...props} errors={errors} control={control} options={props.options ?? []} />
-  );
-
-  const renderTextInput = (props: IFormFieldProps) => (
-    <TextField {...props} errors={errors} control={control} />
-  );
-
-  const fields: Record<string, (props: IFormFieldProps) => JSX.Element> = {
-    date: renderDatePicker,
-    email: renderTextInput,
-    number: renderTextInput,
-    password: renderTextInput,
-    text: renderTextInput,
-    phone: renderPhoneField,
-    select: renderSelect,
-  };
-
-  const renderFormFields = (formFields: IFormFieldProps[]) => {
-    return (
-      <Grid container spacing={2} sx={gridSx}>
-        {formFields.map((field, index) => (
-          <Grid item key={index} xs={12} md={options?.columns ? 12 / options.columns : undefined}>
-            {field.type === "select" ? (
-              fields[field.type](field)
-            ) : (
-              <FormControl
-                fullWidth
-                key={field.name}
-                margin={index === 0 && !options?.columns ? "none" : "dense"}
-              >
-                <FormLabel required={field.required}>{field.label}</FormLabel>
-                {fields[field.type](field)}
-              </FormControl>
-            )}
-          </Grid>
-        ))}
-      </Grid>
-    );
-  };
-
-  const renderFormSection = (formSections: IFormSectionProps[]) => {
-    return (
-      <Box component="div" sx={sectionContainerSx}>
-        {formSections.map(({ description, name, fields }: IFormSectionProps, index) => (
-          <Card className={index !== 0 ? "no-first-section" : undefined} key={`section-${name}`}>
-            <CardHeader title={description} />
-            <CardContent>{renderFormFields(fields)}</CardContent>
-          </Card>
-        ))}
-      </Box>
-    );
-  };
-
-  const isAFormSectionsType = (obj: any): obj is IFormSectionProps[] => {
-    return (
-      Array.isArray(obj) &&
-      obj.every((item) => "description" in item && "name" in item && "fields" in item)
-    );
-  };
-
   return (
     <Box autoComplete="off" component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      {isAFormSectionsType(formFields)
-        ? renderFormSection(formFields)
-        : renderFormFields(formFields)}
-      <Stack direction="row" marginTop={3} spacing={isSecondaryBtn ? 2 : undefined}>
-        {isSecondaryBtn && (
-          <Button
-            color="error"
-            fullWidth={secondaryBtnProps?.fullWidth}
-            sx={secondaryBtnProps?.sx}
-            type={secondaryBtnProps?.type}
-            variant={secondaryBtnProps?.variant}
-          >
-            {secondaryBtnProps?.label}
-          </Button>
+      <Box component="div" sx={sectionContainerSx}>
+        {isFormSectionType(formFields) ? (
+          formFields.map(({ description, formFields, name, sectionVarian }) => (
+            <Section
+              key={`section-${name}`}
+              title={description}
+              variant={sectionVarian ?? "outlined"}
+            >
+              <FormFields
+                control={control}
+                errors={errors}
+                formFields={formFields}
+                options={options}
+              />
+            </Section>
+          ))
+        ) : (
+          <FormFields control={control} errors={errors} formFields={formFields} options={options} />
         )}
-        <LoadingButton
-          color="primary"
-          disabled={
-            disabled ||
-            (disableBtnWhenFieldsAreEmpty && emptyFieldsCondition) ||
-            (disableBtnWhenFieldErrorsExist && fieldErrosCondition) ||
-            (disableBtnWhenNoChangesMade && noFormChangesCondition)
-          }
-          fullWidth={fullWidth}
-          loading={loading}
-          sx={sx}
-          type={type}
-          variant={variant}
-        >
-          {label}
-        </LoadingButton>
-      </Stack>
+        <Stack direction="row" spacing={isSecondaryBtn ? 2 : undefined}>
+          {isSecondaryBtn && (
+            <Button
+              color="error"
+              fullWidth={secondaryBtnProps?.fullWidth}
+              sx={secondaryBtnProps?.sx}
+              type={secondaryBtnProps?.type}
+              variant={secondaryBtnProps?.variant}
+            >
+              {secondaryBtnProps?.label}
+            </Button>
+          )}
+          <LoadingButton
+            color="primary"
+            disabled={
+              disabled ||
+              (disableBtnWhenFieldsAreEmpty && emptyFieldsCondition) ||
+              (disableBtnWhenFieldErrorsExist && fieldErrosCondition) ||
+              (disableBtnWhenNoChangesMade && noFormChangesCondition)
+            }
+            fullWidth={fullWidth}
+            loading={loading}
+            sx={sx}
+            type={type}
+            variant={variant}
+          >
+            {label}
+          </LoadingButton>
+        </Stack>
+      </Box>
     </Box>
   );
 };

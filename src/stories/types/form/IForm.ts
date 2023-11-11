@@ -64,8 +64,9 @@ export interface SelectFieldProps {
 
 export interface IFormSectionProps {
   description: string;
+  formFields: IFormFieldProps[];
   name: string;
-  fields: IFormFieldProps[];
+  sectionVarian?: "elevation" | "outlined";
 }
 
 export interface ButtonProps {

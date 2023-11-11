@@ -8,11 +8,13 @@ export interface CustomPaletteColorOptions {
 }
 
 export interface CustomPalette extends Palette {
+  error: CustomPaletteColorOptions;
+  grey: Color;
+  indigo: CustomPaletteColorOptions;
   primary: CustomPaletteColorOptions;
   secondary: CustomPaletteColorOptions;
-  error: CustomPaletteColorOptions;
   warning: CustomPaletteColorOptions;
-  grey: Color;
+  white: CustomPaletteColorOptions;
 }
 
 export interface CreateComponentsConfig {

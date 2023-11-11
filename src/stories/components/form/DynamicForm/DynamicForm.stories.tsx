@@ -279,7 +279,7 @@ const profileFormFieldsWithSections: IFormSectionProps[] = [
   {
     description: "Datos Fiscales",
     name: "taxinfo",
-    fields: [
+    formFields: [
       {
         label: "Nombre",
         name: "name",
@@ -426,7 +426,7 @@ const profileFormFieldsWithSections: IFormSectionProps[] = [
   {
     description: "Datos De Contacto",
     name: "contactinfo",
-    fields: [
+    formFields: [
       {
         label: "CP de Dirección Fiscal",
         name: "taxZipCode",

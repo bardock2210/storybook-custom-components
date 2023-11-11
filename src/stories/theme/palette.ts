@@ -49,5 +49,17 @@ export const palette: CreateComponentsConfig["palette"] = {
     light: "#FFCA8E",
     main: "#FFA036",
   },
+  indigo: {
+    light: "#EBEEFE",
+    main: "#6366F1",
+    dark: "#4338CA",
+    contrastText: "#FFFFFF",
+  },
+  white: {
+    light: "#FFFFFF",
+    main: "#FFFFFF",
+    dark: "#333333",
+    contrastText: "#333333",
+  },
   grey: GREY,
 } as CustomPalette;

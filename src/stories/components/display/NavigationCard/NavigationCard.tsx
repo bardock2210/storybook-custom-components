@@ -10,10 +10,10 @@ import type { SxProps } from "@mui/material";
 import type { IconifyIcon } from "@iconify/react";
 
 // styles
-import { StyledIcon, getCardSx, getIconSx } from "./NavigationCard.styles";
+import { CustomColor, StyledIcon, getCardSx, getIconSx } from "./NavigationCard.styles";
 
 export interface NavigationCardProps extends CardProps {
-  color: "primary" | "secondary" | "info" | "warning" | "error";
+  color?: CustomColor;
   icon: string | IconifyIcon;
   onClickHandler: () => void;
   sx?: SxProps;
@@ -22,7 +22,7 @@ export interface NavigationCardProps extends CardProps {
 }
 
 export const NavigationCard: FC<NavigationCardProps> = ({
-  color = "primary",
+  color = "white",
   icon,
   onClickHandler,
   sx,

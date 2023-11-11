@@ -40,6 +40,7 @@ export const PhoneField: FC<PhoneFieldProps> = ({
             onChange(value);
             setPhoneValue(value);
           }}
+          onlyCountries={["mx"]} // TODO: Only Mexico country is selected for now
           size={size}
           variant="outlined"
         />
