@@ -17,40 +17,36 @@ export interface AuthFormProps {
     };
   };
   authFormProps: DynamicFormProps;
-  formTitle: string;
+  title: string;
+  variant?: "elevation" | "outlined";
 }
 
 export const AuthForm: FC<AuthFormProps> = ({
   actions: { haveAccount, question },
   authFormProps,
-  formTitle,
-}) => {
-  return (
-    <AuthFormContainer>
+  title,
+  variant = "outlined",
+}) => (
+  <AuthFormContainer variant={variant}>
+    <Stack alignItems="center" width="100%">
       <Avatar>
         <LockOutlinedIcon />
       </Avatar>
       <Typography variant="h4" gutterBottom>
-        {formTitle}
+        {title}
       </Typography>
-      <DynamicForm {...authFormProps} />
-      <Stack
-        alignItems="center"
-        direction="row"
-        justifyContent="space-between"
-        paddingTop="1rem"
-        width="100%"
-      >
-        <Typography variant="body2">
-          {`${haveAccount.description}, `}
-          <Link onClick={haveAccount.linkHandler} underline="none" variant="subtitle2">
-            {haveAccount.link}
-          </Link>
-        </Typography>
-        <Link onClick={question.linkHandler} underline="none" variant="subtitle2">
-          {question.link}
+    </Stack>
+    <DynamicForm {...authFormProps} />
+    <Stack alignItems="center" direction="row" justifyContent="space-between" width="100%">
+      <Typography variant="body2">
+        {`${haveAccount.description}, `}
+        <Link onClick={haveAccount.linkHandler} underline="none" variant="subtitle2">
+          {haveAccount.link}
         </Link>
-      </Stack>
-    </AuthFormContainer>
-  );
-};
+      </Typography>
+      <Link onClick={question.linkHandler} underline="none" variant="subtitle2">
+        {question.link}
+      </Link>
+    </Stack>
+  </AuthFormContainer>
+);

@@ -1,7 +1,7 @@
 // vendors
 import { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Grid } from "@mui/material";
 
 // components
 import { NavigationCard, NavigationCardProps } from "./NavigationCard";
@@ -80,16 +80,10 @@ const NavigationCardTemplate: Story = {
 
 const NavigationCardsTemplate: Story = {
   render: (args) => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "lg"));
-
     return (
       <PageContainer title="Dashboard">
         {cards.map((card, index) => (
-          <Grid item key={`card-grid-item-${index}`} xs={isMobile ? 12 : isTablet ? 4 : 3}>
-            <NavigationCard {...card} />
-          </Grid>
+          <NavigationCard {...card} key={`navigation-card-${index}`} />
         ))}
       </PageContainer>
     );

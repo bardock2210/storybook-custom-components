@@ -3,8 +3,10 @@ import { styled } from "@mui/material/styles";
 
 export const AuthFormContainer = styled(Card)(({ theme }) => ({
   alignItems: "center",
+  borderRadius: "0.25rem",
   display: "flex",
   flexDirection: "column",
+  gap: "16px",
   justifyContent: "center",
   maxWidth: 550,
   [theme.breakpoints.up("md")]: { margin: "auto" },

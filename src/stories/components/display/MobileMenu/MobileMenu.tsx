@@ -59,7 +59,7 @@ const RenderMenuItems = ({ menuOptions, setAnchorEl }: RenderMenuItemsProps) => 
     <>
       {menuOptions.map(({ badgeContent, icon, message, onClickHandler }, index) => {
         return (
-          <div key={`menu-item-${index}`}>
+          <Box key={`menu-item-${index}`}>
             {(menuOptions.length - 1 === index || index === 0) && (
               <Divider
                 key={`divider-item-${index}`}
@@ -80,7 +80,7 @@ const RenderMenuItems = ({ menuOptions, setAnchorEl }: RenderMenuItemsProps) => 
               )}
               <p>{message}</p>
             </MenuItem>
-          </div>
+          </Box>
         );
       })}
     </>

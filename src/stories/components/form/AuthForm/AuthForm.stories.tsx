@@ -35,7 +35,7 @@ export const Login: Story = {
       },
     },
     authFormProps: { ...(LoginComponent.args as DynamicFormProps) },
-    formTitle: "Iniciar Sesión",
+    title: "Iniciar Sesión",
   },
 };
 
@@ -54,6 +54,6 @@ export const Register: Story = {
       },
     },
     authFormProps: { ...(RegistrationComponent.args as DynamicFormProps) },
-    formTitle: "Registro de Usuario",
+    title: "Registro de Usuario",
   },
 };

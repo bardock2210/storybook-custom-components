@@ -22,7 +22,7 @@ export const StyledIcon = styled("div")(({ theme }) => ({
 
 export const getCardSx = (color: CustomColor): SxProps<Theme> => ({
   backgroundColor: (theme: any) => theme.palette[color].light,
-  borderRadius: "8px",
+  borderRadius: "0.25rem",
   color: (theme: any) => theme.palette[color].dark,
   textAlign: "center",
 });
