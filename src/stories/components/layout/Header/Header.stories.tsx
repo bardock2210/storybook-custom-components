@@ -4,11 +4,11 @@ import {
   AccountCircle,
   LogoutOutlined,
   NotificationsNoneOutlined,
-  PlaceOutlined,
   SettingsOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import { Header, HeaderProps } from "./Header";
+import { Box } from "@mui/material";
 
 const menuOptions = [
   {
@@ -63,16 +63,20 @@ type Story = StoryObj<typeof Header>;
 
 const HeaderTemplate: Story = {
   render: (args: HeaderProps) => {
-    return <Header {...args} />;
+    return (
+      <>
+        <Box component="div" sx={{ height: "1200px" }}>
+          <Header {...args} />
+        </Box>
+      </>
+    );
   },
 };
 
 export const Default: Story = {
   ...HeaderTemplate,
   args: {
-    logo: <PlaceOutlined />,
     menuOptions: menuOptions,
-    onClickLogoHandler: () => console.log("On click logo..."),
     user: {
       email: "joe.hola.esto.es.un.correo.muy.largo.moe@company.com",
       name: "John Smith",

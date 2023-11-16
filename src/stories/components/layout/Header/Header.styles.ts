@@ -1,10 +1,14 @@
-import { SxProps } from "@mui/material";
+import { SxProps, Theme, alpha } from "@mui/material";
 
-export const headerContainer: SxProps = {
+export const headerContainer: SxProps<Theme> = {
+  backgroundColor: (theme) => alpha(theme.palette.primary.light, 0.8),
   flexGrow: 1,
+  position: "sticky",
+  top: 0,
+  zIndex: (theme) => theme.zIndex.appBar,
 };
 
-export const headerStyles: SxProps = {
+export const appBarStyles: SxProps = {
   boxShadow: "none",
 };
 
@@ -26,9 +30,3 @@ export const logoStyles: SxProps = {
   userSelect: "none",
 };
 
-export const iconContainer: SxProps = {
-  display: {
-    xs: "none",
-    md: "flex",
-  },
-};

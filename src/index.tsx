@@ -9,6 +9,7 @@ import type {
 } from "@/types/index";
 import type { NavigationCardProps } from "@/components/display/NavigationCard/NavigationCard";
 import type { NotificationBarProps } from "@/components/display/NotificationBar/NotificationBar";
+import type { SideNaveProps } from "@/components/layout/SideNav/SideNav";
 import { createTheme } from "@/theme/index";
 import type { CustomThemeOptions } from "@/theme/index";
 
@@ -27,6 +28,7 @@ export { default as PageContainer } from "@/components/container/PageContainer";
 export { default as ProfileCard } from "@/components/display/ProfileCard";
 export { default as Section } from "@/components/container/Section";
 export { default as Select } from "@/components/form/Elements/SelectField";
+export { default as SideNav } from "@/components/layout/SideNav";
 export { default as TextField } from "@/components/form/Elements/TextField";
 export { default as DatePickerField } from "@/components/form/Elements/DatePickerField";
 export { default as PhoneField } from "@/components/form/Elements/PhoneField";
@@ -50,6 +52,7 @@ export type {
   IFormSectionProps,
   IOption,
   SelectFieldProps,
+  SideNaveProps,
   TField,
   TextFieldProps,
 };

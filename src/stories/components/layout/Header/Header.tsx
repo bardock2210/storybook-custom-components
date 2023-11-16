@@ -1,33 +1,34 @@
 // vendors
 import { useState, type FC, type MouseEvent } from "react";
-import { AppBar, Badge, Box, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
+import { AppBar, Badge, Box, IconButton, Toolbar, Tooltip } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 
 // components
 import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/MobileMenu";
 
+// hooks
+import { useResponsive } from "@/hooks/useResponsive";
+
 // styles
-import {
-  headerContainer,
-  headerStyles,
-  iconContainer,
-  logoContainerSx,
-  logoStyles,
-} from "./Header.styles";
+import { headerContainer, appBarStyles } from "./Header.styles";
+
+// icons
+import MenuIcon from "@mui/icons-material/Menu";
 
 export interface HeaderProps {
-  logo: JSX.Element;
   menuOptions: MenuOptionsProps[];
-  onClickLogoHandler: () => void;
+  onOpenSidebar: () => void;
   user: {
     name: string;
     email: string;
   };
 }
 
-export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler, user }) => {
+export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, user }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
+  const lgUp = useResponsive("up", "lg");
+  const smDown = useResponsive("down", "sm");
 
   const handleMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -46,44 +47,52 @@ export const Header: FC<HeaderProps> = ({ logo, menuOptions, onClickLogoHandler,
   };
 
   return (
-    <Box sx={headerContainer}>
-      <AppBar color="primary" position="static" sx={headerStyles}>
+    <Box component="header" sx={headerContainer}>
+      <AppBar color="primary" position="static" sx={appBarStyles}>
         <Toolbar>
-          <Box component="div" onClick={onClickLogoHandler} sx={logoContainerSx}>
-            {logo}
-            <Typography component="div" noWrap sx={logoStyles} variant="h6">
-              ZipCode Services
-            </Typography>
-          </Box>
+          {!lgUp && (
+            <Box component="div" onClick={onOpenSidebar}>
+              <IconButton color="inherit" size="large">
+                <MenuIcon />
+              </IconButton>
+            </Box>
+          )}
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={iconContainer}>
-            {menuOptions.map(
-              ({ badgeContent, icon, hasSubMenu, isIconButton, message, onClickHandler }, index) =>
-                isIconButton && (
-                  <Tooltip key={`icon-button-${index}`} title={message}>
-                    <IconButton
-                      color="inherit"
-                      onClick={(e) => (hasSubMenu ? handleMenuOpen(e) : onClickHandler(e))}
-                      size="large"
-                    >
-                      <Badge badgeContent={badgeContent} color="error">
-                        {icon}
-                      </Badge>
-                    </IconButton>
-                  </Tooltip>
-                )
-            )}
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              aria-haspopup="true"
-              color="inherit"
-              onClick={handleMobileMenuOpen}
-              size="large"
-            >
-              <MoreVert />
-            </IconButton>
-          </Box>
+          {!smDown && (
+            <Box>
+              {menuOptions.map(
+                (
+                  { badgeContent, icon, hasSubMenu, isIconButton, message, onClickHandler },
+                  index
+                ) =>
+                  isIconButton && (
+                    <Tooltip key={`icon-button-${index}`} title={message}>
+                      <IconButton
+                        color="inherit"
+                        onClick={(e) => (hasSubMenu ? handleMenuOpen(e) : onClickHandler(e))}
+                        size="large"
+                      >
+                        <Badge badgeContent={badgeContent} color="error">
+                          {icon}
+                        </Badge>
+                      </IconButton>
+                    </Tooltip>
+                  )
+              )}
+            </Box>
+          )}
+          {smDown && (
+            <Box>
+              <IconButton
+                aria-haspopup="true"
+                color="inherit"
+                onClick={handleMobileMenuOpen}
+                size="large"
+              >
+                <MoreVert />
+              </IconButton>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
       {
