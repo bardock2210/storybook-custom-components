@@ -10,7 +10,7 @@ import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/Mo
 import { useResponsive } from "@/hooks/useResponsive";
 
 // styles
-import { headerContainer, appBarStyles } from "./Header.styles";
+import { appBarStyles } from "./Header.styles";
 
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -47,8 +47,8 @@ export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, user }) =>
   };
 
   return (
-    <Box component="header" sx={headerContainer}>
-      <AppBar color="primary" position="static" sx={appBarStyles}>
+    <>
+      <AppBar color="primary" position="fixed" sx={appBarStyles}>
         <Toolbar>
           {!lgUp && (
             <Box component="div" onClick={onOpenSidebar}>
@@ -115,6 +115,6 @@ export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, user }) =>
           user={{ email: user.email, name: user.name }}
         />
       }
-    </Box>
+    </>
   );
 };

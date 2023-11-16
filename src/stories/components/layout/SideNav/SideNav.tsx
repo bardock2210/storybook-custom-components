@@ -30,7 +30,7 @@ interface SideNaveItemProps {
   active?: boolean;
   disabled?: boolean;
   icon?: JSX.Element;
-  onSideNavItemHandler: () => void;
+  route: string;
   title: string;
 }
 
@@ -42,10 +42,12 @@ interface UserCardProps {
 
 export interface SideNaveProps extends DrawerProps {
   items: SideNaveItemProps[];
-  logo: JSX.Element;
-  logoTitle: string;
-  onSideNavItemHandler: () => void;
-  onLogoHandler: () => void;
+  logo: {
+    icon: JSX.Element;
+    title: string;
+    onClick: () => void;
+  };
+  onSideNavItemHandler: (itemRoute: string) => void;
   user: {
     email: string;
     name: string;
@@ -68,15 +70,16 @@ const UserCard: FC<UserCardProps> = ({ avatar, email, name }) => (
   </Box>
 );
 
-const SideNavItem: FC<SideNaveItemProps> = ({
+const SideNavItem: FC<SideNaveItemProps & { onItemClick: (route: string) => void }> = ({
   active,
   disabled,
   icon,
-  onSideNavItemHandler,
+  onItemClick,
+  route,
   title,
 }) => (
   <Box component="li">
-    <ButtonBase onClick={onSideNavItemHandler} sx={getSideNavItemSx(active)}>
+    <ButtonBase onClick={() => onItemClick(route)} sx={getSideNavItemSx(active)}>
       {icon && (
         <Box component="span" sx={getSideNavItemIconSx(active)}>
           {icon}
@@ -92,11 +95,9 @@ const SideNavItem: FC<SideNaveItemProps> = ({
 export const SideNav: FC<SideNaveProps> = ({
   anchor = "left",
   items,
-  logo,
-  logoTitle,
+  logo: { icon, title, onClick },
   onSideNavItemHandler,
   onClose,
-  onLogoHandler,
   open,
   user: { email, name },
   variant,
@@ -104,41 +105,45 @@ export const SideNav: FC<SideNaveProps> = ({
   const lgUp = useResponsive("up", "lg");
 
   return (
-    <Drawer
-      anchor={anchor}
-      onClose={onClose}
-      open={open}
-      PaperProps={{ sx: sideNavPaperSx }}
-      sx={sideNavSx}
-      variant={variant ? variant : lgUp ? "permanent" : "temporary"}
-    >
-      <Scrollbar className="Scrollbar-root">
-        <Box className="SideNav-header-container" component="div" onClick={onLogoHandler}>
-          <Box className="SideNav-header-logo">
-            {logo}
-            <Typography component="div" noWrap variant="h6">
-              {logoTitle}
-            </Typography>
+    <Box component="nav">
+      <Drawer
+        anchor={anchor}
+        ModalProps={{ keepMounted: true }}
+        onClose={onClose}
+        open={open}
+        PaperProps={{ sx: sideNavPaperSx }}
+        sx={sideNavSx}
+        variant={variant ? variant : lgUp ? "permanent" : "temporary"}
+      >
+        <Scrollbar className="Scrollbar-root">
+          <Box className="SideNav-header-container" component="div" onClick={onClick}>
+            <Box className="SideNav-header-logo">
+              {icon}
+              <Typography component="div" noWrap variant="h6">
+                {title}
+              </Typography>
+            </Box>
+            <UserCard email={email} name={name} />
           </Box>
-          <UserCard email={email} name={name} />
-        </Box>
-        <Divider />
-        <Box component="nav">
-          <Stack component="ul" spacing={0.5}>
-            {items.map((item) => (
-              <SideNavItem
-                active={item.active}
-                disabled={item.disabled}
-                icon={item.icon}
-                key={item.title}
-                onSideNavItemHandler={onSideNavItemHandler}
-                title={item.title}
-              />
-            ))}
-          </Stack>
-        </Box>
-        <Divider />
-      </Scrollbar>
-    </Drawer>
+          <Divider />
+          <Box component="nav">
+            <Stack component="ul" spacing={0.5}>
+              {items.map((item) => (
+                <SideNavItem
+                  active={item.active}
+                  disabled={item.disabled}
+                  icon={item.icon}
+                  key={item.title}
+                  onItemClick={onSideNavItemHandler}
+                  route={item.route}
+                  title={item.title}
+                />
+              ))}
+            </Stack>
+          </Box>
+          <Divider />
+        </Scrollbar>
+      </Drawer>
+    </Box>
   );
 };

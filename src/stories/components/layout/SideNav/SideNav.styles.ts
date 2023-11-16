@@ -1,13 +1,17 @@
 // vendors
 import { alpha, type SxProps, type Theme } from "@mui/material";
 
+const SIDE_NAV_WIDTH = 280;
+
 export const sideNavPaperSx: SxProps<Theme> = {
   backgroundColor: (theme) => theme.palette.primary.dark,
   color: "common.white",
-  width: 280,
+  width: `${SIDE_NAV_WIDTH}px`,
 };
 
 export const sideNavSx: SxProps<Theme> = {
+  boxSizing: "border-box",
+  width: `${SIDE_NAV_WIDTH}px`,
   zIndex: (theme) => theme.zIndex.appBar + 100,
   "& .Scrollbar-root": {
     height: "100%",
@@ -45,6 +49,11 @@ export const sideNavSx: SxProps<Theme> = {
     "& .simplebar-scrollbar:before": {
       background: "neutral.400",
     },
+  },
+  display: (theme) => {
+    const lgUp = theme.breakpoints.up("lg");
+
+    return lgUp ? { xs: "none", sm: "block" } : { xs: "block", sm: "none" };
   },
 };
 
