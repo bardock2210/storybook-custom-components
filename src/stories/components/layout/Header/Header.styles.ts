@@ -1,23 +1,17 @@
 import { SxProps, Theme } from "@mui/material";
+import { SIDE_NAV_WIDTH } from "@/types/constants";
 
-const SIDE_NAV_WIDTH = 280;
-
-// export const HeaderContainer = styled(Box)(({ theme }: any) => ({
-//   backgroundColor: alpha(theme.palette.primary.light, 0.8),
-//   flexGrow: 1,
-//   position: "sticky",
-//   top: 0,
-//   zIndex: theme.zIndex.appBar,
-//   [theme.breakpoints.up("lg")]: {
-//     left: `${SIDE_NAV_WIDTH}px`,
-//     width: `calc(100% - ${SIDE_NAV_WIDTH + 1}px)`,
-//   },
-// }));
-
-export const appBarStyles: SxProps<Theme> = {
-  boxShadow: "none",
-  width: { lg: `calc(100% - ${SIDE_NAV_WIDTH}px)` },
-  ml: { lg: `${SIDE_NAV_WIDTH}px` },
+export const getAppBarStyles = (hasSideNav: boolean): SxProps<Theme> => {
+  return {
+    background: (theme) => theme.palette.primary.dark,
+    boxShadow: "none",
+    ...(hasSideNav && {
+      width: {
+        lg: `calc(100% - ${SIDE_NAV_WIDTH})`,
+      },
+      ml: { lg: SIDE_NAV_WIDTH },
+    }),
+  };
 };
 
 export const logoContainerSx: SxProps<Theme> = {

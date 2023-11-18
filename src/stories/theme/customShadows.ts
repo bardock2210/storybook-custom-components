@@ -1,9 +1,10 @@
-import { ThemeOptions, alpha } from "@mui/material/styles";
+import { Theme, ThemeOptions, alpha } from "@mui/material/styles";
 import { palette } from "./palette";
+import { CustomPalette } from "../types";
 
 const color = palette.grey[500];
 
-export interface CustomThemeOptions extends ThemeOptions {
+export interface CustomThemeOptions extends Theme {
   customShadows?: {
     z1: string;
     z4: string;
@@ -22,6 +23,8 @@ export interface CustomThemeOptions extends ThemeOptions {
     dialog: string;
     dropdown: string;
   };
+  customValues: Record<string, any>;
+  palette: CustomPalette;
 }
 
 export const customShadows = () => {

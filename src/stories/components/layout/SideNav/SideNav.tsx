@@ -9,9 +9,7 @@ import {
   DrawerProps,
   Stack,
   Typography,
-  styled,
 } from "@mui/material";
-import SimpleBar from "simplebar-react";
 
 // hooks
 import { useResponsive } from "@/hooks/useResponsive";
@@ -53,8 +51,6 @@ export interface SideNaveProps extends DrawerProps {
     name: string;
   };
 }
-
-const Scrollbar = styled(SimpleBar)``;
 
 const UserCard: FC<UserCardProps> = ({ avatar, email, name }) => (
   <Box component="div" sx={userCardSx}>
@@ -105,45 +101,40 @@ export const SideNav: FC<SideNaveProps> = ({
   const lgUp = useResponsive("up", "lg");
 
   return (
-    <Box component="nav">
-      <Drawer
-        anchor={anchor}
-        ModalProps={{ keepMounted: true }}
-        onClose={onClose}
-        open={open}
-        PaperProps={{ sx: sideNavPaperSx }}
-        sx={sideNavSx}
-        variant={variant ? variant : lgUp ? "permanent" : "temporary"}
-      >
-        <Scrollbar className="Scrollbar-root">
-          <Box className="SideNav-header-container" component="div" onClick={onClick}>
-            <Box className="SideNav-header-logo">
-              {icon}
-              <Typography component="div" noWrap variant="h6">
-                {title}
-              </Typography>
-            </Box>
-            <UserCard email={email} name={name} />
-          </Box>
-          <Divider />
-          <Box component="nav">
-            <Stack component="ul" spacing={0.5}>
-              {items.map((item) => (
-                <SideNavItem
-                  active={item.active}
-                  disabled={item.disabled}
-                  icon={item.icon}
-                  key={item.title}
-                  onItemClick={onSideNavItemHandler}
-                  route={item.route}
-                  title={item.title}
-                />
-              ))}
-            </Stack>
-          </Box>
-          <Divider />
-        </Scrollbar>
-      </Drawer>
-    </Box>
+    <Drawer
+      anchor={anchor}
+      ModalProps={{ keepMounted: true }}
+      onClose={onClose}
+      open={open}
+      PaperProps={{ sx: sideNavPaperSx }}
+      sx={sideNavSx}
+      variant={variant ? variant : lgUp ? "permanent" : "temporary"}
+    >
+      <Box className="SideNav-header-container" component="div" onClick={onClick}>
+        <Box className="SideNav-header-logo">
+          {icon}
+          <Typography component="div" noWrap variant="h6">
+            {title}
+          </Typography>
+        </Box>
+        <UserCard email={email} name={name} />
+      </Box>
+      <Divider />
+      <Box component="nav">
+        <Stack component="ul" spacing={0.5}>
+          {items.map((item) => (
+            <SideNavItem
+              active={item.active}
+              disabled={item.disabled}
+              icon={item.icon}
+              key={item.title}
+              onItemClick={onSideNavItemHandler}
+              route={item.route}
+              title={item.title}
+            />
+          ))}
+        </Stack>
+      </Box>
+    </Drawer>
   );
 };

@@ -10,7 +10,7 @@ import { MobileMenu, MenuOptionsProps } from "@/components/display/MobileMenu/Mo
 import { useResponsive } from "@/hooks/useResponsive";
 
 // styles
-import { appBarStyles } from "./Header.styles";
+import { getAppBarStyles } from "./Header.styles";
 
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,13 +18,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 export interface HeaderProps {
   menuOptions: MenuOptionsProps[];
   onOpenSidebar: () => void;
+  sideNav?: boolean;
   user: {
     name: string;
     email: string;
   };
 }
 
-export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, user }) => {
+export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, sideNav, user }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
   const lgUp = useResponsive("up", "lg");
@@ -48,7 +49,7 @@ export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, user }) =>
 
   return (
     <>
-      <AppBar color="primary" position="fixed" sx={appBarStyles}>
+      <AppBar position="fixed" sx={getAppBarStyles(Boolean(sideNav))}>
         <Toolbar>
           {!lgUp && (
             <Box component="div" onClick={onOpenSidebar}>

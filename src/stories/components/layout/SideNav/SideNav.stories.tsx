@@ -1,6 +1,7 @@
 // vendors
 import { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { useState } from "react";
 import { Box, SvgIcon, Toolbar, Typography } from "@mui/material";
 
 // components
@@ -108,10 +109,14 @@ export const WithLayout: Story = {
     user,
   },
   render: (args: SideNaveProps) => {
+    const [open, setOpen] = useState(false);
+
+    const onOpenSidebar = () => setOpen(!open);
+
     return (
       <Box sx={{ display: "flex" }}>
-        <Header {...(HeaderComponent.args as HeaderProps)} />
-        <SideNav {...args} />
+        <Header {...(HeaderComponent.args as HeaderProps)} onOpenSidebar={onOpenSidebar} sideNav />
+        <SideNav {...args} onClose={onOpenSidebar} open={open} />
         <Box
           component="main"
           sx={{ flexGrow: 1, p: 3, width: { lg: `calc(100% - ${SIDE_NAV_WIDTH}px)` } }}

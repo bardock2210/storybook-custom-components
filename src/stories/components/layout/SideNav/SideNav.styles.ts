@@ -1,53 +1,58 @@
 // vendors
 import { alpha, type SxProps, type Theme } from "@mui/material";
 
-const SIDE_NAV_WIDTH = 280;
+// consts
+import { SIDE_NAV_WIDTH } from "@/types/constants";
 
 export const sideNavPaperSx: SxProps<Theme> = {
   backgroundColor: (theme) => theme.palette.primary.dark,
+  border: "none",
+  boxShadow: "none",
   color: "common.white",
-  width: `${SIDE_NAV_WIDTH}px`,
+  overflow: "hidden",
+  width: SIDE_NAV_WIDTH,
 };
 
 export const sideNavSx: SxProps<Theme> = {
   boxSizing: "border-box",
-  width: `${SIDE_NAV_WIDTH}px`,
+  width: SIDE_NAV_WIDTH,
   zIndex: (theme) => theme.zIndex.appBar + 100,
-  "& .Scrollbar-root": {
-    height: "100%",
-    "& .simplebar-content": {
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-      "& .SideNav-header-container": {
-        alignItems: "center",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        padding: [3, 2],
-        "& .SideNav-header-logo": {
-          cursor: "pointer",
-          display: "inline-flex",
-          "& .MuiTypography-root": {
-            paddingLeft: "5px",
-          },
-        },
+  "& .SideNav-header-container": {
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    gap: "2rem",
+    padding: [3, 2],
+    "& .SideNav-header-logo": {
+      cursor: "pointer",
+      display: "inline-flex",
+      "& .MuiTypography-root": {
+        paddingLeft: "5px",
       },
     },
-    "& .MuiDivider-root": {
-      borderColor: "neutral.700",
+  },
+  "& .MuiDivider-root": {
+    borderColor: "neutral.700",
+  },
+  "& nav": {
+    flexGrow: 1,
+    padding: [3, 2],
+    overflow: "auto",
+    "&::-webkit-scrollbar": {
+      width: "5px !important",
     },
-    "& nav": {
-      flexGrow: 1,
-      padding: [3, 2],
+    "&::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 5px grey",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "#555",
+      borderRadius: "10px",
     },
     "& ul": {
       listStyle: "none",
       p: 0,
       m: 0,
-    },
-    "& .simplebar-scrollbar:before": {
-      background: "neutral.400",
     },
   },
   display: (theme) => {
