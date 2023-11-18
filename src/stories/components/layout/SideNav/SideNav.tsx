@@ -24,7 +24,7 @@ import {
   userCardSx,
 } from "./SideNav.styles";
 
-interface SideNaveItemProps {
+export interface SideNaveItemProps {
   active?: boolean;
   disabled?: boolean;
   icon?: JSX.Element;
