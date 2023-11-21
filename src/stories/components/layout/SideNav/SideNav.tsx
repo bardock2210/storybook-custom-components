@@ -24,7 +24,7 @@ import {
   userCardSx,
 } from "./SideNav.styles";
 
-export interface SideNaveItemProps {
+export interface SideNavItemProps {
   active?: boolean;
   disabled?: boolean;
   icon?: JSX.Element;
@@ -43,8 +43,8 @@ interface UserCardProps {
   name: string;
 }
 
-export interface SideNaveProps extends DrawerProps {
-  items: SideNaveItemProps[];
+export interface SideNavProps extends DrawerProps {
+  items: SideNavItemProps[];
   logo: {
     icon: JSX.Element;
     title: string;
@@ -71,7 +71,7 @@ const UserCard: FC<UserCardProps> = ({ avatar, email, name }) => (
   </Box>
 );
 
-const SideNavItem: FC<SideNaveItemProps & AdditionalSideNavItemProps> = ({
+const SideNavItem: FC<SideNavItemProps & AdditionalSideNavItemProps> = ({
   active,
   disabled,
   icon,
@@ -100,7 +100,7 @@ const SideNavItem: FC<SideNaveItemProps & AdditionalSideNavItemProps> = ({
   </Box>
 );
 
-export const SideNav: FC<SideNaveProps> = ({
+export const SideNav: FC<SideNavProps> = ({
   anchor = "left",
   items,
   logo: { icon, title, onClick },

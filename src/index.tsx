@@ -9,7 +9,7 @@ import type {
 } from "@/types/index";
 import type { NavigationCardProps } from "@/components/display/NavigationCard/NavigationCard";
 import type { NotificationBarProps } from "@/components/display/NotificationBar/NotificationBar";
-import type { SideNaveProps, SideNaveItemProps } from "@/components/layout/SideNav/SideNav";
+import type { SideNavProps, SideNavItemProps } from "@/components/layout/SideNav/SideNav";
 import { createTheme } from "@/theme/index";
 import type { CustomThemeOptions } from "@/theme/index";
 
@@ -52,8 +52,8 @@ export type {
   IFormSectionProps,
   IOption,
   SelectFieldProps,
-  SideNaveProps,
-  SideNaveItemProps,
+  SideNavProps,
+  SideNavItemProps,
   TField,
   TextFieldProps,
 };

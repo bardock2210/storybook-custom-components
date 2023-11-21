@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Box, SvgIcon, Toolbar, Typography } from "@mui/material";
 
 // components
-import { SideNav, SideNaveProps } from "./SideNav";
+import { SideNav, SideNavProps } from "./SideNav";
 import { Header, HeaderProps } from "@/components/layout/Header/Header";
 
 // stories
@@ -108,7 +108,7 @@ export const WithLayout: Story = {
     logo,
     user,
   },
-  render: (args: SideNaveProps) => {
+  render: (args: SideNavProps) => {
     const [open, setOpen] = useState(false);
 
     const onOpenSidebar = () => setOpen(!open);
