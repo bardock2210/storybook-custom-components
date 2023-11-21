@@ -55,11 +55,6 @@ export const sideNavSx: SxProps<Theme> = {
       m: 0,
     },
   },
-  display: (theme) => {
-    const lgUp = theme.breakpoints.up("lg");
-
-    return lgUp ? { xs: "none", sm: "block" } : { xs: "block", sm: "none" };
-  },
 };
 
 export const getSideNavItemSx = (active?: boolean): SxProps<Theme> => {

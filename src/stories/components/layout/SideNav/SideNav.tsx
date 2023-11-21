@@ -32,6 +32,11 @@ export interface SideNaveItemProps {
   title: string;
 }
 
+export interface AdditionalSideNavItemProps {
+  onClose?: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void;
+  onItemClick: (route: string) => void;
+}
+
 interface UserCardProps {
   avatar?: string;
   email: string;
@@ -66,16 +71,23 @@ const UserCard: FC<UserCardProps> = ({ avatar, email, name }) => (
   </Box>
 );
 
-const SideNavItem: FC<SideNaveItemProps & { onItemClick: (route: string) => void }> = ({
+const SideNavItem: FC<SideNaveItemProps & AdditionalSideNavItemProps> = ({
   active,
   disabled,
   icon,
+  onClose,
   onItemClick,
   route,
   title,
 }) => (
   <Box component="li">
-    <ButtonBase onClick={() => onItemClick(route)} sx={getSideNavItemSx(active)}>
+    <ButtonBase
+      onClick={(e) => {
+        onClose && onClose(e, "backdropClick");
+        onItemClick(route);
+      }}
+      sx={getSideNavItemSx(active)}
+    >
       {icon && (
         <Box component="span" sx={getSideNavItemIconSx(active)}>
           {icon}
@@ -128,6 +140,7 @@ export const SideNav: FC<SideNaveProps> = ({
               disabled={item.disabled}
               icon={item.icon}
               key={item.title}
+              onClose={onClose}
               onItemClick={onSideNavItemHandler}
               route={item.route}
               title={item.title}
