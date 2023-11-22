@@ -10,6 +10,7 @@ import type {
 import type { NavigationCardProps } from "@/components/display/NavigationCard/NavigationCard";
 import type { NotificationBarProps } from "@/components/display/NotificationBar/NotificationBar";
 import type { SideNavProps, SideNavItemProps } from "@/components/layout/SideNav/SideNav";
+import type { LoadingProps } from "@/components/layout/Loading/Loading";
 import { createTheme } from "@/theme/index";
 import type { CustomThemeOptions } from "@/theme/index";
 
@@ -21,6 +22,7 @@ export { default as AuthPage } from "@/components/layout/AuthPage";
 export { default as DynamicForm } from "@/components/form/DynamicForm";
 export { default as Header } from "@/components/layout/Header";
 export { default as Iconify } from "@/components/display/Iconify";
+export { default as Loading } from "@/components/layout/Loading";
 export { default as MobileMenu } from "@/components/display/MobileMenu";
 export { default as NavigationCard } from "@/components/display/NavigationCard";
 export { default as NotificationBar } from "@/components/display/NotificationBar";
@@ -51,6 +53,7 @@ export type {
   IFormFieldProps,
   IFormSectionProps,
   IOption,
+  LoadingProps,
   SelectFieldProps,
   SideNavProps,
   SideNavItemProps,
