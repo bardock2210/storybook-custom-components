@@ -7,8 +7,7 @@ import {
   SettingsOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import { Header, HeaderProps } from "./Header";
-import { Box } from "@mui/material";
+import { Header } from "./Header";
 
 const menuOptions = [
   {
@@ -61,20 +60,7 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-const HeaderTemplate: Story = {
-  render: (args: HeaderProps) => {
-    return (
-      <>
-        <Box component="div" sx={{ height: "1200px" }}>
-          <Header {...args} />
-        </Box>
-      </>
-    );
-  },
-};
-
 export const Default: Story = {
-  ...HeaderTemplate,
   args: {
     menuOptions: menuOptions,
     user: {

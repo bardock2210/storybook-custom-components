@@ -53,7 +53,7 @@ export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, sideNav, u
         <Toolbar>
           {!lgUp && (
             <Box component="div" onClick={onOpenSidebar}>
-              <IconButton color="inherit" size="large">
+              <IconButton size="large">
                 <MenuIcon />
               </IconButton>
             </Box>
@@ -69,7 +69,6 @@ export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, sideNav, u
                   isIconButton && (
                     <Tooltip key={`icon-button-${index}`} title={message}>
                       <IconButton
-                        color="inherit"
                         onClick={(e) => (hasSubMenu ? handleMenuOpen(e) : onClickHandler(e))}
                         size="large"
                       >
@@ -84,12 +83,7 @@ export const Header: FC<HeaderProps> = ({ menuOptions, onOpenSidebar, sideNav, u
           )}
           {smDown && (
             <Box>
-              <IconButton
-                aria-haspopup="true"
-                color="inherit"
-                onClick={handleMobileMenuOpen}
-                size="large"
-              >
+              <IconButton aria-haspopup="true" onClick={handleMobileMenuOpen} size="large">
                 <MoreVert />
               </IconButton>
             </Box>

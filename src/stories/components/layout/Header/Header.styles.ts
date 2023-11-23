@@ -3,7 +3,8 @@ import { SIDE_NAV_WIDTH } from "@/types/constants";
 
 export const getAppBarStyles = (hasSideNav: boolean): SxProps<Theme> => {
   return {
-    background: (theme) => theme.palette.primary.dark,
+    backdropFilter: "blur(6px)",
+    backgroundColor: "rgba(249, 250, 251, 0.8)",
     boxShadow: "none",
     ...(hasSideNav && {
       width: {

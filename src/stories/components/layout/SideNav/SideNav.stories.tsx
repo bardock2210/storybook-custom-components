@@ -17,7 +17,6 @@ import {
   AccountTree,
   Article,
   Category,
-  LogoutOutlined,
   PlaceOutlined,
   ShoppingBag,
 } from "@mui/icons-material";
