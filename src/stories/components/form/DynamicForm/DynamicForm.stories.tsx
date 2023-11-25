@@ -1,8 +1,13 @@
-import { Meta, StoryObj } from "@storybook/react";
+// vendors
+import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import * as Yup from "yup";
+
+// components
 import { DynamicForm } from "./DynamicForm";
-import { IFormFieldProps, IFormSectionProps } from "@/types/form";
+
+// types
+import type { IFormFieldProps, IFormSectionProps } from "@/types/form";
 
 export interface ILoginValues {
   email: string;
@@ -482,25 +487,11 @@ const meta: Meta<typeof DynamicForm> = {
 export default meta;
 type Story = StoryObj<typeof DynamicForm>;
 
-const DynamicFormTemplate: Story = {
-  render: (args) => {
-    return <DynamicForm {...args} />;
-  },
-};
-
-const ProfileDynamicFormTemplate: Story = {
-  render: (args) => {
-    return <DynamicForm {...args} initialState={profileInitialState} />;
-  },
-};
-
 export const Login: Story = {
-  ...DynamicFormTemplate,
   args: {
     formFields: LOGIN_FORM_DATA,
     formSchema: LoginSchema,
     initialState: LOGIN_INITIAL_STATE,
-    onSubmit: (params) => action("Login form submitted: ")(params),
     primaryBtnProps: {
       disableBtnWhenFieldsAreEmpty: true,
       disableBtnWhenFieldErrorsExist: true,
@@ -514,12 +505,10 @@ export const Login: Story = {
 };
 
 export const Register: Story = {
-  ...DynamicFormTemplate,
   args: {
     formFields: REGISTRATION_FORM_DATA,
     formSchema: RegistrationSchema,
     initialState: REGISTRATION_INITIAL_STATE,
-    onSubmit: (params) => action("Register form submitted: ")(params),
     primaryBtnProps: {
       fullWidth: true,
       label: "Register",
@@ -530,16 +519,13 @@ export const Register: Story = {
 };
 
 export const Profile: Story = {
-  ...ProfileDynamicFormTemplate,
   args: {
     formFields: profileFormFields,
     formSchema: profileFormSchema,
     initialState: profileInitialState,
-    onSubmit: (params) => action("Profile form submitted: ")(params),
     options: { columns: 2 },
     primaryBtnProps: {
       disableBtnWhenFieldErrorsExist: true,
-      // disableBtnWhenFieldsAreEmpty: true,
       disableBtnWhenNoChangesMade: true,
       fullWidth: true,
       label: "Guardar",
@@ -547,15 +533,16 @@ export const Profile: Story = {
       variant: "contained",
     },
   },
+  render: (args) => {
+    return <DynamicForm {...args} initialState={profileInitialState} />;
+  },
 };
 
 export const ProfileWithSections: Story = {
-  ...ProfileDynamicFormTemplate,
   args: {
     formFields: profileFormFieldsWithSections,
     formSchema: profileFormSchema,
     initialState: profileInitialState,
-    onSubmit: (params) => action("Profile with secions form submitted: ")(params),
     options: { columns: 2 },
     primaryBtnProps: {
       fullWidth: true,
@@ -564,4 +551,5 @@ export const ProfileWithSections: Story = {
       variant: "contained",
     },
   },
+  render: Profile.render,
 };
