@@ -19,6 +19,9 @@ export const AuthFormContainer = styled(Card)(({ theme }) => {
       margin: "0px",
       padding: theme.spacing(2, 2, 2),
     },
+    [theme.breakpoints.down("sm")]: {
+      boxShadow: "none !important",
+    },
     "& .MuiAvatar-root": {
       backgroundColor: theme.palette.info.main,
       height: 56,

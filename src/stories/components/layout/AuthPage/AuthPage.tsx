@@ -17,6 +17,7 @@ export interface AuthProps {
 
 export const AuthPage = ({ children, sideBar: { image, title } }: PropsWithChildren<AuthProps>) => {
   const middleUp = useResponsive("up", "md");
+  const smallDown = useResponsive("down", "sm");
 
   return (
     <StyledRoot>
@@ -26,7 +27,7 @@ export const AuthPage = ({ children, sideBar: { image, title } }: PropsWithChild
           {image}
         </SideBarContainer>
       )}
-      <ChildrenContainer maxWidth="sm">{children}</ChildrenContainer>
+      {smallDown ? children : <ChildrenContainer maxWidth="sm">{children}</ChildrenContainer>}
     </StyledRoot>
   );
 };

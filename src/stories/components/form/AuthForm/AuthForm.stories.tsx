@@ -35,7 +35,10 @@ export const Login: Story = {
         linkHandler: action("click on forgot password"),
       },
     },
-    authFormProps: { ...(LoginComponent.args as DynamicFormProps) },
+    authFormProps: {
+      ...(LoginComponent.args as DynamicFormProps),
+      onSubmit: action("onLoginSubmit"),
+    },
     title: "Iniciar Sesión",
   },
 };
@@ -53,7 +56,10 @@ export const Register: Story = {
         linkHandler: action("click on forgot password"),
       },
     },
-    authFormProps: { ...(RegistrationComponent.args as DynamicFormProps) },
+    authFormProps: {
+      ...(RegistrationComponent.args as DynamicFormProps),
+      onSubmit: action("onRegisterSubmit"),
+    },
     title: "Registro de Usuario",
   },
 };

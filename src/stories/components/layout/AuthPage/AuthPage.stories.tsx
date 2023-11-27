@@ -15,28 +15,7 @@ const meta: Meta<typeof AuthPage> = {
 export default meta;
 type Story = StoryObj<typeof AuthPage>;
 
-const LoginTemplate: Story = {
-  render: (args: AuthProps) => {
-    return (
-      <AuthPage {...args}>
-        <AuthForm {...(LoginAuthComponent.args as AuthFormProps)} />
-      </AuthPage>
-    );
-  },
-};
-
-const RegisterTemplate: Story = {
-  render: (args: AuthProps) => {
-    return (
-      <AuthPage {...args}>
-        <AuthForm {...(RegisterAuthComponent.args as AuthFormProps)} />
-      </AuthPage>
-    );
-  },
-};
-
 export const Login: Story = {
-  ...LoginTemplate,
   args: {
     sideBar: {
       image: (
@@ -48,10 +27,16 @@ export const Login: Story = {
       title: "Bienvenido a ZipCode",
     },
   },
+  render: (args: AuthProps) => {
+    return (
+      <AuthPage {...args}>
+        <AuthForm {...(LoginAuthComponent.args as AuthFormProps)} />
+      </AuthPage>
+    );
+  },
 };
 
 export const Register: Story = {
-  ...RegisterTemplate,
   args: {
     sideBar: {
       image: (
@@ -62,5 +47,12 @@ export const Register: Story = {
       ),
       title: "Bienvenido a ZipCode",
     },
+  },
+  render: (args: AuthProps) => {
+    return (
+      <AuthPage {...args}>
+        <AuthForm {...(RegisterAuthComponent.args as AuthFormProps)} />
+      </AuthPage>
+    );
   },
 };
