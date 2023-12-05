@@ -36,10 +36,9 @@ export const AuthForm: FC<AuthFormProps> = ({
   variant = "outlined",
 }) => {
   const middleUp = useResponsive("up", "md");
-  const smallDown = useResponsive("down", "sm");
 
   return (
-    <AuthFormContainer variant={!smallDown ? variant : undefined}>
+    <AuthFormContainer variant={variant}>
       <Stack alignItems="center" width="100%">
         <Avatar>
           <LockOutlinedIcon />

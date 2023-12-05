@@ -10,17 +10,14 @@ export const AuthFormContainer = styled(Card)(({ theme }) => {
     flexDirection: "column",
     gap: "16px",
     justifyContent: "center",
+    margin: "auto",
     maxWidth: 550,
-    [theme.breakpoints.up("sm")]: {
-      margin: "auto",
-      padding: theme.spacing(6, 4, 4),
-    },
+    padding: theme.spacing(6, 4, 4),
     [theme.breakpoints.down("sm")]: {
+      border: "none",
+      boxShadow: "none",
       margin: "0px",
-      padding: theme.spacing(2, 2, 2),
-    },
-    [theme.breakpoints.down("sm")]: {
-      boxShadow: "none !important",
+      padding: theme.spacing(3),
     },
     "& .MuiAvatar-root": {
       backgroundColor: theme.palette.info.main,
